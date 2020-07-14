@@ -1,0 +1,100 @@
+{
+  "_from": "chartjs-chart-geo",
+  "_id": "chartjs-chart-geo@2.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-OjpEAmUMvcfg9Jp6thf9BgHN+av8A568wvSUI+J898MIUHJRyknATDt6c102UayT4x8Lv/u6xDfAd/A9NSke/Q==",
+  "_location": "/chartjs-chart-geo",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "chartjs-chart-geo",
+    "name": "chartjs-chart-geo",
+    "escapedName": "chartjs-chart-geo",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/chartjs-chart-geo/-/chartjs-chart-geo-2.1.0.tgz",
+  "_shasum": "d0a8d6d27b0706f7644a1285440aa312ded44094",
+  "_spec": "chartjs-chart-geo",
+  "_where": "E:\\Office Work\\Freelance\\Faiz Graphs",
+  "author": {
+    "name": "Samuel Gratzl",
+    "email": "samu@sgratzl.com",
+    "url": "https://wwww.sgratzl.com"
+  },
+  "bugs": {
+    "url": "https://github.com/sgratzl/chartjs-chart-geo/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "d3-geo": "^1.11.9",
+    "d3-scale-chromatic": "^1.5.0",
+    "topojson-client": "^3.1.0"
+  },
+  "deprecated": false,
+  "description": "Chart.js module for charting maps",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^25.3.0",
+    "chart.js": "^2.8.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "jest": "^25.3.0",
+    "prettier": "^2.0.4",
+    "release-it": "^13.5.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.6.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-watch": "^4.3.1",
+    "uglify-es": "^3.3.9"
+  },
+  "files": [
+    "build",
+    "src/**/*.js"
+  ],
+  "homepage": "https://github.com/sgratzl/chartjs-chart-geo#readme",
+  "license": "MIT",
+  "main": "build/Chart.Geo.js",
+  "module": "build/Chart.Geo.esm.js",
+  "name": "chartjs-chart-geo",
+  "peerDependencies": {
+    "chart.js": "^2.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgratzl/chartjs-chart-geo.git"
+  },
+  "scripts": {
+    "build": "npm run build:prod",
+    "build:dev": "rollup -c -i src/index.js",
+    "build:prod": "npm run build:dev && uglifyjs build/Chart.Geo.js -c -m -o build/Chart.Geo.min.js",
+    "clean": "rimraf build *.tgz",
+    "format": "prettier --write samples src package.json *.js README.md",
+    "lint": "eslint src",
+    "posttest": "npm run lint",
+    "prebuild": "npm run clean && npm test",
+    "prepare": "npm run build:dev",
+    "prepublishOnly": "npm run build:prod",
+    "preversion": "npm run test",
+    "release:major": "release-it major",
+    "release:minor": "release-it minor",
+    "release:patch": "release-it patch",
+    "release:pre": "release-it --preRelease=alpha --npm.tag=next",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "watch": "rollup -c -w -i src/index.js"
+  },
+  "unpkg": "build/Chart.Geo.min.js",
+  "version": "2.1.0"
+}
