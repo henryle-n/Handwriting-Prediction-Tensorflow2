@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Project 2 - HomePage" />
+    <meta name="author" content="Henry Le" />
+    <title>Global Satellite Lauch</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/static/assets/img/favicon.ico" />
+    <!-- Beautiful front-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- online CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <!-- Henry's customized styles-->
+    <link href="/static/css/styles.css" rel="stylesheet" />
+
+    <!-- animation style sheet-->
+    <link href="/static/css/animate.min.css" rel="stylesheet" />
+
+
+    <!-- For myCanvas -->
+    <style>
+        #myCanvas {
+            border: 1px solid red;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div id="top-of-page"></div>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/">TITLE 
+                <img class="nav-sat-logo" src="/static/assets/img/satellite.svg">
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About Our Team</a>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#proj-desc-anchor">Project
+                            Description</a>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/visualization">Visualization</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Database</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item js-scroll-trigger" href="#api-section">API Access</a>
+                            <a class="dropdown-item" href="/api">API List</a>
+                            <a class="dropdown-item" href="/data-filterable">Filterable Data Table</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="text-uppercase text-white font-weight-bold main-page-title main-page-title">CNN</h1>
+                    <hr class="divider my-4 masthead-divider-inactive" />
+                </div>
+                <div class="col-lg-10 align-self-baseline">
+                    <p class="text-white-75 font-weight-light mb-5 inactiveText" id="user-exp-text" id="user-exp-box">
+                        User message goes here? Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque velit, veniam voluptatem, quaerat vel dolores illo quod odio excepturi eveniet voluptas impedit quis assumenda exercitationem quam iure nisi obcaecati natus.
+                    </p>
+
+                    <a class="btn btn-primary btn-xl js-scroll-trigger btn-xl-hidden" href="/visualization">Go to
+                Visualization</a>
+                </div>
+            </div>
+            <div class="box-arrow-hidden">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+
+
+    </header>
+    <!--canvas -->
+
+    <body>
+        <table width="100%" height="20%" border="1">
+            <tr>
+                <div id="myCanvas"></div>
+                <td align="center"> <canvas id="myCanvas" width="400" height="200"></canvas> </td>
+                <td align="center"> <canvas id="myCanvas" width="400" height="200"></canvas> </td>
+            </tr>
+
+
+
+        </table>
+
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- About-->
+    <!-- <section class="page-section bg-primary team-tile-section padding-lg" id="about">
+        <hr class="divider henry-divider-1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white mt-0">Team Introduction</h2>
+                    <hr class="divider light my-4">
+                    <p class="text-white-50 mb-4">Despite the fact that three of us have different background and professions, we decided to team up and created a fun and interactive website where data is unlocked to tell stories thru amazing visualizations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row heading heading-icon">
+            </div>
+            <ul class="row">
+                <li class="col-12 col-md-4">
+                    <div class="team-tile">
+                        <figure><img src="/static/assets/img/portfolio/team/HNL.jpg" class="img-responsive" alt="">
+                        </figure>
+                        <h3>Henry Le</h3>
+                        <p>Project Team Lead<br>-<br>Front & Back-End Developer</p>
+                    </div>
+                </li>
+                <li class="col-12 col-md-4">
+                    <div class="team-tile">
+                        <figure><img src="/static/assets/img/portfolio/team/EK.jpg" class="img-responsive" alt="">
+                        </figure>
+                        <h3>Ekin Kaplan</h3>
+                        <p>JavaScript Developer<br>-<br>Front-End Developer</p>
+                    </div>
+                </li>
+                <li class="col-12 col-md-4">
+                    <div class="team-tile">
+                        <figure><img src="/static/assets/img/portfolio/team/OJN.jpg" class="img-responsive" alt="">
+                        </figure>
+                        <h3>O.J. Ndebbio</h3>
+                        <p></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="row" id="get-to-know-us">
+                <a class="btn btn-light btn-xl js-scroll-trigger" href="about">Get to know us!</a>
+            </div>
+        </div>
+        <div id="proj-desc-anchor"></div>
+    </section> -->
+    <!-- Project Description-->
+    <!-- <section class="page-section" id="proj-desciption"> -->
+    <!-- <hr class="divider henry-divider-1">
+        <div class="container container-project">
+            <h2 class="text-center mt-0 proj-desc">Project Description</h2>
+            <hr class="divider my-4" />
+            <p class="proj-desc">
+                In this project, a Comma Seperated Values (CSV) Satellite Lauches dated from 1974-2020 was downloaded. Dataset contains 2,666 satellites currenly orbiting the Earth, which includes country of origin, purpose, and other operational details of these satellites.
+                By data visualization, the following data exploration can be made: thoroughly.
+            </p>
+            <ul id="proj-list">
+                <li class="proj-list">
+                    Satellite distributions among nations: who are the top 10 Satellite Owners?
+                </li>
+                <li class="proj-list">
+                    How many Satellite Launches in a particular day, month, and year?
+                </li>
+                <li class="proj-list">
+                    Interactive Data Table returning data based on user's query inputs.
+                </li>
+
+            </ul> <br>
+            <p class="proj-desc-2">Besides visualization, many more data exploration can be achieved by:</p>
+            <ul id="proj-list">
+                <li class="proj-list">
+                    When was the oldest working satellite launched?
+                </li>
+                <li class="proj-list">
+                    At what altitudes (orbiting class) do most satellites orbit?
+                </li>
+                <li class="proj-list">
+                    What activities are most satellites involved with?
+                </li>
+                <li class="proj-list">
+                    And many more ...
+                </li>
+            </ul>
+            <hr class="divider my-4" />
+            <div class="WDB-container">
+                <div class="WDB">
+                    <img class="WDB-pic img-fluid responsive" src="/static/assets/img/portfolio/fullsize/Project-2-WDB.svg" alt="WDB">
+                </div>
+            </div>
+            <a name="api-section"></a>
+        </div> -->
+    <!-- </section>
+    database
+    <section class="page-section bg-dark text-white api-section">
+        <hr class="divider henry-divider-1">
+        <div class="container text-center">
+            <h2 class="mb-4 api-section-header">Application Programming Interface (API)</h2>
+            <hr class="divider my-4" />
+            <p class="text-white-50 mb-4"> Click the button below to see the full API List
+            </p>
+            <a class="btn btn-light btn-xl" href="/api">Full API List</a>
+        </div>
+        <hr class="divider my-4" />
+        <div class="container text-center">
+            <p class="text-white-50 mb-4">Alternatively, choose one of the tiles below for quick access.
+            </p>
+        </div>
+    </section> -->
+    <!-- <section>
+    <div id="database">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-lg-4 col-sm-6">
+                    <a class="database-box" href="/api/master-record">
+                        <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/master-record.jpg" alt="" />
+                        <div class="database-box-caption">
+                            <div class="project-category text-white-50">Data Type</div>
+                            <div class="project-name">Master Database</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="database-box" href="/api/satellite-directory"><img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/satellite-directory.jpg" alt="" />
+                        <div class="database-box-caption">
+                            <div class="project-category text-white-50">data type</div>
+                            <div class="project-name">Satellite Name Directory</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="database-box" href="/api/metadata"><img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/metadata.jpg" alt="" />
+                        <div class="database-box-caption">
+                            <div class="project-category text-white-50">data type</div>
+                            <div class="project-name">Metadata</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="database-box" href="/api/launch-date"><img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/launch-date.jpg" alt="" />
+                        <div class="database-box-caption">
+                            <div class="project-category text-white-50">data type</div>
+                            <div class="project-name">Launch Date Database</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="database-box" href="/api/satellite-bio"><img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/satellite-bio.jpg" alt="" />
+                        <div class="database-box-caption">
+                            <div class="project-category text-white-50">data type</div>
+                            <div class="project-name">Satellite Biography Database</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a class="database-box" href="/api/lauch-history-by-country"><img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/launch-history.jpg" alt="" />
+                        <div class="database-box-caption p-3">
+                            <div class="project-category text-white-50">data type</div>
+                            <div class="project-name">Launch History by Country</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section> -->
+    <!-- Contact-->
+    <!-- <section class="page-section" id="contact">
+        <hr class="divider henry-divider-1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mt-0">Let's Get In Touch!</h2>
+                    <hr class="divider my-4" />
+                    <p class="text-muted mb-5">
+                        If you like our design and visualization and if we can be of any service to you, please feel free to reach out!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                    <div class="contact-text">Henry : +1 (405) 464-0815</div>
+                </div>
+                <div class="col-lg-4 mr-auto text-center">
+                    <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                    <a class="d-block" href="mailto:henryle.b11@gmail.com">henryle.b11@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- Footer-->
+    <!-- <footer class="bg-light py-5">
+            <div class="container">
+                <div class="medium text-center text-muted">
+                    <span class="footer-text-1">Brought to you by:&nbsp;&nbsp;</span>
+                    <span class="footer-text-2">Henry Le</span>
+                    <br><span class="footer-text-1">June, 2020</span>
+                </div>
+            </div>
+        </footer> -->
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <!--  Notifications Plugin    -->
+    <script src="/static/js/bootstrap-notify.js"></script>
+
+    <!-- d3 for manipulation -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/static/js/index-scripts-scroll.js"></script>
+    <!-- <script type="text/javascript" src="jquery-1.7.2.min.js"></script> -->
+
+
+
+
+
+
+
+    <!-- <script type="text/javascript">
+        //  my best noti-box
+        $(document).ready(function() {
+            // $('html, body').animate({
+            //     scrollTop: $('#top-of-page').offset().top
+            // }, 'slow');
+            $.notify({ // by bootstrap
+                title: '<p class="noti-Header">Hi there! Welcome!<hr></p>',
+                message: "<b>You're visiting the HomePage!</b><br>\
+                -- <em>Designer</em> :: <b>Henry Le</b><br>"
+            }, {
+                type: 'henry-orange',
+                delay: 4000, // in millisecs
+                z_index: 3000,
+                showProgressbar: false,
+                animate: {
+                    enter: 'animated fadeInDownBig',
+                    exit: 'animated fadeOutUpBig'
+                },
+                offset: {
+                    x: 20,
+                    y: 40
+                },
+                allow_dismiss: true,
+                placement: {
+                    from: "bottom",
+                    align: "left",
+
+                },
+                template: '' +
+                    '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+                    '<span data-notify="title">{1}</span>' +
+                    '<span data-notify="message">{2}</span>' +
+                    '</div>'
+
+            });
+        });
+    </script> -->
+</body>
+
+</html>

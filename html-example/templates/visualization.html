@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="/static/assets/img/favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>Visualization</title>
+
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Bootstrap core CSS     -->
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+  <!--  Light Bootstrap Table core CSS    -->
+  <link href="/static/css/Henry-Mod-Viz-Page.css" rel="stylesheet" />
+
+  <!-- Animation library    -->
+  <link href="/static/css/animate.min.css" rel="stylesheet" />
+
+  <!-- customize css -->
+  <link href="/static/css/style-Viz.css" rel="stylesheet" />
+
+  <!-- <link href="/static/css/animate.min.css" rel="stylesheet"/> -->
+  <link href="/static/css/style-Viz.css" rel="stylesheet" />
+
+  <!--     I'm all about icon, and beautiful fonts - Henry/ Jun 2020     -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+  <script src="https://kit.fontawesome.com/25f64a2ed2.js" crossorigin="anonymous"></script>
+  <!-- <script src="/static/js/HenryVizMultiAxes.js"></script> -->
+</head>
+
+<body>
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
+  <a name="top"></a>
+  <div class="wrapper">
+    <div class="sidebar" data-color="darken-HL" data-image="/static/assets/img/sidebar-5.jpg">
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="#top" class="simple-text">visualization dashboard</a>
+        </div>
+
+        <ul class="nav">
+          <li>
+            <a href="#HenryMultiX">
+              <p>Top 10 Launch Dates</p>
+            </a>
+          </li>
+          <li>
+            <a href="#HenryChoroPleth">
+              <p>World Map ChoroPleth</p>
+            </a>
+          </li>
+          <li>
+            <a href="#HenryBarCounts">
+              <p>Top 10 Satellite Owners</p>
+            </a>
+          </li>
+          <li>
+            <a href="#LaunchDayBar">
+              <p>Launches by Day</p>
+            </a>
+          </li>
+          <li>
+            <a href="#LaunchMonthBar">
+              <p>Launches by Month</p>
+            </a>
+          </li>
+          <li>
+            <a href="#LaunchYearBar">
+              <p>Launches by Year</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-panel">
+      <nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="navbar-brn" href="#top">Visualization DashBoard</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="/">
+                  <i class="fas fa-home"></i>
+                  <p class="hidden-lg hidden-md">Back to Home Page</p>
+                </a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="far fa-chart-bar"></i>
+                  <b class="caret hidden-lg hidden-md"></b>
+                  <p class="hidden-lg hidden-md">
+                    Explore Charts
+                    <b class="caret"></b>
+                  </p>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#HenryMultiX">Top 10 Launch Dates</a></li>
+                  <li><a href="#HenryChoroPleth">ChoroPleth Map</a></li>
+                  <li><a href="#HenryBarCounts">Top 10 Satellite Owners</a></li>
+                  <li><a href="#LaunchDayBar">Lauches by Day</a></li>
+                  <li><a href="#LaunchMonthBar">Lauches by Month</a></li>
+                  <li><a href="#LaunchYearBar">Lauches by Year</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fas fa-database"></i>
+                  <b class="caret hidden-lg hidden-md"></b>
+                  <p class="hidden-lg hidden-md">
+                    Database
+                    <b class="caret"></b>
+                  </p>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="data-filterable">Filterable Data Table</a></li>
+                  <li><a href="api">Available API List</a></li>
+                </ul>
+              </li>
+
+              <ul class="dropdown-menu">
+                <li><a href="data-filterable">Filterable Data Table</a></li>
+                <li><a href="api">Available API List</a></li>
+              </ul>
+              </li>
+
+              <li>
+                <a href="/about">
+                  <i class="fas fa-user-friends"></i>
+                  <p class="hidden-lg hidden-md">About our Team</p>
+                </a>
+              </li>
+
+              <li>
+                <a href="/#contact">
+                  <i class="far fa-address-card"></i>
+                  <p class="hidden-lg hidden-md">Contact us</p>
+                </a>
+              </li>
+
+              <li class="separator hidden-lg"></li>
+            </ul>
+          </div>
+
+        </div>
+      </nav>
+
+
+      <div class="content content-master">
+        <div class="container-fluid">
+          <!-- 1st row -->
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="header">
+                  <h4 class="title">Top 10 Satellite Counts by Launch Dates</h4>
+                  <p class="category">Organized in Years, Months, Days</p>
+                  <hr>
+                </div>
+                <div class="content">
+                  <div id="HenryMultiX">
+                    <!-- Henry's Multi X is here -->
+                  </div>
+                  <div class="footer">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-clock-o"></i> Updated: Jun, 2020
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="header">
+                  <h4 class="title">46 years of Satellite History</h4>
+                  <p class="category">Counts by Nations</p>
+                  <hr>
+                </div>
+                <div class="content">
+
+                  <canvas id="HenryChoroPleth">
+                    <!-- Henry's Multi X is here -->
+                  </canvas>
+                  <div class="footer">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-clock-o"></i> Updated: Jun, 2020
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end 1st row -->
+
+          <!-- 2nd row -->
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="header">
+                  <h4 class="title">Top 10 Satellite Owned Nations</h4>
+                  <p class="category">46 years history</p>
+                  <!-- Henry's Bar charts is here -->
+                  <hr>
+                </div>
+                <div class="content">
+                  <canvas id="HenryBarCounts" width="400" height="200"></canvas>
+                  <!-- Henry's Bar counts is here -->
+                  <div class="footer">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-clock-o"></i> Updated: Jun, 2020
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="header">
+                  <h4 class="title">Satellite Counts by Launch Day</h4>
+                  <p class="category">Organized by Days</p>
+                  <hr>
+                </div>
+                <div class="content">
+                  <div id="LaunchDayBar">
+                    <!-- Ekin Launch Day -->
+                  </div>
+                  <div class="footer">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-clock-o"></i> Updated: Jun, 2020
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end 2nd row -->
+          <!-- </div> -->
+
+          <!-- 3rd row -->
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="header">
+                  <h4 class="title">Satellite Counts by Launch Month</h4>
+                  <p class="category">Organized by Months</p>
+                  <hr>
+                </div>
+                <div class="content">
+                  <div id="LaunchMonthBar">
+                    <!-- Ekin Month Bar -->
+                  </div>
+                  <div class="footer">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-clock-o"></i> Updated: Jun, 2020
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="header">
+                  <h4 class="title">Satellite Counts by Launch Year</h4>
+                  <p class="category">Organized by Years</p><br>
+                </div>
+                <div class="content">
+                  <div id="LaunchYearBar">
+                    <!-- Ekin Year Bar -->
+                  </div>
+                  <div class="footer">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-clock-o"></i> Updated: Jun, 2020
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+      <!-- end 3rd row -->
+    
+
+      <footer class="footer">
+        <div class="container-fluid">
+          <nav class="pull-left">
+            <ul>
+              <li>
+                <a href="/">
+                  <i class="fas fa-home">
+                    <span id="footer-text"> Home Page</span>
+                  </i>
+                </a>
+              </li>
+              <li>
+                <a href="/api">
+                  <i class="fas fa-database">
+                    <span id="footer-text"> APIs</span>
+                  </i>
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  <i class="fas fa-user-friends">
+                    <span id="footer-text"> About us</span>
+                  </i>
+                </a>
+              </li>
+              <li>
+                <a href="/#contact">
+                  <i class="fas fa-address-book">
+                    <span id="footer-text"> Contact us</span>
+                  </i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <p class="copyright pull-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script> || <a href="https://www.linkedin.com/in/le-henry">Henry Le</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+
+<!--   Core JS Files   -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+<!--  Notifications Plugin    -->
+<script src="/static/js/bootstrap-notify.js"></script>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="/static/js/light-bootstrap-dashboard.js"></script>
+<!-- ChoroPleth and Top 10 country counts  -->
+<script src="/static/nodeModules-Henry-Updates/chartjs-chart-geo/build/Chart.Geo.js"></script>
+
+<!-- for plotly -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- <script src="/static/js/logWhichJS.js"></script> -->
+<script src="/static/js/EK_HL_Viz_inDev4.js"></script>
+<script src="/static/js/choroPleth-HenryUpdates.js"></script>
+<script src="/static/js/HenryVizMultiAxes.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    $.notify({ // by bootstrap
+      message: "Welcome to World of Visualization!<br>-- <em>Author</em> :: <b>Henry Le - 2020"
+
+    }, {
+      type: 'info',
+      delay: 3000,
+      z_index: 3000,
+      showProgressbar: false,
+      animate: {
+        enter: 'animated fadeInDown',
+        exit: 'animated fadeOutUp'
+      },
+      spacing: 20,
+      placement: {
+        from: "top",
+        align: "center"
+      },
+    });
+
+  });
+</script>
+
+</html>

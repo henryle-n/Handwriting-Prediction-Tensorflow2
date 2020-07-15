@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project 2 - Api list page" />
+    <meta name="author" content="Ekin Kaplan" />
+    <title>ABOUT OUR TEAM</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- Beautiful front-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- online CSS-->
+    <script src="https://kit.fontawesome.com/25f64a2ed2.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+        rel="stylesheet" />
+    <!-- Henry's customized styles-->
+    <link href="/static/css/style-api.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <div class=wrapper>
+        <a name="top-page"></a>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-4" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="/">Satellite History
+                    <img class="nav-sat-logo" src="/static/assets/img/satellite.svg">
+                </a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about">About Our Team</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#proj-desciption">Project
+                                Description</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger"
+                                href="/visualization">Visualization</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Database</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/#database">API Access</a>
+                                <a class="dropdown-item" href="/api">API List</a>
+                                <a class="dropdown-item" href="/data-filterable">Filterable Data Table</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="page-section" id="about">
+
+            <div class="container-md">
+
+                <div class="row">
+                    <div class="col-md-12 main-body">
+                        <div class="api-list">
+                            <ul id="api-text-body">
+                                <p span size:15px color: red id="heading-1">Full API Access List</p><br>
+                                <caption>Click one of the link below to see the JSON formatted data</caption>
+                                <hr class="divider"><br>
+                                <li><a class="api-link" href="/api/satellite-directory">All Satellite Name
+                                        Records</a>
+                                </li>
+                                <br>
+                                <li><a class="api-link" href="/api/launch-date">Launch Date Records</a></li><br>
+                                <li><a class="api-link" href="/api/top10-launch-dates">Top 10 Launch Date
+                                        Records</a>
+                                </li>
+                                <br>
+                                <li><a class="api-link" href="/api/metadata">Database Descriptions (Metadata)</a>
+                                </li>
+                                <br>
+                                <li><a class="api-link" href="/api/satellite-bio">Satellite Biography (46yrs)</a>
+                                    <ul>
+                                        <li><a class="api-link"
+                                                href="/api/satellite-bio/1HOPSAT-TD (1st-generation High Optical Performance Satellite)">Example
+                                                :: "1HOPSAT-TD" Record</a></li>
+                                    </ul>
+                                </li><br>
+                                <li><a class="api-link" href="/api/lauch-history-by-country">Total Satellite Launch
+                                        Counts
+                                        by Country</a>
+                                    <ul>
+                                        <li><a class="api-link" href="/api/lauch-history-by-country/USA">Example ::
+                                                Total
+                                                Satellite Launch Counts by USA</a></li>
+
+                                    </ul>
+                                </li><br>
+                                <li><a class="api-link" href="/api/master-record">46 years of Satellite Launch
+                                        Master
+                                        Data</a></li>
+                                <a class="btn btn-primary" id="btn-back" href="/">Back to Main Page</a><br />
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </li>
+            </div>
+        </section>
+        <div class="footer-section">
+            <div class="container-fluid">
+                <div class="footer-text">
+                    <span class="footer-text-1">Brought to you by:</span>
+                    <span class="footer-text-2">Ekin Kaplan</span>
+                    <span class="footer-text-1"> & </span> 
+                    <span class="footer-text-2">Henry Le</span>
+                    <br><span class="footer-text-1">June, 2020</span>>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+        <!-- nav bar scroll JS-->
+        <script src="/static/js/index-scripts-scroll.js"></script>
+</body>
+
+
+</html>

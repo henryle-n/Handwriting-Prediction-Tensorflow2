@@ -1,0 +1,664 @@
+/* @import "styles.css"; */
+@import url("/static/css/styles.css");
+
+* {
+  box-sizing: border-box;
+  font-family: Ubuntu, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 130px;
+  overflow: auto;
+  background-color: rgb(4, 22, 98);
+}
+
+/* The footer is positioned at the bottom of the page */
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100px;
+  background: #4e5d6c;
+}
+
+/* The code styles the text at the bottom of the footer */
+.footer > .bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  background: #04045c;
+  min-height: 40px;
+  font-size: 1.7rem;
+}
+
+.navbar {
+  padding: 0px;
+  margin: 0;
+}
+
+/* This CSS styles the ufo icon in the navbar */
+.nav-ufo {
+  position: relative;
+  bottom: 25px;
+  left: 140px;
+  width: 35px;
+}
+
+.ctn-fl {
+  padding: 30px;
+}
+
+/* Adding styles to the aside and filter form */
+.ufo-form {
+  margin-top: 20px;
+}
+
+.filters .panel-body {
+  padding: 5px;
+}
+
+.filters {
+  margin-top: 0px;
+  font-size: 2rem;
+}
+
+label {
+  font-size: 1.7rem;
+  font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif, -apple-system, BlinkMacSystemFont;
+}
+
+#table-area tr td {
+  text-align: center;
+  color : white;    
+}
+
+#table-area th {
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  color : white; 
+}
+
+#table-area th:first-child,
+#table-area th:nth-child(2),
+#table-area th:nth-child(6) {
+  min-width: 70px;
+}
+
+.loader {
+  margin-top: 50px;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}
+
+/* The styles for the parallax */
+.hero {
+  position: relative;
+  height: 500px;
+  padding-top: 30px;
+  margin-top: 0px;
+  background: linear-gradient(to top, rgba(177, 137, 109, 0.452) 0%, rgba(24, 19, 16, 0.8) 100%), url("/static/assets/img/Starlink-satellite-bus-SpaceX-Teslarati-orbit-edit-2-c.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+.hero h1 {
+  margin-top: 150px;
+  font-size: 0.5rem;
+  animation: title 1.2s forwards linear;
+  color: rgb(255, 255, 255);
+}
+
+.hero p {
+  font-size: 2.3rem;
+  opacity: 0;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 1.2s;
+  color: #fff;
+}
+
+.hero-img {
+  width: 50px;
+  opacity: 0;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 0.9s;
+}
+
+/* ============ for STATUS box============= */
+#sitRep {
+  padding: 5px;
+  background-color: rgb(14, 75, 104);
+}
+
+#user-notif,
+#usNoteDate,
+#sitRep,
+#noData {
+  color: rgb(192, 14, 216);
+  font-size: 2rem;
+  text-align: center;
+}
+#user-notif {
+  color: rgb(37, 199, 37);
+  font-size: 1.6rem;
+}
+
+#usNoteDate {
+  color: violet;
+  font-size: 1.5rem;
+}
+
+#noData {
+  color: red;
+  font-size: 1.6rem;
+}
+
+/* ================= END of STATUS box ============= */
+
+/* input placeholder color changes */
+.form-control::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #8e979f;
+  font-size: 1.7rem;
+}
+
+.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #8e979f;
+  font-size: 1.7rem;
+}
+
+.form-control:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #8e979f;
+  font-size: 1.7rem;
+}
+
+.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: #8e979f;
+  font-size: 1.7rem;
+}
+
+/* hints for user input */
+/* just to make sure the input box is spanned the entire space */
+.user-hint {
+  display: block;
+}
+.user-hint .user-hint-text {
+  top: 100px;
+  min-width: 450px;
+  max-width: 1200px;
+  visibility: hidden;
+  background-color: rgb(230, 231, 165);
+  border-radius: 4px;
+  border: thin;
+  position: absolute;
+  z-index: 3; /*make sure the hint box on top of other elements*/
+  padding: 5px;
+  margin-top: -15px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: black;
+  font-size: 1.7rem;
+}
+.user-hint .user-hint-text::after {
+  content: " ";
+  position: relative;
+}
+
+.user-hint:hover .user-hint-text {
+  visibility: visible;
+  opacity: 0.95;
+}
+
+/* filter button format */
+#filter-btn {
+  background-color: rgba(105, 81, 12, 0.849);
+  position: relative;
+  font-size: 17px;
+  padding: 10px;
+  left: 15px;
+  bottom: 10px;
+  border-radius: 15px;
+  min-width: auto;
+  text-align: center;
+}
+
+#filter-btn:hover {
+  background-color: rgb(167, 144, 18);
+  color: black;
+}
+
+/* media queries which will only be activated at specific screen sizes */
+
+@media (max-width: 1000000px) {
+  #table-area td {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 1200px) {
+  #table-area td {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 800px) {
+  #table-area td {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 500px) {
+  #table-area thead {
+    display: none;
+  }
+
+  #table-area tr td:first-child {
+    font-size: 1.8em;
+    font-weight: bold;
+    background: #1b3146;
+  }
+
+  #table-area tr td:last-child {
+    margin-bottom: 20px;
+  }
+
+  #table-area tr td:last-child::after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+    content: " ";
+  }
+
+  #table-area td {
+    font-size: 1.25em;
+  }
+
+  #table-area tbody td {
+    display: block;
+    text-align: center;
+  }
+
+  #table-area tbody td::before {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    content: attr(data-th);
+    background-color: lavender;
+  }
+
+  .hero h1 {
+    animation: smaller-title 1.2s forwards linear;
+  }
+}
+
+/* keyframe animations which will be used to animate the title */
+@keyframes title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 7.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes smaller-title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 5.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes subtitle {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* background cover for the entire page */
+body {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.nav-link:hover {
+  background-color: #d4f7f79d;
+}
+
+/* formating the brand name Latitude */
+.brandname {
+  font-family: Impact, Verdana;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  background-color: lightblue;
+}
+
+/* format text inside the text body of each graph */
+.body_text {
+  color: black;
+  font-size: 20px;
+  text-align: left;
+  background-color: white;
+  font-family: Verdana;
+}
+
+/* format summary box inside column #1 of the bootstrap grid */
+.box_sum {
+  background-color: white;
+  padding: 20px;
+}
+
+/* format box inside column #2 of the bootstrap grid */
+.box_vis {
+  background-color: white;
+  padding: 20px;
+}
+
+/* format content header */
+.head_cus {
+  color: #2eb8b8d2;
+  font-size: 40px;
+  text-align: left;
+  background-color: white;
+  font-family: Georgia, Tahoma, Geneva, Arial, sans-serif;
+  font-weight: 600;
+}
+
+.footer_ref {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-variant: small-caps;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.623);
+  padding: 2px;
+  /* margin: 10px; */
+  /* height: auto; */
+  width: 100%;
+  position: static;
+  bottom: 0;
+  flex: 0 0 50px; /*or just height:50px;*/
+  margin-top: auto;
+}
+
+/* this will make the picture get a bit bigger 
+and a halo ring appears around the frame when hover the mouse over it*/
+#img_cus:hover {
+  background-color: rgba(43, 247, 219, 0.89);
+  width: 100%;
+}
+
+img:hover {
+  background-color: rgba(43, 247, 219, 0.89);
+}
+
+#img_cus {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.box_comparison {
+  padding: 40px;
+  margin: 30px;
+  margin-top: 120px;
+  background-color: white;
+}
+
+.box_comparison_header {
+  color: #2eb8b8d2;
+  font-size: 25px;
+  text-align: left;
+  font-family: Georgia, Tahoma, Geneva, Arial, sans-serif;
+  font-weight: 700;
+  padding: 15px;
+}
+
+#nbar-format {
+  color: white;
+  font-weight: 700;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 40px;
+  margin-left: 150px;
+  background-color: #2eb8b8;
+  width: 200px;
+  max-width: 30%;
+  text-align: center;
+  border-radius: 0.5em;
+}
+
+.sub-title-font {
+  font-size: 18px;
+}
+
+/* to space out the content from the navbar and surrouding*/
+.row-grid {
+  margin: 25px;
+  margin-top: 120px;
+}
+
+/* space out button from left edge */
+button {
+  margin-right: 30px;
+}
+
+/* configure entire navbar background */
+.navbar-expand-lg {
+  background-color: #ffffff;
+}
+
+/* adjust button spacing from the left */
+.nav {
+  padding-right: 30px;
+}
+
+/* when screen is smaller, decrease the font size of Visualizations word */
+@media only screen and (max-width: 1200px) {
+  .head_cus {
+    font-size: 35px;
+  }
+}
+
+/* when screen is smaller, decrease the font size of Visualizations word */
+@media only screen and (max-width: 1100px) {
+  .head_cus {
+    font-size: 30px;
+  }
+
+  .sub-title-font {
+    font-size: 17px;
+  }
+
+  #nbar-format {
+    font-size: 25px;
+  }
+}
+
+/* when screen is smaller, decrease the font size of Visualizations word */
+@media only screen and (max-width: 980px) {
+  .head_cus {
+    font-size: 25px;
+  }
+
+  /* add some cushion for the nav bar */
+  .navbar-brand {
+    padding: 10px;
+  }
+
+  .sub-title-font {
+    font-size: 15px;
+  }
+
+  .body_text {
+    color: black;
+    font-size: 14px;
+    text-align: left;
+    background-color: white;
+    font-family: Verdana;
+  }
+
+  #nbar-format {
+    margin-left: 25px;
+  }
+}
+
+/* change background color of navbar when the drop down button appears */
+@media only screen and (max-width: 992px) {
+  .navbar-expand-lg {
+    background-color: #2eb8b8;
+  }
+  .navbar {
+    height: auto;
+    padding: 0px;
+  }
+
+  #navbarTogglerDemo02 {
+    background-color: white;
+    padding: 20px;
+  }
+}
+
+/* when screen is smaller than 880, decrease the font size of Visualizations word */
+@media only screen and (max-width: 850px) {
+  .head_cus {
+    font-size: 20px;
+  }
+
+  .sub-title-font {
+    font-size: 12px;
+  }
+}
+
+/* begin to stack at col-md  and reformat all entities*/
+@media only screen and (max-width: 766.99px) {
+  .head_cus {
+    font-size: 30px;
+  }
+
+  .box_vis {
+    /* background-color: white; */
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+  .sub-title-font {
+    font-size: 14px;
+  }
+
+  .row-grid {
+    margin-left: 20px;
+    margin-right: 5px;
+    margin-top: 90px;
+  }
+}
+
+/* when screen is smaller decrease the font size of brand bar Latitude word */
+@media only screen and (max-width: 690px) {
+  #nbar-format {
+    font-size: 20px;
+  }
+}
+
+/* when the screen is extremely small, stack all charts and resize subtitle text */
+@media only screen and (max-width: 574.99px) {
+  .sub-title-font {
+    font-size: 18px;
+  }
+}
+
+.nav-sat-logo{
+  max-width: 40px;
+  max-height: auto;
+  position: relative;
+  display: inline;
+  transform: translate(150px,-30px);
+
+}
+
+
+#mainNav{
+  background-color: rgb(0, 0, 0);
+}
+
+.nav-link {
+  color: white !important;
+  font-size: 13px !important;
+}
+
+.js-scroll-trigger{
+  color: white !important;
+  font-size: 15px !important;
+}
+
+
+@import url(http://fonts.googleapis.com/css?family=Old+Standard+TT:400,700);
+[data-notify="container"][class*="alert-henry-"] {
+	background-color: rgba(255, 255, 238, 0.911)!important;
+	border-width: 0px!important;
+    border-left: 15px solid rgba(233, 96, 96, 0.89)!important ;
+	border-radius: 20px;
+	box-shadow: 0 100px 100px 0 rgb(217, 255, 2);
+	font-family: 'Old Standard TT', serif!important;
+    letter-spacing: 1px!important;
+    min-width: fit-content!important;
+}
+[data-notify="container"].alert-henry-orange {
+	border-left-color: #e23b0d93!important;
+
+}
+[data-notify="container"][class*="henry-"] > [data-notify="title"] {
+	color: rgb(255, 0, 85)!important;
+	display: block;
+    font-weight: 700!important;
+    font-size: 20px!important;
+    margin-bottom: 5px!important;
+}
+[data-notify="container"][class*="alert-henry-"] > [data-notify="message"] {
+	font-weight: 400;
+}
+
+.alert{
+  color:rgb(0, 0, 0);
+  background-color: palegoldenrod;
+  border-radius: 20px;
+  font-size: 14px;
+  
+}
+span {
+  display: block;
+}

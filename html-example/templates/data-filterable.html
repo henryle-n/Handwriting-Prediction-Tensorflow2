@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Global Satellite Launches - Filterable">
+  <meta name="keywords" content="Global Satellite Launches">
+  <meta name="author" content="Henry Le, Ekin Kaplan, OJ Ndebbio">
+  <meta name="Date" content="June 15, 2020">
+  <title>Satellite Launch</title>
+  <meta name="description" content="Filterable">
+  <meta name="keywords" content="Satellite Filterable">
+  <meta name="author" content="Henry Le">
+  <meta name="Date" content="Jun, 2020">
+  <title>Global Satellite Launch Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta http-equiv='cache-control' content='no-cache'>
+  <meta http-equiv='expires' content='0'>
+  <meta http-equiv='pragma' content='no-cache'>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link rel="stylesheet" href="/static/css/style-data-table.css">
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div id="top-of-page"></div>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">Satellite History
+          <img class="nav-sat-logo" src="/static/assets/img/satellite.svg">
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+          aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto my-2 my-lg-0">
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about">About Our Team</a>
+            </li>
+
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#proj-desc-anchor">Project
+                Description</a>
+            </li>
+
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/visualization">Visualization</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Database</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/api">API List</a>
+                <a class="dropdown-item" href="/data-filterable">Filterable Data Table</a>
+              </div>
+            </li>
+
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero text-center">
+      <h1>Global Satellite Launches</h1>
+      <p>In the last 46 years, there are over 2,600 Satellites and counting have been successfully lauched!</p>
+      <img class="hero-img" src="">
+    </div>
+    <div class="container-fluid ctn-fl">
+      <div class="row margin-top-50">
+        <div class="col-md-2">
+          <aside class="filters">
+            <div class="panel panel-default">
+              <div class="panel-heading">Filter Search</div>
+              <div class="panel-body">
+                <form id="input-form">
+                  <div class="form-group">
+                    <ul class="list-group" id="filters" type="submit" value="submit">
+
+                      <!-- =======FILTER GROUP ======= -->
+                      <!-- date -->
+                      <li class="user-hint filter list-group-item">
+                        <label for="datetime">Date</label>
+                        <input class="form-control" id="datetime" type="text" placeholder="4/25/2016">
+                        <span class="user-hint-text">
+                          <b>HINT:</b>
+                          <ul>
+                            <li>Input <b>date</b> in <em>"M/D/YYYY format"</em></li>
+                            <li>E.g.: &nbsp;&nbsp;<em><b><span id=datetime>4/25/2016</span></b></em>
+                              or <em><b><span id=datetime>11/1/1994</span></b></em>
+                            </li>
+                          </ul>
+                        </span>
+                      </li>
+
+                      <!-- country  -->
+                      <li class="user-hint filter list-group-item">
+                        <label for="country">Country of Operator/ Owner</label>
+                        <input class="form-control" id="country" type="text" placeholder="USA, China, Russia etc.">
+                        <span class="user-hint-text">
+                          <b>HINT:</b>
+                          <ul>
+                            <li>Input <b>country</b> names in either lower or upper case<em></em></li>
+                            <li>E.g.: &nbsp;&nbsp;<em><b>usa, china, RUSSIA</b>, etc.</em></li>
+                          </ul>
+                        </span>
+                      </li>
+
+
+                      <!-- launchsite -->
+                      <li class="user-hint filter list-group-item">
+                        <label for="launchsite">Launch_Site</label>
+                        <input class="form-control" id="launch_site" type="text"
+                          placeholder="Cygnus, CAPE CANAVERAL etc.">
+                        <span class="user-hint-text">
+                          <b>HINT:</b>
+                          <ul>
+                            <li>Input <b>launchsite</b> names in either lower or upper case</li>
+                            <li>Use text format</li>
+                            <li>E.g.: &nbsp;&nbsp;<em><b>Cape Canaveral, cape canaveral, Cygnus, cygnus, Sea Launch
+                                  Odyssey, SEA LAUNCH OdySSEY</b>, etc.</em></li>
+                          </ul>
+                        </span>
+                      </li>
+
+                      <!-- purpose  -->
+                      <li class="user-hint filter list-group-item">
+                        <label for="purpose">Purpose</label>
+                        <input class="form-control" id="purpose" type="text"
+                          placeholder="Communications, earth observation">
+                        <span class="user-hint-text">
+                          <b>HINT:</b>
+                          <ul>
+                            <li>Input <b>purpose</b> names in either lower or upper case</li>
+                            <li>Use text format</li>
+                            <li>E.g.: &nbsp;&nbsp;<em><b>Communiacations, earth observation/Technology, Earth
+                                  observation</b>, etc.</em></li>
+                          </ul>
+                        </span>
+                      </li>
+
+                      <!-- orbitclasses  -->
+                      <li class="user-hint filter list-group-item">
+                        <label for="orbitclasses">OrbitClasses</label>
+                        <input class="form-control" id="orbitclasses" type="text" placeholder="GEO, LEO, etc.">
+                        <span class="user-hint-text">
+                          <b>HINT:</b>
+                          <ul>
+                            <li>Global Satellite Launches<b>orbitclasses</b> in either lower or upper case</li>
+                            <li>E.g.: &nbsp;&nbsp;<em><b>Leo, gEo, GEO</b>, etc.</em></li>
+                          </ul>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="btn-area">
+                    <button id="filter-btn" type="button" class="">Run Filter</button>
+                    <button id="csv-btn" type="button" class="">Get CSV</button>
+                    <button id="reset-btn" type="button" class="">Reset Filter</button>
+                  </div>
+                  <!-- form with multiple input fields is not supported with "enter-to-submit" action
+                  the work around is to create a hidden button to take "enter-to-submit" command and submit the entire form -->
+                  <input type="submit" style="position: absolute; left: -9999px; 
+                    width: -9999px; height: -9999px;" tabindex="-1" />
+                </form>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <!-- the table -->
+        <div class="col-md-10">
+          <p id="sitRep">Note: To improve webpage performance, only the first 100 data points are shown at the moment.
+            <br>Please input filtering conditions to begin.
+          </p>
+          <div id="table-area" class="table-responsive">
+            <table id="ufo-table" class="table table-striped">
+              <thead class="table-info">
+                <tr style="text-align: right;">
+                  <th class="table-head">Apogee (km)</th>
+                  <th class="table-head">COSPAR Number</th>
+                  <th class="table-head">Comments</th>
+                  <th class="table-head">Contractors /Country Names</th>
+                  <th class="table-head">Contractors Names</th>
+                  <th class="table-head">Country of Operator Owner</th>
+                  <th class="table-head">Dry Mass (kg)</th>
+                  <th class="table-head">Expected Lifetime(years)</th>
+                  <th class="table-head">Inclination (degrees)</th>
+                  <th class="table-head">Launch Date</th>
+                  <th class="table-head">Launch Mass(km)</th>
+                  <th class="table-head">Launch Site</th>
+                  <th class="table-head">Launch Vehicle</th>
+                  <th class="table-head">NORAD Number</th>
+                  <th class="table-head">Operator Owner</th>
+                  <th class="table-head">Orbit Classes</th>
+                  <th class="table-head">Orbit Types</th>
+                  <th class="table-head">Orig Sequence</th>
+                  <th class="table-head">Perigee (km)</th>
+                  <th class="table-head">Period minutes</th>
+                  <th class="table-head">Power (watts)</th>
+                  <th class="table-head">Purpose</th>
+                  <th class="table-head">Satellite Names</th>
+                  <th class="table-head">Users Names</th>
+                </tr>
+                <!-- </thead> -->
+              <tbody>
+                <!-- this is where to insert table data with js-script -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-section">
+      <div class="container-fluid">
+        <div class="footer-text">
+          <span class="footer-text-1">Brought to you by: </span>
+          <span class="footer-text-2">O.J. Ndebbio</span>
+          <span class="footer-text-1"> & </span>
+          <span class="footer-text-2">Henry Le</span>
+          <br><span class="footer-text-1">June, 2020</span>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+
+  <!--  Notifications Plugin    -->
+  <script src="/static/js/bootstrap-notify.js"></script>
+
+
+  <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+  <script src="/static/js/light-bootstrap-dashboard.js"></script>
+
+  <script src="/static/js/app-data-table.js"></script>
+  <script src="/static/js/scroll-data-table.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $.notify({ // by bootstrap
+        title: "Welcome!",
+        message: "You're visiting Raw Data Table"
+
+      }, {
+        type: 'alert',
+        delay: 3000, // in millisecs
+        z_index: 3000,
+        showProgressbar: false,
+        animate: {
+          enter: 'animated fadeInDownBig',
+          exit: 'animated fadeOutUpBig'
+        },
+        offset: {
+          x: 20,
+          y: 70
+        },
+        allow_dismiss: true,
+        placement: {
+          from: "top",
+          align: "left",
+
+        },
+        template: '' +
+          '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+          '<span data-notify="title">{1}</span>' + '<hr>' +
+          '<span data-notify="message">{2}</span>' + '<br>-- Henry' +
+          '</div>'
+
+      });
+
+    });
+  </script>
+</body>
+
+</html>
