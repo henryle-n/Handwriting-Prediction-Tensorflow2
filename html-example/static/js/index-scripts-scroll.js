@@ -185,14 +185,115 @@ function canvasLayer(location, id) {
 }
 
 
-this.element = $(myCanvas)[0];
-context = document.getElementById('myCanvas').getContext("2d").getContext('webgl');
+
+// this.element = $(myCanvas)[0];
+// context = document.getElementById('myCanvas').getContext("2d").getContext('webgl');
+
+
+// Prepare HTML5 Canvas: Scripting
+
 
 $(function() {
 
     // var canvas = document.querySelector("myCanvas");
     // var context = canvas.getContext("2d");
     // var context = canvas.getContext('webgl'); // will always be null
+
+    this.element = $(myCanvas)[0];
+    context = document.getElementById('myCanvas').getContext("2d").getContext('webgl');
+
+    var canvasDiv = document.getElementById('myCanvas');
+    canvas = document.createElement('canvas');
+    canvas.setAttribute('width', canvasWidth);
+    canvas.setAttribute('height', canvasHeight);
+    canvas.setAttribute('id', 'canvas');
+    canvasDiv.appendChild(canvas);
+    if (typeof G_vmlCanvasManager != 'undefined') {
+        canvas = G_vmlCanvasManager.initElement(canvas);
+    }
+    context = canvas.getContext("2d");
+
+    //  Create a Simple Drawing "myCanvas"
+    $('#canvas').mousedown(function(e) {
+        var mouseX = e.pageX - this.offsetLeft;
+        var mouseY = e.pageY - this.offsetTop;
+
+        paint = true;
+        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+        redraw();
+    });
+    $('#canvas').mousedown(function(e) {
+        var mouseX = e.pageX - this.offsetLeft;
+        var mouseY = e.pageY - this.offsetTop;
+
+        paint = true;
+        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+        redraw();
+    });
+
+    //   Mouse Move Event: 
+
+    $('#canvas').mousemove(function(e) {
+        if (paint) {
+            addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+            redraw();
+        }
+    });
+    //   Mouse Up Event: 
+    $('#canvas').mouseup(function(e) {
+        paint = false;
+    });
+
+
+    // Mouse Leave Event: 
+
+    $('#canvas').mouseleave(function(e) {
+        paint = false;
+    });
+
+
+    //   Here is the addClick function that will save the click position:
+    var clickX = new Array();
+    var clickY = new Array();
+    var clickDrag = new Array();
+    var paint;
+
+    function addClick(x, y, dragging) {
+        clickX.push(x);
+        clickY.push(y);
+        clickDrag.push(dragging);
+    }
+
+
+    // The redraw function is where the magic happens. Each time the function is called the canvas is cleared and everything is redrawn
+
+
+    function redraw() {
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
+
+        context.strokeStyle = "#df4b26";
+        context.lineJoin = "round";
+        context.lineWidth = 5;
+
+        for (var i = 0; i < clickX.length; i++) {
+            context.beginPath();
+            if (clickDrag[i] && i) {
+                context.moveTo(clickX[i - 1], clickY[i - 1]);
+            } else {
+                context.moveTo(clickX[i] - 1, clickY[i]);
+            }
+            context.lineTo(clickX[i], clickY[i]);
+            context.closePath();
+            context.stroke();
+        }
+    }
+    var colorPurple = "#cb3594";
+    var colorGreen = "#659b41";
+    var colorYellow = "#ffcf33";
+    var colorBrown = "#986928";
+
+    var curColor = colorPurple;
+    var clickColor = new Array();
 
 
     var height = (canvas.height = window.innerHeight);
@@ -225,6 +326,13 @@ $(function() {
             context.stroke();
         }
     }
+
+
+
+    // -------PANARAT CODE------
+
+
+
 
     // When true, moving the mouse draws on the canvas
     let isDrawing = false;
