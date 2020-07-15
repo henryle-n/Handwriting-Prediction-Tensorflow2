@@ -204,6 +204,9 @@ $(function() {
 
     var canvasDiv = document.getElementById('myCanvas');
     canvas = document.createElement('canvas');
+
+
+
     canvas.setAttribute('width', canvasWidth);
     canvas.setAttribute('height', canvasHeight);
     canvas.setAttribute('id', 'canvas');
@@ -293,8 +296,16 @@ $(function() {
     var colorBrown = "#986928";
 
     var curColor = colorPurple;
+
+
     var clickColor = new Array();
 
+    function addClick(x, y, dragging) {
+        clickX.push(x);
+        clickY.push(y);
+        clickDrag.push(dragging);
+        clickColor.push(curColor);
+    }
 
     var height = (canvas.height = window.innerHeight);
     var width = (canvas.width = window.innerWidth);
@@ -327,7 +338,10 @@ $(function() {
         }
     }
 
-
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("scream");
+    ctx.drawImage(img, 10, 10);
 
     // -------PANARAT CODE------
 
