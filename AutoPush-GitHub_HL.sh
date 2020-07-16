@@ -32,7 +32,7 @@ do
 		[yY][eE][sS]|[yY])
 			echo Begin ${red}Git Pushing${nc}. Please wait...
 			echo "--------------------------"
-			echo ${yel}Adding files...${nc} & git add -A
+			echo ${yel}Adding files...${nc} & git add .
 			echo "--------------------------"
 			echo "${yel}Preparing to push...${nc}" 
 			echo "--------------------------"
