@@ -1,4 +1,4 @@
-canvas#test_Canvas {
+#test_Canvas {
     width: 150px;
     height: 150px;
     border: 1px;
@@ -8,7 +8,7 @@ canvas#test_Canvas {
 }
 /* SHIFT + ALT + DOWN ARROW : QUICK COPY */
 /* ALT + UP or DOWN ARROW TO MOVE LINES */
-canvas#test_canvasImg {
+#test_canvasImg {
     width: 28px;
     height: 28px;
     border: 1px;

@@ -9,9 +9,9 @@ $(function () {
   let x = 0;
   let y = 0;
 
-  const canvas = document.getElementById('test_Canvas');
+  const canvas = document.getElementById('hwCanvas');
   const ctx = canvas.getContext('2d');
-
+  console.log('line 14')
   // event.offsetX, event.offsetY gives the (x,y) offset from the edge of the canvas.
 
   // Add the event listeners for mousedown, mousemove, and mouseup
@@ -40,88 +40,78 @@ $(function () {
 
   function drawLine(ctx, x1, y1, x2, y2) {
     ctx.beginPath();
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 10;
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 20;
     ctx.lineJoin = "round";
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
     ctx.stroke();
     ctx.closePath();
   }
-
-  console.log('line 72')
   // =====================================
-  // Add submit function out put as array
+  // Add download and display image from canvas
   // =====================================
 
-  var submit_btn = document.getElementById('submit_btn');
+  const btnDisplay = document.querySelector('#btnDisplay');
+  const btnDownload = document.querySelector('#btnDownload');
+  const btnUpload = document.querySelector('#btnUpload');
+  const imgConverted = document.querySelector('#imgConverted');
+  const hwCanvas = document.querySelector('#hwCanvas')
+  const hwctx = hwCanvas.getContext('2d');
 
-  console.log(submit_btn)
+  btnDisplay.addEventListener('click', function () {
+    const dataURI = hwCanvas.toDataURL('image/jpeg');
+    imgConverted.src = dataURI;
+    console.log(dataURI);
+  });
 
-  // ---------------
-  // Test Function on Button Click
-  // ---------------
+  btnDownload.addEventListener('click', function () {
+    console.log('download');
+    // IE/Edge Support (PNG Only)
+    if (window.navigator.msSaveBlob) {
+      window.navigator.msSaveBlob(hwCanvas.msToBlob(), 'canvas-img.png');
+    } else {
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = hwCanvas.toDataURL();
+      a.download = 'canvas-img.png';
+      a.click();
+      document.body.removeChild(a);
+    }
+  });
 
-  // submit_btn.addEventListener('click', consoleTest);
-  // function consoleTest()
-  // {
-  //   {console.log('test')}
-  // }
-  // console.log('after add event')
+  btnUpload.addEventListener('click', function () {
+    console.log('upload');
+    const base64 = hwCanvas.toDataURL().split(',')[1];
 
-  // ---------------
-  // Test addEventListener on Button Click
-  // ---------------
-  //submit_btn.addEventListener('click', function(){console.log('Test Click Button')});
+    const body = {
 
+      'gererated-at': new Date().toISOString(),
+      'png': base64
+    };
 
-  submit_btn.addEventListener('click', submit_imgArray);
+    // console.log(body);
 
-  console.log('before enter submit_image')
-  function submit_imgArray() {
-    console.log('test submit_image');
-    image_array = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    console.log(image_array);
-  }
+    fetch('upload.php', {
+      method: 'post',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
 
-  // =====================================
-  // Add submit function out put as image
-  // =====================================
-
-  //Set canvasImg image src to dataURL (png format 96 dpi by default)
-  // Set canvasImg image src to dataURL
-  // So it can be saved as an image
-  // const canvas = document.getElementById('test_Canvas');
-  // const ctx = canvas.getContext('2d');
-
-  upload_btn.addEventListener('click', submit_ImgURL);
-  // upload_btn.addEventListener('click', consoleTest);
-  // function consoleTest()
-  // {
-  //   {console.log('upload_btn')}
-  // }
-  function submit_ImgURL() {
-    // const t_canvasImg = document.getElementById('test_Canvas');
-    // const t_ctx = t_canvasImg.getContext('2d');
-    console.log('function submit_ImgURL')
-    var dataURL = canvas.toDataURL();
-    document.getElementById('test_canvasImg').src = dataURL;
-    console.log(dataURL);
-    
-
-    // let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    // t_ctx.putImageData(t_ctx);
-    // console.log(imgSmall);
-    // const width = 28;
-    // const height = 28;
-    // elem.width = width;
-    // elem.height = height;
-    // imgNo.addEventListener('load', e => {
-    //   ctx.drawImage(dataURL, 0, 0);
-    // })
-  }
-
-
-
-
+  });
+  // // Make window object and wait for request comes through
+  // const xhr = new XMLHttpRequest();
+  // // when response comes back show response into html
+  // xhr.onload = function(){
+  //   const serverResponse = document.getElementById('serverResponse');
+  //   serverResponse.innerHTML = this.responseText;
+  // };
+  // // http method 'POST' and URL 'dom.php'
+  // xhr.open('POST','dom.php');
+  // // set content-type header is very important
+  // xhr.setRequestHeader('Content-type','application/x-www-form-urlendcoded');
+  // // send request
+  // xhr.send('name=domenic&message=How s going');
 });
