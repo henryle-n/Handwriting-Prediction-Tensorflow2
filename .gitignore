@@ -1,5 +1,6 @@
 final_model.h5
-
+CNN_with_CPU.avi
+CNN_with_GPU.avi
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
