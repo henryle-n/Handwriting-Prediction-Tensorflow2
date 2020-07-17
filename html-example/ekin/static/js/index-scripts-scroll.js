@@ -88,31 +88,31 @@ function animMainT() {
 }
 
 
-// this is for animation text on the webpage upon loading
-var facts = [
-    "Do you know?",
-    "In the last 46 years, 2,666 Satellites have been successfully lauched!",
-    "They're orbiting around the Earth 24/7!",
-    "That's why we can call our friends & families.",
-    "No matter where they are, all days and all nights.",
-    "Satellites make GPS available",
-    "not only for cars but also airplanes!",
-    "Pretty AMAZING, right?",
-    "But do you know who owns the most satellite?",
-    "... make a guess, is it the U.S.A.?",
-    "Hummm... not sure...",
-    "Then, who come the second and the third?",
-    "Rumors said China and Russia...",
-    "... but",
-    "Do we know the answers for sure?",
-    "Let's find out...",
-    "... thru amazing Data Analytics & Visualization!",
-    "May be we can find interesting facts...",
-    "Scroll down to see our team and project.",
-    "Or select one of the options in the Navigation Bar.",
-    "On behalf of my team...",
-    "Thank you for visting and enjoy! -- Henry"
-]
+// // this is for animation text on the webpage upon loading
+// var facts = [
+//     "Do you know?",
+//     "In the last 46 years, 2,666 Satellites have been successfully lauched!",
+//     "They're orbiting around the Earth 24/7!",
+//     "That's why we can call our friends & families.",
+//     "No matter where they are, all days and all nights.",
+//     "Satellites make GPS available",
+//     "not only for cars but also airplanes!",
+//     "Pretty AMAZING, right?",
+//     "But do you know who owns the most satellite?",
+//     "... make a guess, is it the U.S.A.?",
+//     "Hummm... not sure...",
+//     "Then, who come the second and the third?",
+//     "Rumors said China and Russia...",
+//     "... but",
+//     "Do we know the answers for sure?",
+//     "Let's find out...",
+//     "... thru amazing Data Analytics & Visualization!",
+//     "May be we can find interesting facts...",
+//     "Scroll down to see our team and project.",
+//     "Or select one of the options in the Navigation Bar.",
+//     "On behalf of my team...",
+//     "Thank you for visting and enjoy! -- Henry"
+// ]
 
 
 var nFact = 0;
