@@ -21,11 +21,6 @@ from tensorflow.keras.preprocessing import image as image_processing
 
 print(tf.__version__)
 
-
-# After trained the model on GPU, validate or prediction of small amount of images 
-# shouldn't need the power of GPU
-# AWS & Heroku may have issues with GPU computing
-# Reconfig to let CPU run the validation / prediction
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
@@ -69,7 +64,17 @@ def img_predict (img_path):
     prediction = np.argmax(model.predict(image), axis=-1)
     return print(f"This is number :: {prediction[0]}\n{('=')*40}")
 
+# create a list of all picture path inside test image folder
+base_path = "./images/test-img/"
+img_list = [base_path + img for img in listdir(base_path) if isfile(join(base_path, img))]
 
+# looping thru each img and make prediction
+st_time = time()
+for ea_iter in tf.range(len(img_list)):
+    ea_iter = tf.cast(ea_iter, tf.int64)
+    img_predict(img_list[ea_iter])
+total_time = time() - st_time 
+print (f'Total Prediction Run Time :: {round(total_time, 3)} seconds || {len(img_list)} images')
 
 # ### Henry Le, 07/17/2020 :: 
 # 
@@ -89,17 +94,13 @@ def img_predict (img_path):
 # 4. Number 9 is challenging to recognize in with this particular train model, which predicts more 4 and 7 more often than the correct number 9.
 
 if (__name__) == ("__main__"):
-    print(f"{('#')*30}\nRunning prediction from '__main__'\n{('#')*40}")
-        
-
     # create a list of all picture path inside test image folder
-    base_path = "./images/test-img/"
+    base_path = "./images/test-img/num7-variant/"
     img_list = [base_path + img for img in listdir(base_path) if isfile(join(base_path, img))]
 
     # looping thru each img and make prediction
-    st_time = time()
     for ea_iter in tf.range(len(img_list)):
         ea_iter = tf.cast(ea_iter, tf.int64)
         img_predict(img_list[ea_iter])
-    total_time = time() - st_time 
-    print (f'Total Prediction Run Time :: {round(total_time, 3)} seconds || {len(img_list)} images')
+
+
