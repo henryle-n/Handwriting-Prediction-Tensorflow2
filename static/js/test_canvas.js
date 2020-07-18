@@ -11,7 +11,7 @@ $(function () {
 
   const canvas = document.getElementById('hwCanvas');
   const ctx = canvas.getContext('2d');
-  console.log('line 14')
+  console.log('Drawing on Canvas')
   // event.offsetX, event.offsetY gives the (x,y) offset from the edge of the canvas.
 
   // Add the event listeners for mousedown, mousemove, and mouseup
@@ -40,8 +40,8 @@ $(function () {
 
   function drawLine(ctx, x1, y1, x2, y2) {
     ctx.beginPath();
-    ctx.strokeStyle = 'red';
-    ctx.lineWidth = 20;
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 5;
     ctx.lineJoin = "round";
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
@@ -51,7 +51,7 @@ $(function () {
   // =====================================
   // Add download and display image from canvas
   // =====================================
-
+  const btnClear = document.querySelector('#btnClear');
   const btnDisplay = document.querySelector('#btnDisplay');
   const btnDownload = document.querySelector('#btnDownload');
   const btnUpload = document.querySelector('#btnUpload');
@@ -59,10 +59,19 @@ $(function () {
   const hwCanvas = document.querySelector('#hwCanvas')
   const hwctx = hwCanvas.getContext('2d');
 
+  btnClear.addEventListener('click', function(){
+    console.log('Function : btnClear');   
+    // hwctx.fillStyle = "white";
+    // ctx.fillRect(0, 0, 150, 150);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    imgConverted.src ="";
+  });
+
   btnDisplay.addEventListener('click', function () {
-    const dataURI = hwCanvas.toDataURL('image/jpeg');
+    const dataURI = hwCanvas.toDataURL('image/png');
     imgConverted.src = dataURI;
-    console.log(dataURI);
+    console.log('Show DatURI: ',dataURI);
+    console.log('She Image Converted: ',imgConverted);
   });
 
   btnDownload.addEventListener('click', function () {
@@ -90,15 +99,15 @@ $(function () {
       'png': base64
     };
 
-    // console.log(body);
+    console.log('Print Body', body);
 
-    fetch('upload.php', {
-      method: 'post',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    // fetch('http://127.0.0.1:5500', {
+    //   method: 'post',
+    //   body: JSON.stringify(body),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // });
 
   });
   // // Make window object and wait for request comes through
@@ -109,7 +118,7 @@ $(function () {
   //   serverResponse.innerHTML = this.responseText;
   // };
   // // http method 'POST' and URL 'dom.php'
-  // xhr.open('POST','dom.php');
+  // xhr.open('POST',fetch());
   // // set content-type header is very important
   // xhr.setRequestHeader('Content-type','application/x-www-form-urlendcoded');
   // // send request
