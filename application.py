@@ -24,8 +24,13 @@ def home_page():
 
 # country count per year
 @app.route("/prediction")
-def get_countryCount_Year_Filterable():
-    return jsonify(data.get_countryCount_perYear_perCountry())
+def predict():
+
+    # write something to grap the post package from the js
+
+    
+
+    return jsonify(result)
 
 
 # if program is run from this file ::
