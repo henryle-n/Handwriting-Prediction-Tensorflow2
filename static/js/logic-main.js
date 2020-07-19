@@ -13,7 +13,7 @@ const lineJoin = "round";
 const lineCap = "round";
 const fillStyle = "white";
 var xPosList = [];
-
+var dataURI;
 
 // Use jquerry short hand to make sure the html loaded before this function runs
 $(function () {
@@ -26,6 +26,9 @@ $(function () {
   const btnUpload = document.querySelector('#btnUpload');
   const btnPredict = document.querySelector('#btnPredict');
   const imgConverted = document.querySelector('#imgConverted');
+
+  // Create smaller canvas matches MNIST dataset 28 x 28 to help users visualize how tiny it is actually
+  // pageYOffset, the prediction accuracy of new digit is phenomenal thanks to the CNN
   var imgConvertedContext = imgConverted.getContext('2d');
   imgConvertedContext.fillStyle = "rgb(255, 255, 255)";
 
@@ -66,9 +69,24 @@ $(function () {
       x = 0;
       y = 0;
       isDrawing = false;
+
+      // get img data from big canvas
+      dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
+      
+      // more interactive for user if smaller canvas
+      // and drawing are submitted as soon as user pause drawing
+      drawSmallCanvas(dataURI);
+      submitDrawing(dataURI);
+      document.getElementById("prediction").innerHTML="Predicting ... ";
     }
   });
 
+  /*
+  ##############################################
+  method: 1 :: STREAMING USER DRAWN CANVAS 
+  ##############################################
+  */
+ // constantly tracks user's mouse location and draws the line
   function drawLine(ctx, x1, y1, x2, y2, strS) {
     ctx.beginPath();
     ctx.strokeStyle = strS;
@@ -81,117 +99,57 @@ $(function () {
     ctx.stroke();
     ctx.closePath();
   };
-
+  // add button and DOM events for the main page
   btnClear.addEventListener('click', function () {
-    // console.log('Function : btnClear');
-    // console.log("clear button hit");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "rgb(255, 255, 255)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     imgConvertedContext.clearRect(0, 0, imgConverted.width, imgConverted.height);
     //  clear out the img URI and prepare for the new one
     imgConverted.src = "";
+    document.getElementById("prediction").innerHTML="";
   });
 
-  btnPredict.addEventListener('click', function () {
-
-    // remember to hide the resized canvas by style='display:none'
-    const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
-    var img = new Image();
-    img.onload = function () {
-      imgConvertedContext.drawImage(img, 0, 0, 300, 300, 0, 0, 28, 28);
-    };
-    img.src = dataURI;
-    // console.log('This is the final large Img URL :: ', dataURI);
-    submitDrawing(dataURI)
-    // var resizeImgURI = imgConverted.toDataURL(`image/${picFormat}`, 1.0);
-    // checkPkg(resizeImgURI);
-    // function checkPkg (URI) {
-    //   let flag1 = /data/i.test(URI);
-    //   let flag2 = /=/i.test(URI);
-    //   // let flag1 = URI.includes("data");
-    //   // let flag2 = URI.includes("=");
-    //   console.log("this is flag data", flag1, flag2);
-    //   if (flag1 == true && flag2==true) {
-    //     console.log("done encoded with base64 ready");
-    //     console.log("resizeImgURI :: ", resizeImgURI);
-    //     return true;
-    //   } else {
-    //     window.setTimeout(checkPkg, 100);
-    //     console.log("encoding base64 not ready");
-    //     return false;
-    //   }
-    // };
-
-    // const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
-    // function checkPkg() {
-    //   let flag1 = resizeImgURI.includes("data");
-    //   let flag2 = resizeImgURI.includes("=");
-    //   console.log("this is flag data", resizeImgURI, dataURI, flag1, flag2);
-    //   if (flag1 == true && flag2==true) {
-    //     console.log("done encoded with base64 ready");
-    //   } else {
-    //     window.setTimeout(checkPkg, 100);
-    //     console.log("encoding base64 not ready");
-    //   }
-    // };
-
-  });
-
-
-
-
-  /* ctx.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-  img	Specifies the image, canvas, or video element to use	 
-  sx	Optional. The x coordinate where to start clipping	
-  sy	Optional. The y coordinate where to start clipping	
-  swidth	Optional. The width of the clipped image	
-  sheight	Optional. The height of the clipped image	
-  x	The x coordinate where to place the image on the canvas	
-  y	The y coordinate where to place the image on the canvas	
-  width	Optional. The width of the image to use (stretch or reduce the image)	
-  height	Optional. The height of the image to use (stretch or reduce the image)
-  */
-
-
-  // btnPredict.addEventListener('click', function () {
-  //   const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
-
-  //   var resizedCanvas = document.createElement("canvas");
-  //   console.log("resize canvas created");
-  //   resizedCanvas.setAttribute("class", "reSizeImg");
-  //   resizedCanvas.setAttribute("width", "50px");
-  //   resizedCanvas.setAttribute("height", "50px");
-  //   resizedCanvas.setAttribute("style", "border:1px solid #000000; background-color: white");
-  //   var resizedContext = resizedCanvas.getContext("2d");
-
-  //   resizedCanvas.height = "100";
-  //   resizedCanvas.width = "100";
-
-  //   resizedContext.drawImage(dataURI, 0, 0, 300, 300, 0, 0, 28, 28);
-  //   var myResizedData = resizedCanvas.toDataURL();
-  //   imgConverted.src = myResizedData;
-
-  // });
-
+  // if desired, user can download the canvas 
+  // the img save from these canvas are excellent to create
+  // one's own dataset and train the model instead of using MNIST
   btnDownload.addEventListener('click', function () {
-    // console.log('download');
-    // let newC = document.querySelector('#imgConverted').toDataURL(`image/${picFormat}`, 1.0);
-    // var npArr = imgConverted.get_image_data(x=0, y=0);
-    // console.log("smaller img np arr :: ", npArr);
-    // IE/Edge Support (PNG Only)
     if (window.navigator.msSaveBlob) {
-      window.navigator.msSaveBlob(imgConverted.msToBlob(), `canvas-img.${picFormat}`);
+      window.navigator.msSaveBlob(canvas.msToBlob(), `canvas-img.${picFormat}`);
     } else {
       const a = document.createElement('a');
       document.body.appendChild(a);
-      a.href = imgConverted.toDataURL();
+      a.href = canvas.toDataURL();
       a.download = `canvas-img.${picFormat}`;
       a.click();
       document.body.removeChild(a);
     }
   });
 
+
+  // since I designed that as soon as user lift the mouse
+  // prediction is sent back to client 
+  // => no longer need this function
+  // btnPredict.addEventListener('click', ()=>{
+  //   const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
+  //   submitDrawing(dataURI);
+  // });
+  
+  function drawSmallCanvas(URI) {
+    var img = new Image();
+    img.onload = function () {
+      imgConvertedContext.drawImage(img, 0, 0, 300, 300, 0, 0, 28, 28);
+    };
+    img.src = URI;
+    // console.log('This is the final large Img URL :: ', dataURI);
+  };
+
+
+  /*#################################################
+        method: 2 :: USER UPLOADED IMAGE
+  #################################################*/
+  // // due to the time constraint, this function was not made
+  // // available on time when this project is realeased
   // btnUpload.addEventListener('click', function () {
   //   console.log('upload');
   //   const base64 = canvas.toDataURL().split(',')[1];
@@ -199,13 +157,11 @@ $(function () {
   //     'gererated-at': new Date().toISOString(),
   //     'png': base64
   //   };
-
-  //   console.log('Print Body', body);
-
   // });
 
-  // btnPredict.addEventListener('click', submitDrawing);
-
+  // this function below will post (streaming) img data
+  // to the server (managed by Flask App), get number prediction
+  // then send the response back to client (user) browser
   function submitDrawing(imgURL) {
     var imgURL = imgURL.split(',')[imgURL.split(',').length - 1];
 
@@ -228,9 +184,12 @@ $(function () {
         var status = xhttpReq.status;
         if (status === 0 || (status >= 200 && status < 400)) {
           // The request has been completed successfully
-          console.log(xhttpReq.responseText);
-        } else {
-          console.log("Oh no! There has been an error with the request!");
+          console.log(JSON.parse(xhttpReq.responseText));
+          document.querySelector("#prediction")
+            .innerHTML=JSON.parse(xhttpReq.responseText).prediction;
+        } 
+        else {
+          alert("WARNING :: REQUEST ERROR !!!");
         }
       }
     };

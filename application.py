@@ -47,9 +47,9 @@ def predict():
     img_b64_str_encoded = str(incoming_pkg['imgBase64'])   
     prediction = int(img_predict(img_b64_str_encoded))
     
-    response = f'Model predicts: {prediction}'
+    response = f'{prediction}'
 
-    return jsonify(response=response)
+    return jsonify(prediction=response)
     # return "got the response"
 
 # if program is run from this file ::

@@ -26,7 +26,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- main script file -->
-    <script src="../static/js/test_canvas.js"></script>
+    <script src="../static/js/logic-main.js"></script>
 
     <!-- upload image to server -->
     <!-- <link rel="stylesheet" href= "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -49,23 +49,24 @@
             <form class="form-inline my-2 my-lg-0">
                 <button class="btn btn-outline-success my-2 my-sm-0" id='btnClear' type="button">Clear</button>
                 <button class="btn btn-outline-success my-2 my-sm-0" id='btnPredict' type="button">Predict</button>
-                <button class="btn btn-outline-success my-2 my-sm-0" id='btnDownload' type="button">Download PNG</button>
-                <button class="btn btn-outline-success my-2 my-sm-0" id='btnUpload' type="button">Upload PNG/JPEG</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" id='btnDownload' type="button">Download
+                    PNG</button>
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" id='btnUpload' type="button">Upload PNG/JPEG</button> -->
             </form>
         </div>
     </nav>
     <hr>
-    <p>Note Pad 1</p>
     <canvas id="hwCanvas" width="300px" height="300px"
         style="border:1px solid #000000; background-color: white; opacity: 1; fill-opacity: 1;"></canvas>
 
     <canvas id="imgConverted" width="28px" height="28px"
         style="border:1px solid #000000; background-color: white"></canvas>
 
-    <div style="font-size: 20px; color: red;">THIS IS THE PLACE HOLDER
-        {{ result }}
+    <div style="border: 2px solid blue;" width="150px" ; height="150px>
+        <p id="prediction" style="display: inline;  color: rgb(245, 85, 11); font-size: 100px; margin-left: 50px; text-align: center;">
+            <!-- PLACE HOLDER -->
+        </p>
     </div>
-
 </body>
 
 </html>
