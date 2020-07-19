@@ -7,7 +7,7 @@
 
 # dependencies
 from  prediction import img_predict
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 
 
 ################## Flask App set up###############
@@ -16,20 +16,17 @@ app = Flask(__name__)
 
 ####### custome routes for website and data######
 # main home page route
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home_page():
     ''' Home Page Access Route'''
     return render_template("index.html")
 
 
 # country count per year
-@app.route("/prediction")
+@app.route("/prediction", methods=["GET", "POST"])
 def predict():
-
-    # write something to grap the post package from the js
-
-    
-
+    img_data = request.args.get("clientPkg", 0, type=str)
+    result = img_data
     return jsonify(result)
 
 
