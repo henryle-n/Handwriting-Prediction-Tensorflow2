@@ -1,3 +1,11 @@
+/*
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+Author: Henry Le & Panarat Duke
+Date: Jul, 2020
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+*/
+
+// Declare variables
 const picFormat = "png";
 const strokeStyle = 'blue';
 const lineWidth = 20;
@@ -7,8 +15,7 @@ const fillStyle = "white";
 var  xPosList=[];
 
 
-
-
+// Use jquerry short hand to make sure the html loaded before this function runs
 $(function () {
 
   // =====================================
@@ -20,11 +27,7 @@ $(function () {
   const btnPredict = document.querySelector('#btnPredict');
   const imgConverted = document.querySelector('#imgConverted');
   var imgConvertedContext = imgConverted.getContext('2d');
-
   imgConvertedContext.fillStyle = "rgb(255, 255, 255)";
-
-
-  console.log('test canvas');
 
   // ================================================
   // myCanvas Note Pad 1
@@ -235,6 +238,8 @@ $(function () {
     xhttpReq.send(JSON.stringify(sendPkg));
 
 
+  // with this simple ajax, same results can be achieved
+  // the power of lib vs. no lib
   //   $.ajax({
   //     type: "POST", 
   //     url: predictURL,

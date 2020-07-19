@@ -41,11 +41,12 @@ def predict():
     prediction = img_predict(img_b64_str_encoded)
     app.logger.debug("this is number what?", prediction)
     print ("this is the result :: \n", prediction[0])
-    result = json.dumps({"prediction" : prediction[0]})
-    app.logger.debug("this is number what?", result)
-
-    done = "hey it's done"
-    return done
+    # result = json.dumps({"prediction" : int(prediction[0])})
+    app.logger.debug("this is number what?", prediction)
+    result = { "result" : int(prediction[0]) }
+    # done = "hey it's done"
+    app.logger.debug("this is the json of result :: ", result)
+    return jsonify(result=result)
 
 # if program is run from this file ::
 if __name__ == '__main__':
