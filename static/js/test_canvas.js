@@ -1,10 +1,10 @@
 const picFormat = "png";
-const strokeStyle = 'black';
+const strokeStyle = 'blue';
 const lineWidth = 20;
 const lineJoin = "round";
 const lineCap = "round";
 const fillStyle = "white";
-
+var  xPosList=[];
 
 
 
@@ -15,12 +15,10 @@ $(function () {
   // Add download and display image from canvas
   // =====================================
   const btnClear = document.querySelector('#btnClear');
-  const btnDisplay = document.querySelector('#btnDisplay');
   const btnDownload = document.querySelector('#btnDownload');
   const btnUpload = document.querySelector('#btnUpload');
   const btnPredict = document.querySelector('#btnPredict');
   const imgConverted = document.querySelector('#imgConverted');
-  const resizeButton = document.querySelector('#resizeImg');
   var imgConvertedContext = imgConverted.getContext('2d');
 
   imgConvertedContext.fillStyle = "rgb(255, 255, 255)";
@@ -48,11 +46,12 @@ $(function () {
     x = e.offsetX;
     y = e.offsetY;
     isDrawing = true;
+    xPosList.push(x);
   });
 
   canvas.addEventListener('mousemove', e => {
     if (isDrawing === true) {
-      drawLine(ctx, x, y, e.offsetX, e.offsetY);
+      drawLine(ctx, x, y, e.offsetX, e.offsetY, strokeStyle);
       x = e.offsetX;
       y = e.offsetY;
     }
@@ -60,16 +59,16 @@ $(function () {
 
   window.addEventListener('mouseup', e => {
     if (isDrawing === true) {
-      drawLine(ctx, x, y, e.offsetX, e.offsetY);
+      drawLine(ctx, x, y, e.offsetX, e.offsetY, strokeStyle);
       x = 0;
       y = 0;
       isDrawing = false;
     }
   });
 
-  function drawLine(ctx, x1, y1, x2, y2) {
+  function drawLine(ctx, x1, y1, x2, y2, strS) {
     ctx.beginPath();
-    ctx.strokeStyle = strokeStyle;
+    ctx.strokeStyle = strS;
     ctx.lineWidth = lineWidth;
     ctx.lineJoin = lineJoin;
     ctx.lineCap = lineCap;
@@ -84,26 +83,23 @@ $(function () {
     console.log('Function : btnClear');
     console.log("clear button hit");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgb(255, 255, 255)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     imgConvertedContext.clearRect(0, 0, imgConverted.width, imgConverted.height);
     //  clear out the img URI and prepare for the new one
     imgConverted.src = "";
   });
 
-  btnDisplay.addEventListener('click', function () {
+  btnPredict.addEventListener('click', function () {
 
     // remember to hide the resized canvas by style='display:none'
     const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
-    
-
-    
-    
     var img = new Image();
     img.onload = function () {
       imgConvertedContext.drawImage(img, 0, 0, 300, 300, 0, 0, 28, 28);
     };
     img.src = dataURI;
-
-    // console.log('Show DatURI: ', dataURI);
+    console.log('This is the final large Img URL :: ', dataURI);
 
     // var resizeImgURI = imgConverted.toDataURL(`image/${picFormat}`, 1.0);
     // checkPkg(resizeImgURI);
@@ -155,7 +151,7 @@ $(function () {
   */
 
 
-  // btnDisplay.addEventListener('click', function () {
+  // btnPredict.addEventListener('click', function () {
   //   const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
 
   //   var resizedCanvas = document.createElement("canvas");
