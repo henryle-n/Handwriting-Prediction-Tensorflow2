@@ -1,22 +1,26 @@
 # Author: Henry Le
 # Date: Jul. 18, 2020
 # version 0 - first release
-# if you somehow find this file of mine on github, please feel free to take and modify it. 
+# if you somehow find this file of mine on github, please feel free to take and modify it.
 # I wish you the best of luck on what you want to do.
 # learning coding is not easy as it's about learning a new language but definitely FUN FUN FUN !!!
 # SO, HAVE FUN !
 
 # dependencies
-from  predict import img_predict
+from predict import img_predict
 from flask import Flask, jsonify, render_template, request
-import json
 
+import json
+import time
 ################## Flask App set up###############
 app = Flask(__name__)
+
 ##################################################
 
 ####### custome routes for website and data######
 # main home page route
+
+
 @app.route("/", methods=["GET", "POST"])
 def home_page():
     ''' Home Page Access Route'''
@@ -31,23 +35,22 @@ def predict():
     GET , POST method to take incoming data from client
     '''
     incoming_pkg = request.get_json()
-    # author = incoming_pkg['author']
-    img_b64_str_encoded = incoming_pkg['imgBase64']
-
-    app.logger.debug(f"This is the imc pkg ::\n {incoming_pkg}")
-    # app.logger.debug(f"This is the author ::\n {author}")
-    # app.logger.debug(f"This is the img pk::\n {img_b64_str_encoded}")
+   
+   # if the packages come in slow, may cause issue of empty package (obj)
+    while incoming_pkg is None:
+        app.logger.debug("none type inc pk")
+        time.sleep(1)
     
-    prediction = img_predict(img_b64_str_encoded)
-    # app.logger.debug("this is number what?", prediction)
-    # print ("this is the result :: \n", prediction[0])
-    result = json.dumps({"prediction" : int(prediction)})
-    # app.logger.debug("this is number what?", prediction)
-    # result = { "result" : int(prediction) }
-    # done = "hey it's done"
-    app.logger.debug("this is the json of result :: ", result)
-    # return jsonify(result=result)
-    return "got the response"
+    else:
+        app.logger.error("no longer none type")
+
+    img_b64_str_encoded = str(incoming_pkg['imgBase64'])   
+    prediction = int(img_predict(img_b64_str_encoded))
+    
+    response = f'Model predicts: {prediction}'
+
+    return jsonify(response=response)
+    # return "got the response"
 
 # if program is run from this file ::
 if __name__ == '__main__':
