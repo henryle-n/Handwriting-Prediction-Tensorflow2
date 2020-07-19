@@ -9,7 +9,7 @@
 # dependencies
 from  predict import img_predict
 from flask import Flask, jsonify, render_template, request
-
+import json
 
 ################## Flask App set up###############
 app = Flask(__name__)
@@ -38,10 +38,12 @@ def predict():
     # app.logger.debug(f"This is the author ::\n {author}")
     # app.logger.debug(f"This is the img pk::\n {img_b64_str_encoded}")
     
-    result = img_predict(img_b64_str_encoded)
+    prediction = img_predict(img_b64_str_encoded)
+    app.logger.debug("this is number what?", prediction)
+    print ("this is the result :: \n", prediction[0])
+    result = json.dumps({"prediction" : prediction[0]})
     app.logger.debug("this is number what?", result)
-    print ("this is the result :: \n", result[0])
-    r
+
     done = "hey it's done"
     return done
 
