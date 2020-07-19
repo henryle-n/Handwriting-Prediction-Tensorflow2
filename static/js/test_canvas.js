@@ -10,7 +10,7 @@ const fillStyle = "white";
 
 
 $(function () {
-  
+
   // =====================================
   // Add download and display image from canvas
   // =====================================
@@ -23,7 +23,10 @@ $(function () {
   const resizeButton = document.querySelector('#resizeImg');
   var imgConvertedContext = imgConverted.getContext('2d');
 
-  console.log('test canvas')
+  imgConvertedContext.fillStyle = "rgb(255, 255, 255)";
+
+
+  console.log('test canvas');
 
   // ================================================
   // myCanvas Note Pad 1
@@ -75,7 +78,7 @@ $(function () {
     ctx.lineTo(x2, y2);
     ctx.stroke();
     ctx.closePath();
-  }
+  };
 
   btnClear.addEventListener('click', function () {
     console.log('Function : btnClear');
@@ -88,59 +91,68 @@ $(function () {
 
   btnDisplay.addEventListener('click', function () {
 
-    // var resizedCanvas = document.createElement("canvas");
-    // console.log("resize canvas created");
-    // resizedCanvas.setAttribute("width", "28px");
-    // resizedCanvas.setAttribute("height", "28px");
-    // resizedCanvas.setAttribute("style", "border:1px solid #000000; background-color: white");
-
-    // var resizedImgCanvas = document.querySelector('#reSizeImg');
-    // var resizedImgCanvasContext = resizedImgCanvas.getContext('2d');
-  
-
-
     // remember to hide the resized canvas by style='display:none'
     const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
+    
+
+    
+    
     var img = new Image();
-    img.onload = function() {
-      imgConvertedContext.drawImage(img, 0, 0, 300, 300, 0,0,28,28);
+    img.onload = function () {
+      imgConvertedContext.drawImage(img, 0, 0, 300, 300, 0, 0, 28, 28);
     };
     img.src = dataURI;
-    
-    console.log('Show DatURI: ', dataURI);
-    console.log('She Image Converted: ', imgConverted);
 
-    var resizeImgURI = imgConverted.toDataURL(`image/${picFormat}`, 1.0);
-    checkPkg(resizeImgURI, dataURI);
-    
+    // console.log('Show DatURI: ', dataURI);
+
+    // var resizeImgURI = imgConverted.toDataURL(`image/${picFormat}`, 1.0);
+    // checkPkg(resizeImgURI);
+    // function checkPkg (URI) {
+    //   let flag1 = /data/i.test(URI);
+    //   let flag2 = /=/i.test(URI);
+    //   // let flag1 = URI.includes("data");
+    //   // let flag2 = URI.includes("=");
+    //   console.log("this is flag data", flag1, flag2);
+    //   if (flag1 == true && flag2==true) {
+    //     console.log("done encoded with base64 ready");
+    //     console.log("resizeImgURI :: ", resizeImgURI);
+    //     return true;
+    //   } else {
+    //     window.setTimeout(checkPkg, 100);
+    //     console.log("encoding base64 not ready");
+    //     return false;
+    //   }
+    // };
+
     // const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
-    
-  });
+    // function checkPkg() {
+    //   let flag1 = resizeImgURI.includes("data");
+    //   let flag2 = resizeImgURI.includes("=");
+    //   console.log("this is flag data", resizeImgURI, dataURI, flag1, flag2);
+    //   if (flag1 == true && flag2==true) {
+    //     console.log("done encoded with base64 ready");
+    //   } else {
+    //     window.setTimeout(checkPkg, 100);
+    //     console.log("encoding base64 not ready");
+    //   }
+    // };
   
-  function checkPkg(res, org) {
-    let flag = res == org; 
-    if(flag == false){
-      window.setTimeout(checkPkg, 100);
-      console.log("resize img not ready");
-    }
-      
-  else {
-        console.log("resizeImg ready", res);
-    }
-  };
+  });
+
+  
 
 
-    /* ctx.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-    img	Specifies the image, canvas, or video element to use	 
-    sx	Optional. The x coordinate where to start clipping	
-    sy	Optional. The y coordinate where to start clipping	
-    swidth	Optional. The width of the clipped image	
-    sheight	Optional. The height of the clipped image	
-    x	The x coordinate where to place the image on the canvas	
-    y	The y coordinate where to place the image on the canvas	
-    width	Optional. The width of the image to use (stretch or reduce the image)	
-    height	Optional. The height of the image to use (stretch or reduce the image)
-    */
+  /* ctx.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+  img	Specifies the image, canvas, or video element to use	 
+  sx	Optional. The x coordinate where to start clipping	
+  sy	Optional. The y coordinate where to start clipping	
+  swidth	Optional. The width of the clipped image	
+  sheight	Optional. The height of the clipped image	
+  x	The x coordinate where to place the image on the canvas	
+  y	The y coordinate where to place the image on the canvas	
+  width	Optional. The width of the image to use (stretch or reduce the image)	
+  height	Optional. The height of the image to use (stretch or reduce the image)
+  */
 
 
   // btnDisplay.addEventListener('click', function () {
@@ -153,10 +165,10 @@ $(function () {
   //   resizedCanvas.setAttribute("height", "50px");
   //   resizedCanvas.setAttribute("style", "border:1px solid #000000; background-color: white");
   //   var resizedContext = resizedCanvas.getContext("2d");
-    
+
   //   resizedCanvas.height = "100";
   //   resizedCanvas.width = "100";
-    
+
   //   resizedContext.drawImage(dataURI, 0, 0, 300, 300, 0, 0, 28, 28);
   //   var myResizedData = resizedCanvas.toDataURL();
   //   imgConverted.src = myResizedData;
@@ -165,43 +177,42 @@ $(function () {
 
   btnDownload.addEventListener('click', function () {
     console.log('download');
+    // let newC = document.querySelector('#imgConverted').toDataURL(`image/${picFormat}`, 1.0);
+    // var npArr = imgConverted.get_image_data(x=0, y=0);
+    // console.log("smaller img np arr :: ", npArr);
     // IE/Edge Support (PNG Only)
     if (window.navigator.msSaveBlob) {
-      window.navigator.msSaveBlob(canvas.msToBlob(), `canvas-img.${picFormat}`);
-    } else {
+      window.navigator.msSaveBlob(imgConverted.msToBlob(), `canvas-img.${picFormat}`);
+    } 
+    else {
       const a = document.createElement('a');
       document.body.appendChild(a);
-      a.href = canvas.toDataURL();
+      a.href = imgConverted.toDataURL();
+      console.log("data from download button :: ", newC);
       a.download = `canvas-img.${picFormat}`;
       a.click();
       document.body.removeChild(a);
     }
   });
 
-  btnUpload.addEventListener('click', function () {
-    console.log('upload');
-    const base64 = canvas.toDataURL().split(',')[1];
-    const body = {
-      'gererated-at': new Date().toISOString(),
-      'png': base64
-    };
+  // btnUpload.addEventListener('click', function () {
+  //   console.log('upload');
+  //   const base64 = canvas.toDataURL().split(',')[1];
+  //   const body = {
+  //     'gererated-at': new Date().toISOString(),
+  //     'png': base64
+  //   };
 
-    console.log('Print Body', body);
+  //   console.log('Print Body', body);
 
-  });
+  // });
 
-  btnPredict.addEventListener('click', submitDrawing);
-  
+  // btnPredict.addEventListener('click', submitDrawing);
+
   function submitDrawing(imgURL) {
     console.log("you hit predict button")
     console.log(`Full Image URI :: \n ${imgURL}`);
     var imgURL = imgURL.split(',');
-    // const splittedImgURI = fullImgURI.split(',');
-    // console.log(`Length of URI :: ${splittedImgURI.length}`)
-    // for (let i = 0; i < splittedImgURI.length; i++) {
-    //   console.log(`Num ${i} :: ${splittedImgURI[i]}\n`);
-    // };
-
 
     var curRoot = window.location.href;
     var predictURL = `${curRoot}prediction`;
@@ -228,5 +239,5 @@ $(function () {
     xhttpReq.send(sendPkg);
 
     console.log("");
-  
+  }
 });
