@@ -83,8 +83,8 @@ $(function () {
   };
 
   btnClear.addEventListener('click', function () {
-    console.log('Function : btnClear');
-    console.log("clear button hit");
+    // console.log('Function : btnClear');
+    // console.log("clear button hit");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "rgb(255, 255, 255)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -102,7 +102,7 @@ $(function () {
       imgConvertedContext.drawImage(img, 0, 0, 300, 300, 0, 0, 28, 28);
     };
     img.src = dataURI;
-    console.log('This is the final large Img URL :: ', dataURI);
+    // console.log('This is the final large Img URL :: ', dataURI);
     submitDrawing(dataURI)
     // var resizeImgURI = imgConverted.toDataURL(`image/${picFormat}`, 1.0);
     // checkPkg(resizeImgURI);
@@ -175,7 +175,7 @@ $(function () {
   // });
 
   btnDownload.addEventListener('click', function () {
-    console.log('download');
+    // console.log('download');
     // let newC = document.querySelector('#imgConverted').toDataURL(`image/${picFormat}`, 1.0);
     // var npArr = imgConverted.get_image_data(x=0, y=0);
     // console.log("smaller img np arr :: ", npArr);
@@ -187,7 +187,6 @@ $(function () {
       const a = document.createElement('a');
       document.body.appendChild(a);
       a.href = imgConverted.toDataURL();
-      console.log("data from download button :: ", newC);
       a.download = `canvas-img.${picFormat}`;
       a.click();
       document.body.removeChild(a);
@@ -209,18 +208,23 @@ $(function () {
   // btnPredict.addEventListener('click', submitDrawing);
 
   function submitDrawing(imgURL) {
-    console.log("you hit predict button")
-    console.log(`Full Image URI :: \n ${imgURL}`);
+    // console.log("you hit predict button")
+    // console.log(`Full Image URI :: \n ${imgURL}`);
     var imgURL = imgURL.split(',')[imgURL.split(',').length-1];
-    console.log("this is the imgURL :: ", imgURL);
+    // console.log("this is the imgURL :: ", imgURL);
 
     var curRoot = window.location.href;
     var predictURL = `${curRoot}prediction`;
-    console.log(`this is the current URL : \n ${predictURL}`)
+    // console.log(`this is the current URL : \n ${predictURL}`)
     var xhttpReq = new XMLHttpRequest();
     xhttpReq.open("POST", predictURL, true);
     xhttpReq.setRequestHeader('Content-type', 'application/json');
     xhttpReq.onreadystatechange = data => {
+      console.log(`data :: ${data} 
+        \n ===== 
+        \n  ${this.readyState} 
+        \n ===== 
+        \n ${this.status == 200}`)
       // 1: not send yet, 2: request sent, 3: something back, 4: got full response
       // 200 : successfully requested
       // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
@@ -232,8 +236,7 @@ $(function () {
     }
     xhttpReq.onerror = err => console.log(`Send Request Error:\n${err}`);
     const sendPkg = {
-      imgBase64: `${imgURL}`,
-      author: "Henry N Le"
+      imgBase64: `${imgURL}`
     };
     xhttpReq.send(JSON.stringify(sendPkg));
 

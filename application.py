@@ -31,22 +31,23 @@ def predict():
     GET , POST method to take incoming data from client
     '''
     incoming_pkg = request.get_json()
-    author = incoming_pkg['author']
+    # author = incoming_pkg['author']
     img_b64_str_encoded = incoming_pkg['imgBase64']
 
-    # app.logger.debug(f"This is the imc pkg ::\n {incoming_pkg}")
+    app.logger.debug(f"This is the imc pkg ::\n {incoming_pkg}")
     # app.logger.debug(f"This is the author ::\n {author}")
     # app.logger.debug(f"This is the img pk::\n {img_b64_str_encoded}")
     
     prediction = img_predict(img_b64_str_encoded)
-    app.logger.debug("this is number what?", prediction)
-    print ("this is the result :: \n", prediction[0])
+    # app.logger.debug("this is number what?", prediction)
+    # print ("this is the result :: \n", prediction[0])
     result = json.dumps({"prediction" : int(prediction)})
-    app.logger.debug("this is number what?", prediction)
+    # app.logger.debug("this is number what?", prediction)
     # result = { "result" : int(prediction) }
     # done = "hey it's done"
     app.logger.debug("this is the json of result :: ", result)
-    return jsonify(result=result)
+    # return jsonify(result=result)
+    return "got the response"
 
 # if program is run from this file ::
 if __name__ == '__main__':

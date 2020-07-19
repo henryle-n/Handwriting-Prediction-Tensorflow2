@@ -74,4 +74,3 @@ if (__name__) == ("__main__"):
     # user input to test
     user_input_base64 = user_input_base64.split(",")[-1]
     img_predict(user_input_base64)
-    img_predict(string64)
