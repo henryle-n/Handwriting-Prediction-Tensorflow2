@@ -7,7 +7,15 @@ from tensorflow.keras.layers import BatchNormalization
 import numpy as np
 from time import time
 
+# image processing
+import base64
+import numpy as np
+import io
+from PIL import Image 
 
+from skimage import data, color
+from skimage.transform import resize
+import matplotlib.pyplot as plt
 
 # import matplotlib.pyplot as plt
 import numpy as np
@@ -88,18 +96,18 @@ def img_predict (img_path):
 # 
 # 4. Number 9 is challenging to recognize in with this particular train model, which predicts more 4 and 7 more often than the correct number 9.
 
-if (__name__) == ("__main__"):
-    print(f"{('#')*30}\nRunning prediction from '__main__'\n{('#')*40}")
+# if (__name__) == ("__main__"):
+#     print(f"{('#')*30}\nRunning prediction from '__main__'\n{('#')*40}")
         
 
-    # create a list of all picture path inside test image folder
-    base_path = "./images/test-img/"
-    img_list = [base_path + img for img in listdir(base_path) if isfile(join(base_path, img))]
+#     # create a list of all picture path inside test image folder
+#     base_path = "./images/test-img/"
+#     img_list = [base_path + img for img in listdir(base_path) if isfile(join(base_path, img))]
 
-    # looping thru each img and make prediction
-    st_time = time()
-    for ea_iter in tf.range(len(img_list)):
-        ea_iter = tf.cast(ea_iter, tf.int64)
-        img_predict(img_list[ea_iter])
-    total_time = time() - st_time 
-    print (f'Total Prediction Run Time :: {round(total_time, 3)} seconds || {len(img_list)} images')
+#     # looping thru each img and make prediction
+#     st_time = time()
+#     for ea_iter in tf.range(len(img_list)):
+#         ea_iter = tf.cast(ea_iter, tf.int64)
+#         img_predict(img_list[ea_iter])
+#     total_time = time() - st_time 
+#     print (f'Total Prediction Run Time :: {round(total_time, 3)} seconds || {len(img_list)} images')

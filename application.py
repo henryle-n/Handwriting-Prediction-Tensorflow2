@@ -8,6 +8,7 @@
 # dependencies
 from  prediction import img_predict
 from flask import Flask, jsonify, render_template, request
+import tensorflow as tf
 
 
 ################## Flask App set up###############
@@ -25,11 +26,19 @@ def home_page():
 # country count per year
 @app.route("/prediction", methods=["GET", "POST"])
 def predict():
-    img_data = request.args.get("clientPkg", 0, type=str)
-    result = img_data
+    incoming_pkg = request.get_json()
+    author = incoming_pkg['author']
+    app.logger.debug(f"This is the author ::\n {author}")
+    app.logger.debug(f"This is the imc pkg ::\n {incoming_pkg}")
+    app.logger.debug('================================')
+    # img_b64_str_encoded = request.get_json()['imgBase64']
+    # app.logger.debug(f"This is the img data ::\n {img_b64_str_encoded}")
+        
+    result = "is ran already"
     return jsonify(result)
 
 
 # if program is run from this file ::
 if __name__ == '__main__':
+    print(tf.__version__)
     app.run(debug=True)

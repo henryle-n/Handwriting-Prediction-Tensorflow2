@@ -100,7 +100,7 @@ $(function () {
     };
     img.src = dataURI;
     console.log('This is the final large Img URL :: ', dataURI);
-
+    submitDrawing(dataURI)
     // var resizeImgURI = imgConverted.toDataURL(`image/${picFormat}`, 1.0);
     // checkPkg(resizeImgURI);
     // function checkPkg (URI) {
@@ -208,32 +208,40 @@ $(function () {
   function submitDrawing(imgURL) {
     console.log("you hit predict button")
     console.log(`Full Image URI :: \n ${imgURL}`);
-    var imgURL = imgURL.split(',');
+    var imgURL = imgURL.split(',')[imgURL.split(',').length-1];
+    console.log("this is the imgURL :: ", imgURL);
 
     var curRoot = window.location.href;
     var predictURL = `${curRoot}prediction`;
     console.log(`this is the current URL : \n ${predictURL}`)
     var xhttpReq = new XMLHttpRequest();
-    xhttpReq.open("GET", predictURL, true);
+    xhttpReq.open("POST", predictURL, true);
+    xhttpReq.setRequestHeader('Content-type', 'application/json');
     xhttpReq.onreadystatechange = data => {
       // 1: not send yet, 2: request sent, 3: something back, 4: got full response
       // 200 : successfully requested
       // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
       if (this.readyState == 4 && this.status == 200) {
-        console.log("this is data :: ", data);
+        let response = JSON.parse(xhr.responseText);
+        console.log("this is data :: ", response);
         // document.querySelector("#results").innerHTML = data.result;
       }
     }
-    xhttpReq.onerror = err => console.log(`Send Request Error:\n${err}`)
-    // xhttpReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttpReq.onerror = err => console.log(`Send Request Error:\n${err}`);
     const sendPkg = {
-      clientPkg: imgURL[imgURL.length - 1]
+      imgBase64: `${imgURL}`,
+      author: "Henry Le"
     };
-    console.log("this is the package to be sent :: \n", sendPkg);
-    console.log("this is the package to be sent :: \n", imgURL[imgURL.length - 1]);
+    xhttpReq.send(JSON.stringify(sendPkg));
 
-    xhttpReq.send(sendPkg);
 
-    console.log("");
+  //   $.ajax({
+  //     type: "POST", 
+  //     url: predictURL,
+  //     data : JSON.stringify(sendPkg),
+  //     contentType: "application/json",
+  // });
+
+    console.log("This is the send package to server from JS codes", jsonPkg);
   }
 });
