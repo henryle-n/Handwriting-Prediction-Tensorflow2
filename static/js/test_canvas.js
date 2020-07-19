@@ -230,7 +230,7 @@ $(function () {
     xhttpReq.onerror = err => console.log(`Send Request Error:\n${err}`);
     const sendPkg = {
       imgBase64: `${imgURL}`,
-      author: "Henry Le"
+      author: "Henry N Le"
     };
     xhttpReq.send(JSON.stringify(sendPkg));
 
@@ -242,6 +242,5 @@ $(function () {
   //     contentType: "application/json",
   // });
 
-    console.log("This is the send package to server from JS codes", jsonPkg);
   }
 });

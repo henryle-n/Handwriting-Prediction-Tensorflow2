@@ -6,7 +6,7 @@
 # HAVE FUN !
 
 # dependencies
-from  prediction import img_predict
+from  predict import img_predict
 from flask import Flask, jsonify, render_template, request
 import tensorflow as tf
 
@@ -27,13 +27,13 @@ def home_page():
 @app.route("/prediction", methods=["GET", "POST"])
 def predict():
     incoming_pkg = request.get_json()
-    author = incoming_pkg['author']
-    app.logger.debug(f"This is the author ::\n {author}")
+    # author = incoming_pkg['author']
+    # app.logger.debug(f"This is the author ::\n {author}")
     app.logger.debug(f"This is the imc pkg ::\n {incoming_pkg}")
-    app.logger.debug('================================')
+    # app.logger.debug('================================')
     # img_b64_str_encoded = request.get_json()['imgBase64']
     # app.logger.debug(f"This is the img data ::\n {img_b64_str_encoded}")
-        
+    app.logger.debug("request made")
     result = "is ran already"
     return jsonify(result)
 
