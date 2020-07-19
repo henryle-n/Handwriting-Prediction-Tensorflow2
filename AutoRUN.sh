@@ -32,7 +32,7 @@ function print_ending_message {
 
 echo
 echo +++ Brought to you by: ${cyn}HENRY LE${nc} +++
-echo -e +++ Version: ${mag}0${nc}, Date: ${mag}Jun, 2020${nc} +++
+echo -e +++ Version: ${mag}1${nc}, Date: ${mag}Jul, 2020${nc} +++
 echo =============================
 startTime=$(date)
 SECONDS=0
