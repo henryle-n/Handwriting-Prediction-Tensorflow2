@@ -2547,7 +2547,6 @@
                     color: #fff;
                     background-color: #f24516;
                     border-color: #ee3e0d;
-                    box-shadow: ;
                 }
                 
                 .btn-primary:focus,
@@ -10609,7 +10608,7 @@
                 
                 section#proj-desciption {
                     padding: 0rem 0;
-                    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.836) 0%, rgba(0, 0, 0, 0) 100%), url("/static/assets/img/ourTeam3.jpg");
+                    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.836) 0%, rgba(0, 0, 0, 0) 100%), url("../assets/img/ourTeam3.jpg");
                     background-repeat: no-repeat;
                     background-size: cover !important;
                     background-attachment: fixed;
@@ -10940,4 +10939,104 @@
                     /* Positioning */
                     margin-bottom: 190px;
                     align-items: center;
+                }
+                
+                .imageNav-photo {
+                    float: left;
+                    width: 100%;
+                    backdrop-filter: blur(1px);
+                    padding: 5px 5px;
+                    text-align: middle;
+                    margin: 0 10 18px;
+                }
+                
+                canvas#test_Canvas {
+                    width: 150px;
+                    height: 150px;
+                    border: 1px;
+                    border-color: black;
+                    background-color: rgb(255, 255, 255);
+                    border-style: double;
+                }
+                /* SHIFT + ALT + DOWN ARROW : QUICK COPY */
+                /* ALT + UP or DOWN ARROW TO MOVE LINES */
+                
+                canvas#test_canvasImg {
+                    width: 28px;
+                    height: 28px;
+                    border: 1px;
+                    border-color: black;
+                    background-color: rgb(255, 255, 255);
+                    border-style: dashed;
+                }
+                
+                canvas#test_Canvas {
+                    width: 150px;
+                    height: 150px;
+                    border: 1px;
+                    border-color: black;
+                    background-color: rgb(255, 255, 255);
+                    border-style: double;
+                }
+                /* SHIFT + ALT + DOWN ARROW : QUICK COPY */
+                /* ALT + UP or DOWN ARROW TO MOVE LINES */
+                
+                canvas#test_canvasImg {
+                    width: 28px;
+                    height: 28px;
+                    border: 1px;
+                    border-color: black;
+                    background-color: rgb(255, 255, 255);
+                    border-style: dashed;
+                }
+                
+                .content_header {
+                    /* Positioning */
+                    /* margin-bottom: 10px; */
+                    font-family: Georgia, Times, "Times New Roman", serif;
+                    /* Typography */
+                    font-size: 23px;
+                    font-weight: bold;
+                    color: #f4623a;
+                    text-align: center;
+                }
+                
+                section#canvas-id {
+                    padding: 0rem 0;
+                    background-color: #f0f8ff;
+                    background-repeat: no-repeat;
+                    background-size: cover !important;
+                    background-attachment: fixed;
+                    padding-bottom: 60px;
+                }
+                
+                section#summary {
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
+                    background-attachment: fixed;
+                }
+                
+                section#OurTeam {
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
+                    background-attachment: fixed;
+                }
+                
+                section#contact {
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
+                    background-attachment: fixed;
+                }
+                
+                section#data {
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
+                    background-attachment: fixed;
+                }
+                
+                section#proj-desciption {
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
+                    background-attachment: fixed;
+                }
+                
+                section#myCanvas {
+                    border: 1px solid red;
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
+                    background-attachment: fixed;
                 }

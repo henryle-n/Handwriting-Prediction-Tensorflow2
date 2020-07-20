@@ -6,7 +6,7 @@
 # HAVE FUN !
 
 # dependencies
-from  prediction import img_predict
+#from  prediction import img_predict
 from flask import Flask, jsonify, render_template
 
 
@@ -19,7 +19,7 @@ app = Flask(__name__)
 @app.route("/")
 def home_page():
     ''' Home Page Access Route'''
-    return render_template("index.html")
+    return render_template("index_panarat.html")
 
 
 
