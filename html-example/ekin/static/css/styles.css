@@ -10427,7 +10427,7 @@
                 }
                 
                 section#about {
-                    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("../static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
                     background-attachment: fixed;
                 }
                 
@@ -10878,7 +10878,7 @@
                     background-attachment: fixed;
                 }
                 
-                section#myCanvas {
+                section#hwCanvas {
                     border: 1px solid red;
                     background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
                     background-attachment: fixed;
@@ -10929,10 +10929,10 @@
                     /* margin-bottom: 10px; */
                     font-family: Georgia, Times, "Times New Roman", serif;
                     /* Typography */
-                    font-size: 20px;
+                    font-size: 28px;
                     font-weight: bold;
                     color: #4aaaa5;
-                    text-align: center;
+                    text-align: leftcenter;
                 }
                 
                 .arrow_header {
@@ -11034,9 +11034,8 @@
                     background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
                     background-attachment: fixed;
                 }
-                
-                section#myCanvas {
+                /* section#myCanvas {
                     border: 1px solid red;
                     background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%), url("/static/assets/img/portfolio/fullsize/ourTeam3.jpg") no-repeat center top / cover;
                     background-attachment: fixed;
-                }
+                } */
