@@ -22,19 +22,6 @@ app = Flask(__name__)
 
 ##################################################
 
-####### custome routes for website and data######
-# main home page route
-myDomainSelf = os.environ.get('SERVER_NAME')
-
-myPathSelf = os.environ.get('PATH_INFO')
-
-current_dir = myDomainSelf + myPathSelf
-
-app.logger.error("current directory\n {current_dir}")
-
-
-HOST = "0.0.0.0"
-PORT = 7070
 
 @app.route("/", methods=["GET", "POST"])
 def home_page():
@@ -45,7 +32,7 @@ def home_page():
 
 
 
-# country count per year
+# access route to prediction model
 @app.route("/prediction", methods=["GET", "POST"])
 def predict():
     '''
