@@ -10945,10 +10945,10 @@
                 .imageNav-photo {
                     float: left;
                     width: 100%;
-                    backdrop-filter: blur(3px);
+                    backdrop-filter: blur(1px);
                     padding: 5px 5px;
                     text-align: middle;
-                    margin: 0 20 18px;
+                    margin: 0 10 18px;
                 }
                 
                 canvas#test_Canvas {
