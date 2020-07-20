@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+
+  convNN:
+    build:
+      context: ./services/convNN
+      dockerfile: Dockerfile
+    volumes:
+      - ./services/convNN:/usr/src/app   
+    ports:
+      - 5001:5000
+    environment:
+      - FLASK_ENV=development
+      - APP_SETTINGS=project.config.DevelopmentConfig
+
+  nginx:
+    build:
+      context: ./services/nginx
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - cnnNN      
+
