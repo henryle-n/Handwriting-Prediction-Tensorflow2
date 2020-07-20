@@ -7,9 +7,14 @@
 # SO, HAVE FUN !
 
 # dependencies
+import os
 from predict import img_predict
+import flask
 from flask import Flask, jsonify, render_template, request
-
+import tensorboard as tb
+from werkzeug import serving
+from werkzeug.middleware import dispatcher
+import sys, os, io
 import json
 import time
 ################## Flask App set up###############
@@ -19,12 +24,25 @@ app = Flask(__name__)
 
 ####### custome routes for website and data######
 # main home page route
+myDomainSelf = os.environ.get('SERVER_NAME')
 
+myPathSelf = os.environ.get('PATH_INFO')
+
+current_dir = myDomainSelf + myPathSelf
+
+app.logger.error("current directory\n {current_dir}")
+
+
+HOST = "0.0.0.0"
+PORT = 7070
 
 @app.route("/", methods=["GET", "POST"])
 def home_page():
     ''' Home Page Access Route'''
     return render_template("index.html")
+
+
+
 
 
 # country count per year
