@@ -14,22 +14,30 @@ const lineCap = "round";
 const fillStyle = "white";
 var xPosList = [];
 var dataURI;
-
-
-
-
+var curRoot = window.location.href;
+// =====================================
+// Add download and display image from canvas
+// =====================================
+var btnClear = document.querySelector('#btnClear');
+var btnDownload = document.querySelector('#btnDownload');
+var imgConverted = document.querySelector('#imgConverted');
+var uploadImg = document.querySelector('#input-img');
+// Create smaller canvas matches MNIST dataset 28 x 28 to help users visualize how tiny it is actually
+// the prediction accuracy of new digit is phenomenal thanks to the CNN
+const imgConvertedContext = imgConverted.getContext('2d');
+imgConvertedContext.fillStyle = "rgb(255, 255, 255)";
+var predictURL = `${curRoot}prediction`;
+var imgUloaded;
+const tinyMe = document.querySelector("p#tiny-me");
+var uploadFile = document.querySelector("input#input-img");
 // this function below will post (streaming) img data
 // to the server (managed by Flask App), get number prediction
 // then send the response back to client (user) browser
-
 function submitDrawing(imgURL) {
   var imgURL = imgURL.split(',')[imgURL.split(',').length - 1];
 
   // due to different location of where the file is host
   // build dynamic home directory for the website
-  var curRoot = window.location.href;
-
-  var predictURL = `${curRoot}prediction`;
 
   var xhttpReq = new XMLHttpRequest();
 
@@ -44,7 +52,7 @@ function submitDrawing(imgURL) {
         // The request has been completed successfully
         document.querySelector("#result")
           .innerHTML = JSON.parse(xhttpReq.responseText).prediction;
-     
+
       }
       else {
         alert("WARNING :: REQUEST ERROR !!!");
@@ -52,7 +60,7 @@ function submitDrawing(imgURL) {
     }
   };
   xhttpReq.onerror = err => console.log(`Send Request Error:\n${err}`);
-  const sendPkg = {
+  var sendPkg = {
     imgBase64: `${imgURL}`
   };
   xhttpReq.send(JSON.stringify(sendPkg));
@@ -85,21 +93,25 @@ function submitDrawing(imgURL) {
 
 // this function is for making the drawing on canvas if we have base64
 
-var imgUloaded;
-function previewFiles() {
+function resetUploadFile() {
+  if (uploadFile.getAttribute("type") == "file") {
+    uploadFile.setAttribute("type", "");
+    uploadFile.setAttribute("type", "file");
+  }
+  else {
+    uploadFile.setAttribute("type", "file");
+  }
+}
 
-  // var preview = document.querySelector('#preview');
-  var files = document.querySelector('input[type=file]').files;
+function previewFiles() {
+  var files = uploadFile.files;
 
   function readAndPreview(file) {
-
-    // Make sure `file.name` matches our extensions criteria
-    if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+    // extensions criteria :: only jpg, jpeg, png
+    if (/\.(jpe?g|png)$/i.test(file.name)) {
       var reader = new FileReader();
-
       reader.addEventListener("load", function () {
         var image = new Image();
-
         image.height = 100;
         image.title = file.name;
         image.src = this.result;
@@ -109,21 +121,41 @@ function previewFiles() {
       }, false);
       reader.readAsDataURL(file);
     }
+    else {
+      alert("Invalid file extension!\nOnly accept .png | .jpeg | .jpg");
+    }
   }
   if (files) {
     [].forEach.call(files, readAndPreview);
   }
+  else {
+    alert("This is not a file\nPlease select only .png | .jpeg | .jpg");
+    uploadFile.setAttribute("type", "");
+    uploadFile.setAttribute("type", "file");
+
+    
+  }
 }
 
+
+function drawSmallCanvas(URI) {
+  tinyMe.setAttribute("class", "tiny-me-active");
+  var img = new Image();
+  img.onload = function () {
+    imgConvertedContext.drawImage(img, 0, 0, img.height, img.width, 0, 0, 28, 28);
+  };
+  img.src = URI;
+};
 
 function makeDrawing(base64) {
   let EL = (sel) => document.querySelector(sel);
   let ctxx = EL("#hwCanvas").getContext("2d");
-  const img = new Image();
+  var img = new Image();
 
   img.src = base64;
   img.onload = function () {
     ctxx.drawImage(img, 0, 0, img.height + 40, img.width + 40, 0, 0, 300, 300);
+    drawSmallCanvas(base64);
   };
   ctxx.clearRect(0, 0, ctxx.canvas.width, ctxx.canvas.height);
 
@@ -134,21 +166,6 @@ function makeDrawing(base64) {
 
 // Use jquerry short hand to make sure the html loaded before this function runs
 $(function () {
-
-  // =====================================
-  // Add download and display image from canvas
-  // =====================================
-  const btnClear = document.querySelector('#btnClear');
-  const btnDownload = document.querySelector('#btnDownload');
-  const btnUpload = document.querySelector('#btnUpload');
-  const btnPredict = document.querySelector('#btnPredict');
-  const imgConverted = document.querySelector('#imgConverted');
-
-  // Create smaller canvas matches MNIST dataset 28 x 28 to help users visualize how tiny it is actually
-  // pageYOffset, the prediction accuracy of new digit is phenomenal thanks to the CNN
-  var imgConvertedContext = imgConverted.getContext('2d');
-  imgConvertedContext.fillStyle = "rgb(255, 255, 255)";
-
   // ================================================
   // myCanvas Note Pad 1
   // ================================================
@@ -216,15 +233,18 @@ $(function () {
     ctx.closePath();
   };
   // add button and DOM events for the main page
-  btnClear.addEventListener('click', function () {
+  btnClear.addEventListener('click',  () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "rgb(255, 255, 255)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     imgConvertedContext.clearRect(0, 0, imgConverted.width, imgConverted.height);
+
     //  clear out the img URI and prepare for the new one
     imgConverted.src = "";
     document.getElementById("result").innerHTML = ""
-  });
+    tinyMe.setAttribute("class", "tiny-me-inactive");
+    resetUploadFile();
+ });
 
   // if desired, user can download the canvas 
   // the img save from these canvas are excellent to create
@@ -241,31 +261,5 @@ $(function () {
       document.body.removeChild(a);
     }
   });
-
-
-  function drawSmallCanvas(URI) {
-    var img = new Image();
-    img.onload = function () {
-      imgConvertedContext.drawImage(img, 0, 0, 300, 300, 0, 0, 28, 28);
-    };
-    img.src = URI;
-  };
-
-
-  /*#################################################
-        method: 2 :: USER UPLOADED IMAGE
-  #################################################*/
-  // // due to the time constraint, this function was not made
-  // // available on time when this project is realeased
-
-
-  // btnUpload.addEventListener('click', function () {
-  //   console.log('upload');
-  //   const base64 = canvas.toDataURL().split(',')[1];
-  //   const body = {
-  //     'gererated-at': new Date().toISOString(),
-  //     'png': base64
-  //   };
-  // });
 });
 

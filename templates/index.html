@@ -97,31 +97,16 @@
             </div>
             <div class="container container-project">
 
-                <input id="browse" type="file" onchange="previewFiles()" multiple>
-                <div id="preview"></div>
-
-
-                <button class="btn btn-outline-success my-2 my-sm-0" id='btnClear' type="button">Clear</button>
-
-                <button class="btn btn-outline-success my-2 my-sm-0" id='btnDownload' type="button">Download</button>
-
-                <button class="btn btn-outline-success my-2 my-sm-0" id='btnUpload' type="button">Upload</button>
-                <!--NAVBAR CANVAS  -->
-                <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">Handwritten Prediction</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <form class="form-inline my-2 my-lg-0">
                 
-                        </form>
-                    </div>
-                </nav> -->
+            <div class="flex-container">
+                <button class="btn btn-outline-success my-2 my-sm-0" id='btnClear' type="button">Clear</button>
+                
+                <button class="btn btn-outline-success my-2 my-sm-0" id='btnDownload' type="button">Download</button>
+                <!-- <form id="uploadForm"action=""> -->
+                <input id="input-img" type="file" onchange="previewFiles()" multiple>
+                <!-- </form> -->
                 <hr>
-
+            </div>
                 <div class="flex-grid-thirds">
                     <div class="left-box col">
                         <p align="center">SKETCH PAD</p>
@@ -134,13 +119,12 @@
                         </div>
                     </div>
 
-                    <!-- <canvas id="Canvas1" width="1000px" height="1000px" style="border: solid 2px aquamarine;"></canvas> -->
 
                     <div class="right-box col">
                         <div id="tiny-me-box">
                             <p align="center">RESULT</p>
                             <hr class="divider">
-                            <p class="tiny-me">Hey ! This is how tiny I am ::
+                            <p id="tiny-me" class="tiny-me-inactive">Hey ! This is how tiny I am ::
                             </p>
                             <div class="sm-canvas-box">
                                 <canvas id="imgConverted" width="28px" height="28px">
@@ -154,21 +138,6 @@
                         </div>
                     </div>
                     <!-- 
-                    <div class="col">
-
-
-
-                        <button class="btn btn-outline-success my-2 my-sm-0" id='btnClear' type="button">Clear</button>
-
-                        <button class="btn btn-outline-success my-2 my-sm-0" id='btnDownload' type="button">Download Picture
-                        Img</button>
-
-                    </div> -->
-
-                </div>
-
-                <div class='row'>
-                    <div class='col-md-4'>
                         <!-- Note Pad 1 Column 1-->
                         <p class="content_header"></p>
                     </div>
@@ -177,18 +146,11 @@
                     <div class='col-md-4'>
                         <!-- Note Pad 1 Column 1-->
                         <p class="content_header"></p>
-                        <!-- <img id="canvasImg" alt="Canvas Image" width='28' height='28'> -->
                     </div>
 
                 </div>
             </div>
             <hr>
-
-            <!-- ekingini canvas example -->
-            <!-- <div id="idCanvas">
-                <canvas id="idCanvas" width="400" height="200"></canvas>
-                <canvas id="idCanvas" width="400" height="200"></canvas>
-            </div> -->
         </section>
 
 
