@@ -7,13 +7,130 @@ Date: Jul, 2020
 
 // Declare variables
 const picFormat = "png";
-const strokeStyle = 'blue';
+const strokeStyle = 'black';
 const lineWidth = 20;
 const lineJoin = "round";
 const lineCap = "round";
 const fillStyle = "white";
 var xPosList = [];
 var dataURI;
+
+
+
+
+// this function below will post (streaming) img data
+// to the server (managed by Flask App), get number prediction
+// then send the response back to client (user) browser
+
+function submitDrawing(imgURL) {
+  var imgURL = imgURL.split(',')[imgURL.split(',').length - 1];
+
+  // due to different location of where the file is host
+  // build dynamic home directory for the website
+  var curRoot = window.location.href;
+
+  var predictURL = `${curRoot}prediction`;
+
+  var xhttpReq = new XMLHttpRequest();
+
+  xhttpReq.open("POST", predictURL, true);
+
+  xhttpReq.setRequestHeader('Content-type', 'application/json');
+
+  xhttpReq.onreadystatechange = function () {
+    if (xhttpReq.readyState === XMLHttpRequest.DONE) {
+      var status = xhttpReq.status;
+      if (status === 0 || (status >= 200 && status < 400)) {
+        // The request has been completed successfully
+        document.querySelector("#result")
+          .innerHTML = JSON.parse(xhttpReq.responseText).prediction;
+     
+      }
+      else {
+        alert("WARNING :: REQUEST ERROR !!!");
+      }
+    }
+  };
+  xhttpReq.onerror = err => console.log(`Send Request Error:\n${err}`);
+  const sendPkg = {
+    imgBase64: `${imgURL}`
+  };
+  xhttpReq.send(JSON.stringify(sendPkg));
+  // ###########################################################
+  //           THE POWER OF JQUERY ValidityState. VANILLA
+  // ###########################################################
+  // with this simpler ajax, same results can be achieved
+  // the power of lib vs.no lib
+  /*
+  console.log("Summiting AJAX REQ");
+  var request = $.ajax({
+    type: "POST",
+    url: predictURL,
+    data: JSON.stringify(sendPkg),
+    contentType: "application/json",
+    statusCode: {
+      200: () => console.log('ajax call receives response')
+    },
+  });
+  request.done(function (resp) {
+    console.log(`receive msg from server ${resp.response}`);
+    // $( "#log" ).html( msg );
+  });
+
+  request.fail(function (jqXHR, textStatus) {
+    console.log(`Request failed: " + ${textStatus}`);
+  });
+  */
+}
+
+// this function is for making the drawing on canvas if we have base64
+
+var imgUloaded;
+function previewFiles() {
+
+  // var preview = document.querySelector('#preview');
+  var files = document.querySelector('input[type=file]').files;
+
+  function readAndPreview(file) {
+
+    // Make sure `file.name` matches our extensions criteria
+    if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+      var reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        var image = new Image();
+
+        image.height = 100;
+        image.title = file.name;
+        image.src = this.result;
+        imgUloaded = image.src;
+        submitDrawing(image.src);
+        makeDrawing(image.src);
+      }, false);
+      reader.readAsDataURL(file);
+    }
+  }
+  if (files) {
+    [].forEach.call(files, readAndPreview);
+  }
+}
+
+
+function makeDrawing(base64) {
+  let EL = (sel) => document.querySelector(sel);
+  let ctxx = EL("#hwCanvas").getContext("2d");
+  const img = new Image();
+
+  img.src = base64;
+  img.onload = function () {
+    ctxx.drawImage(img, 0, 0, img.height + 40, img.width + 40, 0, 0, 300, 300);
+  };
+  ctxx.clearRect(0, 0, ctxx.canvas.width, ctxx.canvas.height);
+
+}
+
+
+
 
 // Use jquerry short hand to make sure the html loaded before this function runs
 $(function () {
@@ -44,7 +161,6 @@ $(function () {
   const ctx = canvas.getContext('2d');
   ctx.fillStyle = "rgb(255, 255, 255)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  console.log('Drawing on Canvas')
   // event.offsetX, event.offsetY gives the (x,y) offset from the edge of the canvas.
 
   // Add the event listeners for mousedown, mousemove, and mouseup
@@ -72,12 +188,12 @@ $(function () {
 
       // get img data from big canvas
       dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
-      
+
       // more interactive for user if smaller canvas
       // and drawing are submitted as soon as user pause drawing
       drawSmallCanvas(dataURI);
       submitDrawing(dataURI);
-      document.getElementById("prediction").innerHTML="Predicting ... ";
+      document.getElementById("result").innerHTML = "...";
     }
   });
 
@@ -86,7 +202,7 @@ $(function () {
   method: 1 :: STREAMING USER DRAWN CANVAS 
   ##############################################
   */
- // constantly tracks user's mouse location and draws the line
+  // constantly tracks user's mouse location and draws the line
   function drawLine(ctx, x1, y1, x2, y2, strS) {
     ctx.beginPath();
     ctx.strokeStyle = strS;
@@ -107,7 +223,7 @@ $(function () {
     imgConvertedContext.clearRect(0, 0, imgConverted.width, imgConverted.height);
     //  clear out the img URI and prepare for the new one
     imgConverted.src = "";
-    document.getElementById("prediction").innerHTML="";
+    document.getElementById("result").innerHTML = ""
   });
 
   // if desired, user can download the canvas 
@@ -127,21 +243,12 @@ $(function () {
   });
 
 
-  // since I designed that as soon as user lift the mouse
-  // prediction is sent back to client 
-  // => no longer need this function
-  // btnPredict.addEventListener('click', ()=>{
-  //   const dataURI = canvas.toDataURL(`image/${picFormat}`, 1.0);
-  //   submitDrawing(dataURI);
-  // });
-  
   function drawSmallCanvas(URI) {
     var img = new Image();
     img.onload = function () {
       imgConvertedContext.drawImage(img, 0, 0, 300, 300, 0, 0, 28, 28);
     };
     img.src = URI;
-    // console.log('This is the final large Img URL :: ', dataURI);
   };
 
 
@@ -150,6 +257,8 @@ $(function () {
   #################################################*/
   // // due to the time constraint, this function was not made
   // // available on time when this project is realeased
+
+
   // btnUpload.addEventListener('click', function () {
   //   console.log('upload');
   //   const base64 = canvas.toDataURL().split(',')[1];
@@ -158,73 +267,5 @@ $(function () {
   //     'png': base64
   //   };
   // });
-
-  // this function below will post (streaming) img data
-  // to the server (managed by Flask App), get number prediction
-  // then send the response back to client (user) browser
-  function submitDrawing(imgURL) {
-    var imgURL = imgURL.split(',')[imgURL.split(',').length - 1];
-
-    // due to different location of where the file is host
-    // build dynamic home directory for the website
-    var curRoot = window.location.href;
-
-    var predictURL = `${curRoot}prediction`;
-
-    console.log(`this is the current URL : \n ${predictURL}`)
-
-    var xhttpReq = new XMLHttpRequest();
-
-    xhttpReq.open("POST", predictURL, true);
-
-    xhttpReq.setRequestHeader('Content-type', 'application/json');
-
-    xhttpReq.onreadystatechange = function () {
-      if (xhttpReq.readyState === XMLHttpRequest.DONE) {
-        var status = xhttpReq.status;
-        if (status === 0 || (status >= 200 && status < 400)) {
-          // The request has been completed successfully
-          console.log(JSON.parse(xhttpReq.responseText));
-          document.querySelector("#prediction")
-            .innerHTML=JSON.parse(xhttpReq.responseText).prediction;
-        } 
-        else {
-          alert("WARNING :: REQUEST ERROR !!!");
-        }
-      }
-    };
-    xhttpReq.onerror = err => console.log(`Send Request Error:\n${err}`);
-    const sendPkg = {
-      imgBase64: `${imgURL}`
-    };
-    xhttpReq.send(JSON.stringify(sendPkg));
-  }
-
-
-  // ###########################################################
-  //           THE POWER OF JQUERY ValidityState. VANILLA
-  // ###########################################################
-  // with this simpler ajax, same results can be achieved
-  // the power of lib vs.no lib
-  /*
-  console.log("Summiting AJAX REQ");
-  var request = $.ajax({
-    type: "POST",
-    url: predictURL,
-    data: JSON.stringify(sendPkg),
-    contentType: "application/json",
-    statusCode: {
-      200: () => console.log('ajax call receives response')
-    },
-  });
-  request.done(function (resp) {
-    console.log(`receive msg from server ${resp.response}`);
-    // $( "#log" ).html( msg );
-  });
-
-  request.fail(function (jqXHR, textStatus) {
-    console.log(`Request failed: " + ${textStatus}`);
-  });
-  */
-
 });
+

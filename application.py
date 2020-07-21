@@ -53,9 +53,7 @@ def predict():
     prediction = int(img_predict(img_b64_str_encoded))
     
     response = f'{prediction}'
-
     return jsonify(prediction=response)
-    # return "got the response"
 
 # if program is run from this file ::
 if __name__ == '__main__':

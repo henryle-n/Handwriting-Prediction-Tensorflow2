@@ -2,40 +2,64 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Final Project - HomePage" />
-    <meta name="author" content="ekingini" />
-    <title>Convolutional Neural Network</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
-    <!-- Beautiful front-->
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
-        rel="stylesheet" type="text/css" />
-    <!-- online CSS-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
-        rel="stylesheet" />
-    <!-- ekin's customized styles-->
-    <link href="../static/css/styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- animation style sheet-->
-    <!-- <link href="../static/css/animate.min.css" rel="stylesheet" /> -->
-    <!-- <script src="../static/js/test_canvas.js"></script> -->
+    <title>Project 3</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- for well -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="../static/css/index-format.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+
+    <!-- main script file -->
+    <script src="../static/js/logic-main.js"></script>
+
+    <!-- upload image to server -->
+    <!-- <link rel="stylesheet" href= "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <script src= "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>  -->
+
+
 </head>
 
 <body>
+    <!-- Note Pad 1 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Canvas to Image</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" id='btnClear' type="button">Clear</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" id='btnPredict' type="button">Predict</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" id='btnDownload' type="button">Download
+                    PNG</button>
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" id='btnUpload' type="button">Upload PNG/JPEG</button> -->
+            </form>
+        </div>
+    </nav>
+    <hr>
+    <canvas id="hwCanvas" width="300px" height="300px" style="border:1px solid #000000; background-color: white; opacity: 1; fill-opacity: 1;"></canvas>
 
+    <canvas id="imgConverted" width="28px" height="28px" style="border:1px solid #000000; background-color: white"></canvas>
 
+    <div style="border: 2px solid blue;" width="150px" ; height="150px">
+        <p id="prediction" style="display: inline;  color: rgb(245, 85, 11); font-size: 100px; margin-left: 50px; text-align: center;">
+            <!-- PLACE HOLDER -->
+        </p>
+    </div>
 
     <div id="top-of-page"></div>
     <!-- Navigation-->
@@ -43,9 +67,7 @@
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="/">
             </a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
 
@@ -71,7 +93,7 @@
 
 
     <!-- Masthead-->
-    <!-- <header class="masthead">
+    <header class="masthead">
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center text-center">
                 <div class="col-lg-10 align-self-center">
@@ -80,16 +102,7 @@
                 </div>
             </div>
         </div>
-    </header> -->
-      <!-- JUMPOTRON-->
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Convolutional Neural Network</h1>
-          <p class="lead">
-              Deep Learning with TensorFlow | Keras to Predict User Input Digits
-          </p>
-        </div>
-      </div>
+    </header>
 
 
 
@@ -101,23 +114,18 @@
                 <!--NAVBAR CANVAS  -->
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand" href="#">Handwritten Prediction</a>
-                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button> -->
-                    <div  id="">
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <form class="form-inline my-2 my-lg-0">
-                            <button class="btn btn-outline-success my-2 my-sm-0" id='clear_btn'
-                                type="button">Clear</button>
-                            <button class="btn btn-outline-success my-2 my-sm-0" id='submit_btn'
-                                type="button">Submit</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" id='clear_btn' type="button">Clear</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" id='submit_btn' type="button">Submit</button>
                             <button class="btn btn-outline-success my-2 my-sm-0" id='upload_btn' type="button">Send
                                 Img</button>
                         </form>
                     </div>
                 </nav>
-
                 <hr>
 
                 <div class='row'>
@@ -131,17 +139,17 @@
                     <!-- Note Pad 1 Column 2-->
                     <div class='col-md-3'>
 
-                        <p class="arrow_header" <!-- Note Pad 1 Column 1 -->
+                        <p>class="arrow_header"</p>
+                        <!-- Note Pad 1 Column 1 -->
 
 
 
-                            <!-- <p class = "content_header">Draw a number here</p> -->
-                            <!-- <canvas id="myCanvas" width="300px" height="300px" style="border:1px solid #000000;"></canvas> -->
-                            <div>
-                                <a href="#"><img src="../static/assets/img/images1.png" alt="arrow"
-                                        class="imageNav-photo"></a>
-                            </div>
-                            <!-- <img id="canvasImg" alt="Canvas Image" width='28' height='28'> -->
+                        <!-- <p class = "content_header">Draw a number here</p> -->
+                        <!-- <canvas id="myCanvas" width="300px" height="300px" style="border:1px solid #000000;"></canvas> -->
+                        <div>
+                            <a href="#"><img src="../static/assets/img/images1.png" alt="arrow" class="imageNav-photo"></a>
+                        </div>
+                        <!-- <img id="canvasImg" alt="Canvas Image" width='28' height='28'> -->
                     </div>
                     <div class='col-md-4'>
                         <!-- Note Pad 1 Column 1-->
@@ -155,6 +163,11 @@
             </div>
             <hr>
 
+            <!-- ekingini canvas example -->
+            <!-- <div id="idCanvas">
+                <canvas id="idCanvas" width="400" height="200"></canvas>
+                <canvas id="idCanvas" width="400" height="200"></canvas>
+            </div> -->
             </div>
             </div>
         </section>
@@ -168,17 +181,10 @@
                 <h2 class="text-center mt-0 proj-desc">Project Description</h2>
                 <hr class="divider my-4" />
                 <p class="proj-desc">
-                    In this project, Convolutional Neural Network (CNN) is an neural network which extracts or
-                    identifies a feature in a particular image. This forms one of the most fundamental operations in
-                    Machine Learning and is widely used as a base model in majority
-                    of Neural Networks like GoogleNet, VGG19 and others for various tasks such as Object Detection,
-                    Image Classification and others. CNN has the following five basic components: Convolution : to
-                    detect features in an image ReLU : to make
-                    the image smooth and make boundaries distinct Pooling : to help fix distored images Flattening : to
-                    turn the image into a suitable representation Full connection : to process the data in a neural
-                    network A CNN works in pretty much
-                    the same way an ANN works but since we are dealing with images, a CNN has more layers to it than an
-                    ANN. In an ANN, the input is a vector, however in a CNN, the input is a multi-channelled image.
+                    In this project, Convolutional Neural Network (CNN) is an neural network which extracts or identifies a feature in a particular image. This forms one of the most fundamental operations in Machine Learning and is widely used as a base model in majority
+                    of Neural Networks like GoogleNet, VGG19 and others for various tasks such as Object Detection, Image Classification and others. CNN has the following five basic components: Convolution : to detect features in an image ReLU : to make
+                    the image smooth and make boundaries distinct Pooling : to help fix distored images Flattening : to turn the image into a suitable representation Full connection : to process the data in a neural network A CNN works in pretty much
+                    the same way an ANN works but since we are dealing with images, a CNN has more layers to it than an ANN. In an ANN, the input is a vector, however in a CNN, the input is a multi-channelled image.
                 </p>
                 <ul id="proj-list">
                     <li class="proj-list">
@@ -222,6 +228,11 @@
         </section>
 
 
+
+
+
+
+
         <!-- Summary-->
         <section class="page-section bg-dark text-white api-section" id="summary">
             <div class="container text-center">
@@ -232,6 +243,11 @@
         </section>
 
 
+
+
+
+
+
         <!-- Our Team-->
         <section class="page-section bg-primary team-tile-section padding-lg" id="OurTeam">
             <hr class="divider ekingini-divider-1">
@@ -240,9 +256,7 @@
                     <div class="col-lg-8 text-center">
                         <h2 class="text-white mt-0">Team Introduction</h2>
                         <hr class="divider light my-4">
-                        <p class="text-white-50 mb-4">Despite the fact that four of us have different background and
-                            professions, we decided to team up and created a fun and interactive website where data is
-                            unlocked to tell stories thru amazing visualizations.</p>
+                        <p class="text-white-50 mb-4">Despite the fact that four of us have different background and professions, we decided to team up and created a fun and interactive website where data is unlocked to tell stories thru amazing visualizations.</p>
                     </div>
                 </div>
             </div>
@@ -326,6 +340,14 @@
         </section>
 
 
+
+
+
+
+
+
+
+
         <!-- Contact-->
         <section class="page-section" id="contact">
             <hr class="divider ekingini-divider-1">
@@ -335,8 +357,7 @@
                         <h2 class="mt-0">Let's Get In Touch!</h2>
                         <hr class="divider my-4" />
                         <p class="text-muted mb-5">
-                            If you like our design and visualization and if we can be of any service to you, please feel
-                            free to reach out!</p>
+                            If you like our design and visualization and if we can be of any service to you, please feel free to reach out!</p>
                     </div>
                 </div>
                 <div class="row">
@@ -367,8 +388,6 @@
                 </div>
             </div>
         </footer>
-
-
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
         </script>
@@ -381,8 +400,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js">
-        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
         <!-- Core theme JS-->
         <!-- <script src="/static/js/index-scripts-scroll.js"></script> -->
         <script src="../static/js/logic.js"></script>
