@@ -5,27 +5,30 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Final Project - HomePage" />
-    <meta name="author" content="ekingini" />
+    <meta name="author" content="henry-ekin-gini-panarat" />
     <title>Convolutional Neural Network</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../static/assets/img/portfolio/fullsize/AI.png"/>
     <!-- Beautiful front-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
-        rel="stylesheet" type="text/css" />
+    rel="stylesheet" type="text/css" />
     <!-- online CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
-        rel="stylesheet" />
-
-    <!-- ekin's customized styles-->
-
+    rel="stylesheet" />
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
-    <!-- For myCanvas -->
+
+    <!-- animation style sheet-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/animate.min.css') }}">
+
+    <!-- customized -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css') }}">
 </head>
 
@@ -36,8 +39,9 @@
         <!-- Navigation-->
         <section>
             <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-                <div class="container">
-                    <a class="navbar-brand js-scroll-trigger" href="/">
+                <div class="container" id="navbar-container">
+                    <a class="navbar-brand js-scroll-trigger" id="float-left" href="/"> New Era of Artificial Intelligence
+                       
                     </a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -45,11 +49,14 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto my-2 my-lg-0">
 
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#proj-desciption">Project
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#proj-description">Project
                                     Description</a>
                             </li>
 
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#data">Data </a>
+                            </li>
+                            
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#mArch">Model Architecture</a>
                             </li>
 
 
@@ -79,7 +86,7 @@
             <hr class="divider ekingini-divider-1">
             <div class="container text-center">
                 <h2 class="text-center mt-0 proj-desc">Hand Writting Prediction</h2>
-            <hr class="divider my-4">
+                <hr class="divider my-4">
             </div>
             <div class="container container-project">
 
@@ -88,52 +95,52 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" id='btnClear' type="button">Clear</button>
 
                     <button class="btn btn-outline-success my-2 my-sm-0" id='btnDownload'
-                        type="button">Download</button>
+                        type="button">Download
+                    </button>
+
                     <!-- <form id="uploadForm"action=""> -->
                     <input id="input-img" type="file" onchange="previewFiles()" multiple>
-                    <!-- </form> -->
-                    <hr>
                 </div>
-                <div class="flex-grid-thirds">
-                    <div class="left-box col">
-                        <p align="center">SKETCH PAD</p>
-                        <hr class="divider">
-                        <p class="input-canvas">Input your drawing here
-                        </p>
-
-                        <div class="canvas-box" id="canvasbox">
-                            <canvas id="hwCanvas" width="300px" height="300px"></canvas>
-                        </div>
-                    </div>
-
-
-                    <div class="right-box col">
-                        <div id="tiny-me-box">
-                            <p align="center">RESULT</p>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-5 col-xs-12" id="left-box">
+                            <p align="center">SKETCH PAD</p>
                             <hr class="divider">
-                            <p id="tiny-me" class="tiny-me-inactive">Hey ! This is how tiny I am ::
+                            <p class="input-canvas">Input your drawing below ::
                             </p>
-                            <div class="sm-canvas-box">
-                                <canvas id="imgConverted" width="28px" height="28px">
-                                </canvas>
+
+                            <div class="canvas-box" id="canvasbox">
+                                <canvas id="hwCanvas" width="300px" height="300px"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-1 col-xs-0" id="mid-box">
+                        </div>
+
+                        <div class="col-md-5 col-xs-12" id="right-box">
+                            <div id="tiny-me-box">
+                                <p align="center">PREDICTION</p>
+                                <hr class="divider">
+                                <p id="tiny-me" class="tiny-me-inactive">Hey! This is how tiny I am ::
+                                </p>
+                                <span class="sm-canvas-box">
+                                    <canvas id="imgConverted" width="28px" height="28px">
+                                    </canvas>
+                                </span>
+                            </div>
+                            <div id="result-box">
+                                    <p id="resultPrediction">
+                                    <!-- prediction place holder -->
+                                    </p>
                             </div>
                         </div>
 
-
-                        <div id="result">
-                            <!-- prediction place holder -->
-                        </div>
                     </div>
-                    <!-- 
-                        <!-- Note Pad 1 Column 1-->
-                    <p class="content_header"></p>
                 </div>
 
-                <!-- Note Pad 1 Column 2-->
-                <div class='col-md-4'>
-                    <!-- Note Pad 1 Column 1-->
+                <!-- <div class='col-md-4'>
                     <p class="content_header"></p>
-                </div>
+                </div> -->
             </div>
             <hr>
         </section>
@@ -145,29 +152,37 @@
                 <h2 class="text-center mt-0 proj-desc">Project Description</h2>
                 <hr class="divider my-4" />
                 <p class="proj-desc">
-                    Machine Learning Technology Field has been rapidly developed in the last decade. The advancement allows model predictions to be exponentially more accurate.
+                    Machine Learning Technology Field has been rapidly developed in the last decade. The advancement
+                    allows model predictions to be exponentially more accurate.
                     <br>
-                    In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN). CNN was chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense Networks.
+                    In this project, we took Machine Learning out of its traditional way into more sophisticated level
+                    which employs advanced Deep Learning model known as Convolutional Neural Network (CNN). CNN was
+                    chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense
+                    Networks.
                     <br>
-                    Basically, Conv2D in this project works as a "scanner" to continously read and processed image pixels, highlight features of each digit in the 2D space intead of 1D as the Dense network, which is better and more common for analyzing visual imagery.
+                    Basically, Conv2D in this project works as a "scanner" to continously read and processed image
+                    pixels, highlight features of each digit in the 2D space intead of 1D as the Dense network, which is
+                    better and more common for analyzing visual imagery.
                     <br>
-                    Dense Neural Network will then receive features hightlighted by Conv2D and make <i>Classification</i>, i.e. "what is it?"
-                <!-- <hr class="divider my-4" /> -->
-                <div class="WDB-container">
-                    <div class="WDB">
-                        <ul id="proj-list">
-                            <li class="proj-list">
-                                Languages: Python, Javascript, HTML/ CSS, Markdown.
-                            </li>
-                            <li class="proj-list">
-                                Modules/ Libraries: Flask, TensorFlow (GPU version), Pillow, Numpy, OS, JSON, base64.
-                                jQuery.
-                            </li>
-                        </ul> <br>
+                    Dense Neural Network will then receive features hightlighted by Conv2D and make
+                    <i>Classification</i>, i.e. "what is it?"
+                    <!-- <hr class="divider my-4" /> -->
+                    <div class="WDB-container">
+                        <div class="WDB">
+                            <ul id="proj-list">
+                                <li class="proj-list">
+                                    Languages: Python, Javascript, HTML/ CSS, Markdown.
+                                </li>
+                                <li class="proj-list">
+                                    Modules/ Libraries: Flask, TensorFlow (GPU version), Pillow, Numpy, OS, JSON,
+                                    base64.
+                                    jQuery.
+                                </li>
+                            </ul> <br>
+                        </div>
                     </div>
-                </div>
-                <a name="api-section"></a>
-                <hr class="divider my-4" />
+                    <a name="api-section"></a>
+                    <hr class="divider my-4" />
             </div>
         </section>
 
@@ -177,17 +192,20 @@
             <div class="container text-center">
                 <h2 class="mb-4 api-section-header">Data Source</h2>
                 <hr class="divider my-4" />
-                <p class="text-white-50 mb-4 proj-desc"> 
-                    The MNIST database (Modified National Institute of Standards and Technology database) is a database of handwritten digits, from 0 to 9. dataset to train and for training image processing system (handwritten images). The size is 28x28 pixels. It consists of 60,000 training images and 10,000 testing images.
+                <p class="text-white-50 mb-4 proj-desc">
+                    The MNIST database (Modified National Institute of Standards and Technology database) is a database
+                    of handwritten digits, from 0 to 9. dataset to train and for training image processing system
+                    (handwritten images). The size is 28x28 pixels. It consists of 60,000 training images and 10,000
+                    testing images.
                     <br>
-                    
+
                 </p>
             </div>
         </section>
 
 
         <!-- Summary-->
-        <section class="page-section text-white api-section" id="summary">
+        <section class="page-section text-white api-section" id="mArch">
             <div class="container text-center">
                 <h2 class="mb-4 api-section-header">Model Architecture</h2>
                 <hr class="divider my-4">
@@ -199,93 +217,115 @@
             <div class="container text-center">
                 <h2 class="mb-4 api-section-header">Summary</h2>
                 <hr class="divider my-4">
-       
-                    <div class="container">
-                        <div class="row">
-                            <p class="summary-intro text-white-50 mb-4 proj-desc"  id="proj-desc">
-                                Although CNN is a highly complex Deep Learing Model, it does have some limitations upon testing with new digit images:
-                            </p>
-                          <div class="col-md-12 col-xs-12">
+
+                <div class="container">
+                    <div class="row">
+                        <p class="summary-intro text-white-50 mb-4 proj-desc" id="proj-desc">
+                            Although CNN is a highly complex Deep Learing Model, it does have some limitations upon
+                            testing with new digit images:
+                        </p>
+                        <div class="col-md-12 col-xs-12">
                             <ul id="proj-list">
                                 <li class="proj-list">
-                                    <b>Width of stroke:</b> Thinner stroke line tends to make the prediction wrong. Increase the stroke line would help the model predict more accurately. The possible reason is that the thicker the stroke, the features of the image is highlighted better. During the resize to small pixel (28 px X 28 px), the stroke is still thick enough to be recognized by the model.
+                                    <b>Width of stroke:</b> Thinner stroke line tends to make the prediction wrong.
+                                    Increase the stroke line would help the model predict more accurately. The possible
+                                    reason is that the thicker the stroke, the features of the image is highlighted
+                                    better. During the resize to small pixel (28 px X 28 px), the stroke is still thick
+                                    enough to be recognized by the model.
                                 </li><br>
                                 <li class="proj-list">
-                                    <b>Color contrast:</b> CNN distinguish the difference based on saturation difference between background and stroke color. Stroke color doesn't have much effect on the prediction as much as the background does. Background color have significant effect on the prediction. As the background gets closer to the black, the model failed to predict accurately. In contrast, shallow neural network has limitation in recognizing stroke color and background.
+                                    <b>Color contrast:</b> CNN distinguish the difference based on saturation difference
+                                    between background and stroke color. Stroke color doesn't have much effect on the
+                                    prediction as much as the background does. Background color have significant effect
+                                    on the prediction. As the background gets closer to the black, the model failed to
+                                    predict accurately. In contrast, shallow neural network has limitation in
+                                    recognizing stroke color and background.
                                 </li><br>
                                 <li class="proj-list">
                                     <b>Shape of number and image:</b>
-                                    
+
                                     <ul id="proj-list">
                                         <li class="proj-list">
-                                            Number 9 is challenging to recognize in with this particular train model, which predicts more 4 and 7 more often than the correct number 9. It might be related on the pattern of diagonal and horizontal line in that number.
+                                            Number 9 is challenging to recognize in with this particular train model,
+                                            which predicts more 4 and 7 more often than the correct number 9. It might
+                                            be related on the pattern of diagonal and horizontal line in that number.
                                         </li>
                                         <li class="proj-list">
-                                            The original snipped file would be predicted more accurately if the image has width == height. This is due to the fact that the MNIST dataset has width == height, thus the trained model weight matrices retain the same shape.
+                                            The original snipped file would be predicted more accurately if the image
+                                            has width == height. This is due to the fact that the MNIST dataset has
+                                            width == height, thus the trained model weight matrices retain the same
+                                            shape.
                                         </li>
                                     </ul> <br>
-                                               
+
                                 </li>
                                 <li class="proj-list">
                                     <b>Model-related observation:</b>
-                                    Re-training model has potential of changing the prediction, i.e. first model predicted right, then next rerun predict number wrong.
+                                    Re-training model has potential of changing the prediction, i.e. first model
+                                    predicted right, then next rerun predict number wrong.
                                 </li>
 
                             </ul> <br>
-                          </div>
-                          <div class="col-md-12 col-xs-12">
-                          </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12">
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
         <section class="page-section text-white api-section" id="summary">
             <div class="container text-center">
                 <h2 class="mb-4 api-section-header">Summary</h2>
                 <hr class="divider my-4">
-       
-                    <div class="container">
-                        <div class="row">
-                            <p class="summary-intro text-white-50 mb-4 proj-desc"  id="proj-desc">
-                                Bringing in Machine Learning Model to Front End, we encountered multiple challenges:
-                            </p>
-                          <div class="col-md-12 col-xs-12">
+
+                <div class="container">
+                    <div class="row">
+                        <p class="summary-intro text-white-50 mb-4 proj-desc" id="proj-desc">
+                            Bringing in Machine Learning Model to Front End, we encountered multiple challenges:
+                        </p>
+                        <div class="col-md-12 col-xs-12">
                             <ul id="proj-list">
                                 <li class="proj-list">
-                                    <b>Building CNN Model</b>: 
+                                    <b>Building CNN Model</b>:
                                     <ul id="proj-list">
                                         <li class="proj-list">
-                                            Selecting optimal parameters for kernels, strides, pooling layers, batch normalization and drop-outs to mitigate over fitting, and accelerate model coverging.
+                                            Selecting optimal parameters for kernels, strides, pooling layers, batch
+                                            normalization and drop-outs to mitigate over fitting, and accelerate model
+                                            coverging.
                                         </li>
                                         <li class="proj-list">
-                                            Add padding to help retain the input and output dimensions for ability to build a deeper network.
+                                            Add padding to help retain the input and output dimensions for ability to
+                                            build a deeper network.
                                         </li>
                                         <li class="proj-list">
-                                            Due to the sizes of the CNN (multiple layers with 20 millions parameters), we had to utilize the Graphics Procssing Unit (2560 CUDA Cores) to be able to handle the training.
+                                            Due to the sizes of the CNN (multiple layers with 20 millions parameters),
+                                            we had to utilize the Graphics Procssing Unit (2560 CUDA Cores) to be able
+                                            to handle the training.
                                         </li>
-                                    </ul> 
+                                    </ul>
                                 </li><br>
                                 <li class="proj-list">
                                     <b>HTTP Request | AJAX:</b>
-                                    Using JavaScript Front-End to allow 
+                                    Using JavaScript Front-End to allow
                                 </li><br>
                                 <li class="proj-list">
-                                    <b>Building the Drawing Canvas:</b> to allow for user drawing input or uploadind a pre-made digit picture. Utilizing JS with Event Listening to capture user mouse position, draw on the canvas and export in a base64 format.
+                                    <b>Building the Drawing Canvas:</b> to allow for user drawing input or uploadind a
+                                    pre-made digit picture. Utilizing JS with Event Listening to capture user mouse
+                                    position, draw on the canvas and export in a base64 format.
                                 </li>
                                 <li class="proj-list">
                                     <b>HTTP Request/ AJAX Call:</b>
-                                    we encountered challenges of how to send canvas data across the (Flask App), then run the CNN model for prediction. There were two solutions for it:
-                                    
+                                    we encountered challenges of how to send canvas data across the (Flask App), then
+                                    run the CNN model for prediction. There were two solutions for it:
+
                                     saving canvas input as a picture, then uploaded to Python backend, conver
                                 </li>
 
                             </ul> <br>
-                          </div>
-                          <div class="col-md-12 col-xs-12">
-                          </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
 
         <!-- Our Team-->
@@ -296,7 +336,8 @@
                     <div class="col-lg-8 text-center">
                         <h2 class="text-white mt-0">Team Introduction</h2>
                         <hr class="divider light my-4">
-                        <p class="text-white-50 mb-4 team-intro">Despite the fact that four of us have different background and
+                        <p class="text-white-50 mb-4 team-intro">Despite the fact that four of us have different
+                            background and
                             professions, we decided to team up and created a fun and interactive website where data is
                             unlocked to tell stories thru amazing visualizations.</p>
                     </div>
@@ -328,7 +369,7 @@
                             <figure><img src="/static/assets/img/portfolio/team/EK.jpg" class="img-responsive" alt="">
                             </figure>
                             <h3>Ekin Kaplan</h3>
-                            <p>JavaScript Developer</p>
+                            <p>Front End Developer</p>
                             <a id="contact-a" href="https://github.com/ekin651">
                                 <i class="fab fa-github"></i>
                                 <p id="contact-info-links"> GitHub</p>
@@ -346,7 +387,7 @@
                             <figure><img src="/static/assets/img/portfolio/team/GA.jpg" class="img-responsive" alt="">
                             </figure>
                             <h3>Gini Arimbi</h3>
-                            <p>JavaScript Developer</p>
+                            <p>Python Developer</p>
                             <a id="contact-a" href="https://github.com/giniarimbi">
                                 <i class="fab fa-github"></i>
                                 <p id="contact-info-links"> GitHub</p>

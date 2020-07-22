@@ -43,18 +43,22 @@ def predict():
    
    # if the packages come in slow, may cause issue of empty package (obj)
     while incoming_pkg is None:
-        app.logger.debug("none type inc pk")
+        app.logger.debug("Waiting for receiving POST package from Client ...")
         time.sleep(1)
     
     else:
-        app.logger.error("no longer none type")
+        app.logger.error("Package from Client has been received!")
 
-    img_b64_str_encoded = str(incoming_pkg['imgBase64'])   
+    img_b64_str_encoded = str(incoming_pkg['imgBase64'])
+    app.logger.error("Processing and Predicting Which Digit ...")
+
     prediction = int(img_predict(img_b64_str_encoded))
-    
     response = f'{prediction}'
+    app.logger.error(jsonify(prediction=response))
+    
     return jsonify(prediction=response)
 
 # if program is run from this file ::
 if __name__ == '__main__':
     app.run(debug=True)
+    app.logger.error("FLASK SERVER is RUNNING from ROOT!")

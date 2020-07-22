@@ -51,8 +51,8 @@ function submitDrawing(imgURL) {
       if (status === 0 || (status >= 200 && status < 400)) {
         // The request has been completed successfully
         console.log("this is my prediction :: ", xhttpReq.responseText);
-        document.querySelector("#result")
-          .innerHTML = JSON.parse(xhttpReq.responseText).prediction;
+        document.getElementById("resultPrediction")
+          .innerText = JSON.parse(xhttpReq.responseText).prediction;
 
       }
       else {
@@ -211,7 +211,7 @@ $(function () {
       // and drawing are submitted as soon as user pause drawing
       drawSmallCanvas(dataURI);
       submitDrawing(dataURI);
-      document.getElementById("result").innerHTML = "...";
+      document.getElementById("resultPrediction").innerHTML = "...";
     }
   });
 
@@ -242,7 +242,7 @@ $(function () {
 
     //  clear out the img URI and prepare for the new one
     imgConverted.src = "";
-    document.getElementById("result").innerHTML = ""
+    document.getElementById("resultPrediction").innerHTML = ""
     tinyMe.setAttribute("class", "tiny-me-inactive");
     resetUploadFile();
  });
@@ -263,4 +263,53 @@ $(function () {
     }
   });
 });
+
+
+// for page scrolling and change navbar color
+
+(function ($) {
+  "use strict"; // Start of use strict
+
+  // Smooth scrolling using jQuery easing
+  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: (target.offset().top - 30)
+        }, 1000, "easeInOutExpo");
+        return false;
+      }
+    }
+  });
+
+  // Closes responsive menu when a scroll trigger link is clicked
+  $('.js-scroll-trigger').click(function () {
+    $('.navbar-collapse').collapse('hide');
+  });
+
+  // Activate scrollspy to add active class to navbar items on scroll
+  $('body').scrollspy({
+    target: '#mainNav',
+    offset: 75
+  });
+
+  // function to collapse nav bar
+  var navbarCollapse = function () {
+    if ($("#mainNav").offset().top > 500) {
+      $("#mainNav").addClass("navbar-scrolled");
+    } else {
+      $("#mainNav").removeClass("navbar-scrolled");
+    }
+  };
+  // if not at top :: collapse navbar
+  navbarCollapse();
+
+// navbar hiden when scroll
+  $(window).scroll(navbarCollapse);
+
+
+
+})(jQuery); // End of use strict
 
