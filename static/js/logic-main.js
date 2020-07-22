@@ -50,6 +50,7 @@ function submitDrawing(imgURL) {
       var status = xhttpReq.status;
       if (status === 0 || (status >= 200 && status < 400)) {
         // The request has been completed successfully
+        console.log("this is my prediction :: ", xhttpReq.responseText);
         document.querySelector("#result")
           .innerHTML = JSON.parse(xhttpReq.responseText).prediction;
 
