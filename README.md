@@ -33,7 +33,7 @@ This is the sequence of layers. The input is 28x28 pixel image (both from canvas
 
 The model summary is the following: 
 
-![](readme_images/model_summary2.PNG)<width="200" height="400">
+![](readme_images/model_summary2.PNG){:height="50%" width="50%"}
 
 
 
@@ -79,7 +79,7 @@ Modules/ Libraries: Flask, TensorFlow (GPU version), Pillow, Numpy, OS, JSON, ba
 
 There are several observation points we can obtain from the model. Some limitation of the models are the following: 
 
-![](readme_images/model_observation.PNG)
+![](readme_images/model_observation.PNG){:height="60%" width="60%"}
 
 a. Width of stroke: Thinner stroke line tends to make the prediction wrong. Increase the stroke line would help the model predict more accurately. The possible reason is that the thicker the stroke, the features of the image is highlighted better. During the resize to small pixel (28 px X 28 px), the stroke is still thick enough to be recognized by the model.
 
