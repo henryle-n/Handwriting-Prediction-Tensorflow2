@@ -7,11 +7,19 @@ Date: Jul, 2020
 
 // Declare variables
 const picFormat = "png";
-const strokeStyle = 'black';
-const lineWidth = 20;
+const strokeStyle = 'black'; // color of the drawing
+const lineWidth = 20; // for the thickness of the drawing
+// const lineWidth = 2; // for the thickness of the drawing
+// const lineWidth = 3; // for the thickness of the drawing
+
 const lineJoin = "round";
 const lineCap = "round";
 const fillStyle = "white";
+// const fillStyle = "black";
+// const fillStyle = "blue";
+// const fillStyle = "red";
+// const fillStyle = "yellow";
+
 var xPosList = [];
 var dataURI;
 var curRoot = window.location.href;
