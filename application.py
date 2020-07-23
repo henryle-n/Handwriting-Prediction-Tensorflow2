@@ -37,28 +37,31 @@ def home_page():
 def predict():
     '''
     create a 2 way communication channels between client and server
-    GET , POST method to take incoming data from client
+    GET , POST method to take incoming data from client, process and return response
     '''
     incoming_pkg = request.get_json()
    
    # if the packages come in slow, may cause issue of empty package (obj)
     while incoming_pkg is None:
-        app.logger.debug("Waiting for receiving POST package from Client ...")
+        app.logger.info("Waiting for receiving POST package from Client ...")
         time.sleep(1)
+        # this while loop is suffcient with the assumption that the server always receive some coming from client
+        # the potential issue is however, if there is no package at all, the whole web app will stuck in an 
+        # infinite loop - for future developement, better to have timeout and loop to deal with this potential risk
     
     else:
-        app.logger.error("Package from Client has been received!")
+        app.logger.info("Package from Client has been received!")
 
     img_b64_str_encoded = str(incoming_pkg['imgBase64'])
-    app.logger.error("Processing and Predicting Which Digit ...")
+    app.logger.info("Processing and Predicting Which Digit ...")
 
     prediction = int(img_predict(img_b64_str_encoded))
     response = f'{prediction}'
-    app.logger.error(jsonify(prediction=response))
+    app.logger.info(f'Received prediction :: {jsonify(prediction=response)}')
     
     return jsonify(prediction=response)
 
 # if program is run from this file ::
 if __name__ == '__main__':
     app.run(debug=True)
-    app.logger.error("FLASK SERVER is RUNNING from ROOT!")
+    app.logger.info("FLASK SERVER is running from MAIN!")
