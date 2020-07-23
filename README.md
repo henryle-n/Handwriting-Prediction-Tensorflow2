@@ -86,7 +86,9 @@ Modules/ Libraries: Flask, TensorFlow (GPU version), Pillow, Numpy, OS, JSON, ba
 
 There are several observation points we can obtain from the model. Some limitation of the models are the following: 
 
-<img src="readme_images/model_observation.PNG" width="200px"/>
+<p align="center">
+    <img src="readme_images/model_observation.PNG" width="700px"/>
+</p>
 
 a. Width of stroke: Thinner stroke line tends to make the prediction wrong. Increase in the stroke line would help the model predict more accurately. The possible reason is that the thicker the stroke, the features of the image is highlighted better. During the resize to small pixel (28 px X 28 px), the stroke is still thick enough to be recognized by the model.
 
