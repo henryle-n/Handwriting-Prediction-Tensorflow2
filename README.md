@@ -109,20 +109,13 @@ Selecting optimal parameters for kernels, strides, pooling layers, batch normali
 Add padding to help retain the input and output dimensions for ability to build a deeper network.
 Due to the sizes of the CNN (multiple layers with 20 millions parameters), we had to utilize the Graphics Procssing Unit (2560 CUDA Cores) to be able to handle the training.
 
-b. HTTP Request | AJAX: Using JavaScript Front-End to allow
+b. HTTP Request | AJAX: finding solutions on how to pack the image package from client browser in a base64 encoded string, jsonify it and send to server. Then jasonify the response from server and send it back to client computer.
 
 c. Building the Drawing Canvas: to allow for user drawing input or uploadind a pre-made digit picture. Utilizing JS with Event Listening to capture user mouse position, draw on the canvas and export in a base64 format.
 
-d. HTTP Request/ AJAX Call: we encountered challenges of how to send canvas data across the (Flask App), then run the CNN model for prediction. There were two solutions for it: saving canvas input as a picture, then uploaded to Python backend, conver
-
-
-
 
 **Future Recommendations** 
-<<<<<<< HEAD
 * Training the model. 
-=======
 1. We can train more several model with different parameter and compare prediction accuracy and evaluation accuracy. Hence, we can observe in detail what are the significant parameter that contribute to the accuracy of the model. 
 
-2. For the front end side, we can put extra button so that user can adjust the stroke and background color. 
->>>>>>> a91c44d556cd2cac07c56bbb72a6c855df0b40d2
+2. For the front end side, we can build an rgb slide bar so that user can adjust the background color and see how background color would effect the prediction. 
