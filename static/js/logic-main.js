@@ -8,7 +8,7 @@ Date: Jul, 2020
 // Declare variables
 const picFormat = "png";
 const strokeStyle = 'black'; // color of the drawing
-const lineWidth = 20; // for the thickness of the drawing
+// var lineWidth = 20; // for the thickness of the drawing
 // const lineWidth = 2; // for the thickness of the drawing
 // const lineWidth = 3; // for the thickness of the drawing
 
@@ -62,8 +62,7 @@ function submitDrawing(imgURL) {
         document.getElementById("resultPrediction")
           .innerText = JSON.parse(xhttpReq.responseText).prediction;
 
-      }
-      else {
+      } else {
         alert("WARNING :: REQUEST ERROR !!!");
       }
     }
@@ -106,8 +105,7 @@ function resetUploadFile() {
   if (uploadFile.getAttribute("type") == "file") {
     uploadFile.setAttribute("type", "");
     uploadFile.setAttribute("type", "file");
-  }
-  else {
+  } else {
     uploadFile.setAttribute("type", "file");
   }
 }
@@ -129,20 +127,18 @@ function previewFiles() {
         makeDrawing(image.src);
       }, false);
       reader.readAsDataURL(file);
-    }
-    else {
+    } else {
       alert("Invalid file extension!\nOnly accept .png | .jpeg | .jpg");
     }
   }
   if (files) {
     [].forEach.call(files, readAndPreview);
-  }
-  else {
+  } else {
     alert("This is not a file\nPlease select only .png | .jpeg | .jpg");
     uploadFile.setAttribute("type", "");
     uploadFile.setAttribute("type", "file");
 
-    
+
   }
 }
 
@@ -230,9 +226,22 @@ $(function () {
   */
   // constantly tracks user's mouse location and draws the line
   function drawLine(ctx, x1, y1, x2, y2, strS) {
+    // lineWidth = document.getElementById("stWidth").value;
+    // if (lineWidth==0) {
+    //   lineWidth = 20;
+    // }
+    // else {
+    //   lineWidth = lineWidth;
+    // }
+    var strW = document.getElementById("stWidth").value;
+    if (strW == "" || strW == null) {
+      strW = 15;
+    } else {
+      strW = strW;
+    }
     ctx.beginPath();
     ctx.strokeStyle = strS;
-    ctx.lineWidth = lineWidth;
+    ctx.lineWidth = strW;
     ctx.lineJoin = lineJoin;
     ctx.lineCap = lineCap;
     ctx.fillStyle = fillStyle
@@ -242,7 +251,7 @@ $(function () {
     ctx.closePath();
   };
   // add button and DOM events for the main page
-  btnClear.addEventListener('click',  () => {
+  btnClear.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "rgb(255, 255, 255)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -253,7 +262,8 @@ $(function () {
     document.getElementById("resultPrediction").innerHTML = ""
     tinyMe.setAttribute("class", "tiny-me-inactive");
     resetUploadFile();
- });
+    document.getElementById("stWidth").value="";
+  });
 
   // if desired, user can download the canvas 
   // the img save from these canvas are excellent to create
@@ -314,10 +324,9 @@ $(function () {
   // if not at top :: collapse navbar
   navbarCollapse();
 
-// navbar hiden when scroll
+  // navbar hiden when scroll
   $(window).scroll(navbarCollapse);
 
 
 
 })(jQuery); // End of use strict
-

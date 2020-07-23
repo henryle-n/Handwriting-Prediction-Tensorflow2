@@ -11810,4 +11810,10 @@ img#cnnarc {
     max-width: 100% ;
 }
 
+
+form#strInput {
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
  

@@ -92,12 +92,15 @@
 
 
                 <div class="flex-container">
+                    <form id="strInput">
+                        Stroke Width:
+                        <input type="text" id="stWidth">
+                    </form>
                     <button class="btn btn-outline-success my-2 my-sm-0" id='btnClear' type="button">Clear</button>
 
                     <button class="btn btn-outline-success my-2 my-sm-0" id='btnDownload'
                         type="button">Download
                     </button>
-
                     <!-- <form id="uploadForm"action=""> -->
                     <input id="input-img" type="file" onchange="previewFiles()" multiple>
                 </div>
@@ -134,7 +137,6 @@
                                     </p>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -307,25 +309,42 @@
                                             we had to utilize the Graphics Procssing Unit (2560 CUDA Cores) to be able
                                             to handle the training.
                                         </li>
+                                        <li class="proj-list">
+                                            Using TensorFlow board to show module training parameters. However, no solution found to reload the saved pretrained parameters to show on TensorBoard by Flask App.
+                                        </li>
                                     </ul>
                                 </li><br>
+
+                            </ul> <br>
+
+                            <ul id="proj-list">
                                 <li class="proj-list">
-                                    <b>HTTP Request | AJAX:</b>
-                                    Using JavaScript Front-End to allow
+                                    <b>Back-end -  Handle Response between Client and Server (XML HTTP Request):</b>
+                                    <ul id="proj-list">
+                                        <li class="proj-list">
+                                            Using a canvas in html and using JavaScript to allow user to draw on canvas and capture handwriting from the user or download image file from the user. 
+                                        </li>
+                                        <li class="proj-list">
+                                            Add padding to help retain the input and output dimensions for ability to
+                                            build a deeper network.
+                                        </li>
+                                        <li class="proj-list">
+                                            Getting image out of the canvas, then encoding images using XML HTTP and sending to server thru Flask App API Routes. Image base64 is then loaded into Python predict.py for making prediction. Final prediction is sent back to Client.                                        </li>
+                                    </ul>
                                 </li><br>
+                            </ul> <br>
+                            <ul id="proj-list">
                                 <li class="proj-list">
-                                    <b>Building the Drawing Canvas:</b> to allow for user drawing input or uploadind a
-                                    pre-made digit picture. Utilizing JS with Event Listening to capture user mouse
-                                    position, draw on the canvas and export in a base64 format.
-                                </li>
-                                <li class="proj-list">
-                                    <b>HTTP Request/ AJAX Call:</b>
-                                    we encountered challenges of how to send canvas data across the (Flask App), then
-                                    run the CNN model for prediction. There were two solutions for it:
-
-                                    saving canvas input as a picture, then uploaded to Python backend, conver
-                                </li>
-
+                                    <b>Front-end – Recycling the HTML and CSS code:</b>
+                                    <ul id="proj-list">
+                                        <li class="proj-list">
+                                            Create some problem when we format the website.                                        </li>
+                                        <li class="proj-list">
+                                            We have been testing the model and we can see how the model works and what its limitations. Because of time limitation on development path, we can only run three training models.
+                                        </li>
+                                        <li class="proj-list">
+                                            The model was training by using Tensorflow for GPU. When we installed environment in the others computer, GPU trained model has issue being load by TensorFlow CPU.                                    </ul>
+                                </li><br>
                             </ul> <br>
                         </div>
                     </div>
