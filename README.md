@@ -1,5 +1,9 @@
-# <img src="./static/assets/img/portfolio/fullsize/AI.png" height="50px" weight="50px"> Project 3 - Convolutional Neural Network
-
+<h1>
+    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="50px" weight="50px"> 
+    <div style="padding: 70px 0px; text-align: center;">
+        Project 3 - Convolutional Neural Network
+    </div>
+</h1>
 
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke
 
