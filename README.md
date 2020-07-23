@@ -24,16 +24,21 @@ Basically, Conv2D in this project works as a "scanner" to continously read and p
 
 
 
-### 2. Model Architecture
+### 2. Model Architecture and Process
+
+This is the flow of the project. 
+
+![](readme_images/process.png)
+
+<img src="readme_images/process.png" alt="" width="200" height="250">
 
 This is the sequence of layers. The input is 28x28 pixel image (both from canvas or pictures uploaded) and the output will be 10 class prediction, digit between 0 to 9. 
 
 ![](readme_images/model_architecture.png)
 
+The model summary is the following. In total, the model consists of almost 20 million parameter.  
 
-The model summary is the following: 
-
-![](readme_images/model_summary2.PNG){:height="50%" width="50%"}
+![](readme_images/model_summary2.PNG)
 
 
 
@@ -63,13 +68,14 @@ Modules/ Libraries: Flask, TensorFlow (GPU version), Pillow, Numpy, OS, JSON, ba
 
 
 
-
 ### 4. Results 
 
--The model can predict the number real time. As we add more strokes in the canvas, the more can update the prediction live. 
--The model is able to predict with several background and stroke colors. 
+-The model can predict the number real time. As we add more strokes in the canvas, the machine will update the prediction better.  
+
+-The model is able to predict the number with several background and stroke colors. 
+
 -The model can predict group of dots and doesn't have to be a continuous line. 
--The accuracy of the model 
+
 
 
 ### 5. Observation and Project Challenges
@@ -79,9 +85,9 @@ Modules/ Libraries: Flask, TensorFlow (GPU version), Pillow, Numpy, OS, JSON, ba
 
 There are several observation points we can obtain from the model. Some limitation of the models are the following: 
 
-![](readme_images/model_observation.PNG =100x200)
+![](readme_images/model_observation.PNG)
 
-a. Width of stroke: Thinner stroke line tends to make the prediction wrong. Increase the stroke line would help the model predict more accurately. The possible reason is that the thicker the stroke, the features of the image is highlighted better. During the resize to small pixel (28 px X 28 px), the stroke is still thick enough to be recognized by the model.
+a. Width of stroke: Thinner stroke line tends to make the prediction wrong. Increase in the stroke line would help the model predict more accurately. The possible reason is that the thicker the stroke, the features of the image is highlighted better. During the resize to small pixel (28 px X 28 px), the stroke is still thick enough to be recognized by the model.
 
 b. Color contrast: CNN distinguish the difference based on saturation difference between background and stroke color. Stroke color doesn't have much effect on the prediction as much as the background does. Background color have significant effect on the prediction. As the background gets closer to the black, the model failed to predict accurately. In contrast, shallow neural network has limitation in recognizing stroke color and background.
 
@@ -90,6 +96,8 @@ Number 9 is challenging to recognize in with this particular train model, which 
 The original snipped file would be predicted more accurately if the image has width == height. This is due to the fact that the MNIST dataset has width == height, thus the trained model weight matrices retain the same shape.
 
 d. Model-related observation: Re-training model has potential of changing the prediction, i.e. first model predicted right, then next rerun predict number wrong.
+
+e. Ratio between image size and canvas size: The smaller the image, the more difficult it is to predict the number. 
 
 
 
@@ -110,4 +118,6 @@ d. HTTP Request/ AJAX Call: we encountered challenges of how to send canvas data
 
 
 **Future Recommendations** 
-- Training the model. 
+1. We can train more several model with different parameter and compare prediction accuracy and evaluation accuracy. Hence, we can observe in detail what are the significant parameter that contribute to the accuracy of the model. 
+
+2. For the front end side, we can put extra button so that user can adjust the stroke and background color. 
