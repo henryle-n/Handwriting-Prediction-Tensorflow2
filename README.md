@@ -1,4 +1,4 @@
-# Project 3 - Convolutional Neural Network
+# <img src="./static/assets/img/portfolio/fullsize/AI.png" height="50px" weight="50px"> Project 3 - Convolutional Neural Network
 
 
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke
