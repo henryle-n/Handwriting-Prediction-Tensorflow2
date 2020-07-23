@@ -6,9 +6,11 @@ Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke
 Data Analytics Bootcamp - Rice University
 
 
-Web Link 
+<a href="#">Click here for our website</a>
 
-
+<p align="center">
+    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="100px" weight="100px">
+</p>
 
 ### 1. Background 
 
@@ -23,7 +25,7 @@ Basically, Conv2D in this project works as a "scanner" to continously read and p
 **Why we chose CNN:** CNN was chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense Networks.
 
 
-
+****
 ### 2. Model Architecture
 
 This is the sequence of layers. The input is 28x28 pixel image (both from canvas or pictures uploaded) and the output will be 10 class prediction, digit between 0 to 9. 
@@ -34,6 +36,23 @@ This is the sequence of layers. The input is 28x28 pixel image (both from canvas
 The model summary is the following: 
 
 ![](readme_images/model_summary2.PNG){:height="50%" width="50%"}
+
+```
+<a href="#">Click here for our website</a>
+
+<p align="center">
+    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="100px" weight="100px">
+</p>
+```
+
+Col 1 | Col 2 | Col 3 | col 4
+------|------|------|-----
+row 1.0 | row1.1 | row1.2 |  row1.3
+row 2.0 | row2.1 | row2.2 |  row2.3
+
+* This is my first bullet
+    * this is my subbullet
+        * this is my sub sub bullet
 
 
 
@@ -110,4 +129,4 @@ d. HTTP Request/ AJAX Call: we encountered challenges of how to send canvas data
 
 
 **Future Recommendations** 
-- Training the model. 
+* Training the model. 
