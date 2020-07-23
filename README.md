@@ -1,8 +1,4 @@
-<h1>
-
-<div><img style="display: inline; margin: 0 0; vertical-align: middle; padding-right: 10px" src="./static/assets/img/portfolio/fullsize/AI.png" height="70px" weight="70px">Project 3 - Convolutional Neural Network</div>
-
-</h1>
+<h1><div><img style="vertical-align: middle; padding-right: 10px" src="./static/assets/img/portfolio/fullsize/AI.png" height="70px" weight="70px">Project 3 - Convolutional Neural Network</div></h1>
 
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke
 
@@ -10,10 +6,6 @@ Data Analytics Bootcamp - Rice University
 
 
 <a href="#">Click here for our website</a>
-
-<p align="center">
-    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="200px" weight="200px">
-</p>
 
 ### 1. Background 
 
