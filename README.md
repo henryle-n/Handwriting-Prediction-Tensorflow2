@@ -1,6 +1,8 @@
 <h1>
-    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="50px" weight="50px" style="display:inline"> 
+    
     <div style="padding: 70px 0px; text-align: center;">
+    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="50px" weight="50px" style="display:inline"> 
+    
         Project 3 - Convolutional Neural Network
     </div>
 </h1>
