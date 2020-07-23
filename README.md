@@ -9,7 +9,7 @@ Data Analytics Bootcamp - Rice University
 <a href="#">Click here for our website</a>
 
 <p align="center">
-    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="100px" weight="100px">
+    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="200px" weight="200px">
 </p>
 
 ### 1. Background 
