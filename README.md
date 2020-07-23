@@ -31,9 +31,9 @@ Basically, Conv2D in this project works as a "scanner" to continously read and p
 
 This is the flow of the project. 
 
-![](readme_images/process.png)
 
-<img src="readme_images/process.png" alt="" width="200" height="250">
+
+<img src="readme_images/process.png" alt="please go to image folder for this pic">
 
 This is the sequence of layers. The input is 28x28 pixel image (both from canvas or pictures uploaded) and the output will be 10 class prediction, digit between 0 to 9. 
 
@@ -42,25 +42,6 @@ This is the sequence of layers. The input is 28x28 pixel image (both from canvas
 The model summary is the following. In total, the model consists of almost 20 million parameter.  
 
 ![](readme_images/model_summary2.PNG)
-
-```
-<a href="#">Click here for our website</a>
-
-<p align="center">
-    <img src="./static/assets/img/portfolio/fullsize/AI.png" height="100px" weight="100px">
-</p>
-```
-
-Col 1 | Col 2 | Col 3 | col 4
-------|------|------|-----
-row 1.0 | row1.1 | row1.2 |  row1.3
-row 2.0 | row2.1 | row2.2 |  row2.3
-
-* This is my first bullet
-    * this is my subbullet
-        * this is my sub sub bullet
-
-
 
 ### 3. File Directory
 
