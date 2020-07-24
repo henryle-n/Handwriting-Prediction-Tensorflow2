@@ -1,0 +1,11 @@
+cnntfg
+.dockerignore
+
+entrypoint.py
+__pycache__
+.vscode
+debug
+.debug
+.log
+Link-to-trained-model.txt
+readme
