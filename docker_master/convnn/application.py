@@ -63,6 +63,6 @@ def predict():
 
 # if program is run from this file ::
 if __name__ == '__main__':
-    # app.run(host='0.0.0.0', debug=True)
-    app.run(debug=True)
+    app.run(host='0.0.0.0') #, debug=True)
+    # app.run(debug=True) # comment this out if run docker container
     app.logger.info("FLASK SERVER is running from MAIN!")

@@ -15,9 +15,11 @@ WORKDIR /usr/src/app
 # install and add layers on top of base img
 # dependencies to update distro and install netcat
 # for reading and writing data across connected servers
-RUN apt-get update && apt-get -y dist-upgrade && \
-    apt install -y netcat 
+RUN apt-get update && apt-get -y dist-upgrade 
+# && \
+   # apt install -y netcat 
 
+RUN pip install --upgrade pip
 
 # add and install requirements for the env
 COPY ./requirements.txt /usr/src/app/requirements.txt
@@ -34,4 +36,4 @@ COPY . /usr/src/app
 # inside entrypoint is the application.py
 # need to run the file by CMD to spin up the server
 # in this case, no additional params needed - fairly straight forward
-CMD ["/usr/src/app/entrypoint.sh"]
+CMD ["bash", "/usr/src/app/entrypoint.sh"]
