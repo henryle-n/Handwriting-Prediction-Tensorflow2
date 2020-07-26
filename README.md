@@ -1,11 +1,9 @@
 # Convolutional Neural Network | Hand Written Digit Prediction</div>
 
-Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke
-
-Data Analytics Bootcamp - Rice University
+Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 
-<a href="#">Click here for our website</a>
+<a href="http://3.20.237.129/">**Click here**</a> for our website hosted on AWS EC2 for demo.
 
 ### 1. Background 
 
@@ -26,16 +24,16 @@ Basically, Conv2D in this project works as a "scanner" to continously read and p
 
 This is the flow of the project. 
 
-<img src="readme_images/process.png" alt="please go to image folder for this pic">
+<img src="./static/assets/img/readme/model_architecture.png" alt="please go to image folder for this pic">
 
 This is the sequence of layers. The input is 28x28 pixel image (both from canvas or pictures uploaded) and the output will be 10 class prediction, digit between 0 to 9. 
 
-![](readme_images/model_architecture.png)
+![](./static/assets/img/readmemodel_architecture.png)
 
 The model summary is the following. In total, the model consists of almost 20 million parameter.  
 
 <p align="center">
-    <img src="readme_images/model_summary2.PNG" alt="please go to image folder for this pic" width="600px">
+    <img src="./static/assets/img/readme/model_summary2.PNG" alt="please go to image folder for this pic" width="600px">
 </p>
 
 ### 3. File Directory
@@ -82,7 +80,7 @@ Modules/ Libraries: Flask, TensorFlow (GPU version), Pillow, Numpy, OS, JSON, ba
 There are several observation points we can obtain from the model. Some limitation of the models are the following: 
 
 <p align="center">
-    <img src="readme_images/model_observation.PNG" width="400px"/>
+    <img src="./static/assets/img/readme/model_observation.PNG" width="400px"/>
 </p>
 
 a. Width of stroke: Thinner stroke line tends to make the prediction wrong. Increase in the stroke line would help the model predict more accurately. The possible reason is that the thicker the stroke, the features of the image is highlighted better. During the resize to small pixel (28 px X 28 px), the stroke is still thick enough to be recognized by the model.

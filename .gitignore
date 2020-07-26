@@ -9,6 +9,7 @@ cnntfg.zip
 __pycache__/
 *.py[cod]
 *$py.class
+docker_images
 
 # C extensions
 *.so
