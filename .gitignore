@@ -5,11 +5,13 @@ cnntfg
 cnntfgg
 cnntfgg.zip
 cnntfg.zip
+EC2AWS.bat
+docker_images
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-docker_images
+
 
 # C extensions
 *.so
