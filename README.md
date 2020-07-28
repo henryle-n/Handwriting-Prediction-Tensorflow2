@@ -51,7 +51,7 @@ In this project, we took Machine Learning out of its traditional way into more s
 
 * Docker Folder: consists of **Dockerfiles** and **Docker Compose** to be used for Docker Image and Container Creation and hosting on AWS EC2.
 
-## 5. Tools/ Techniques & Technologies**  
+## 5. Tools/ Techniques & Technologies
 * **Languages:**
     *  Python | Javascript | HTML5 |  CSS3 | Markdown
 * **Modules/ Libraries:**
