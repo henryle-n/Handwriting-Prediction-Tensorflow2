@@ -6,13 +6,15 @@ Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 ## 1. Background 
 
-**Project Background:** Machine Learning Technologies have been rapidly developed in the last decade. This advancement allows model predictions to be exponentially more accurate.
+Machine Learning Technologies have been rapidly developed in the last decade. This advancement allows model predictions to be exponentially more accurate.
 
-In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writting but also allowing human to understand how the machine learned and thus can make the prediction thanks to the real-time interaction developed.
+In this project, Machine Learning was taken out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with the widely-known effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writtings but also allowing human to understand how the machine learns and how predictions are made in a certain way, thanks to the real-time interaction and prediction developed in this project.
 
-<img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic">
+<div align="center">
+    <img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic">
+</div>
 
-## 2. The Question Why
+## 2. The Questions... Why
 
 * **Why image prediction?** Facial Recognition and Object Detection have always been a tremendous inspiration for the team. The curiosity of how these are even possible brought the team together for making great things happened in this project.
 
