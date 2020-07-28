@@ -41,7 +41,7 @@ In this project, Machine Learning was taken out of its traditional way into more
 ### Image "Reading" by PC
 When human is reading a number, the eyes see black ink (or any color) on a black or color paper. When PC is reading an image, all it sees is a matrix of numbers, i.e. pixel values, or rgb values. As a quick illustration below, created from a simple Excel spreadsheet with conditional formating to color cells that have values of 1 and leave white (blank) wherever zero exists. Not 0 and 1 can be understood as binary or can be a nomalize rgb by deviding value to 255. Either case, same concept.
 
-<img src="./static/assets/img/porfolio/fullsize/num4-grid-demo.png" alt="please go to image folder for this pic">
+<img src="./static/assets/img/portfolio/fullsize/num4-grid-demo.png" alt="please go to image folder for this pic">
 
 
 
