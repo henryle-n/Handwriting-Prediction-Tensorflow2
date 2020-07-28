@@ -41,7 +41,7 @@ In this project, Machine Learning was taken out of its traditional way into more
     * 2 Dense layers with Drop-out features to again prevent overfitting and speed up model training.
 
 ### Image "Reading" by PC
-When human is reading a number, the eyes see black ink (or any color) on a black or color paper. When PC is reading an image, all it sees is a matrix of numbers, i.e. pixel values, or rgb values. As a quick illustration below, created from a simple Excel spreadsheet with conditional formating to color cells that have values of 1 and leave white (blank) wherever zero exists. Not 0 and 1 can be understood as binary or can be a nomalize rgb by deviding value to 255. Either case, same concept.
+When human is reading a number, the eyes see black ink (or any color) on a black or color paper. When PC is reading an image, all it sees is a matrix of numbers, i.e. pixel values, or rgb values. As a quick illustration below, created from a simple Excel spreadsheet with conditional formating to color cells that have values of 1 and leave white (blank) wherever zero exists. Note that 0 and 1 can be understood as binary or can be a nomalized rgb values (dividing the values by 255). Either case, same concept.
 
 <div align="center">
     <img src="./static/assets/img/portfolio/fullsize/num4-grid-demo.png" alt="please go to image folder for this pic" width=350px height=350px>
@@ -121,3 +121,16 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 * **Utilizing more advanced techniques:** Isolation block technique can be used to first identify where the digit is on the canvas, then cut that section off from canvas, eliminate all noises (white space background), add small padding, center the image before feed through the model. This would help eliminate issue with canvas/ digit area ratio or even mismatch between width and height.
 
 * **Small screens:** Currently, the CSS format in this project is working only on screens that are larger than 13". Future developement would needs to use `@media ` query to adjust elements to work well with smaller screens like that of tablets or cellphones.
+
+## 9. How to use this repository
+* Clone the repository down to local PC.
+* If running on local PC without using Docker Containers:
+    * Create new environment and install modules/ packages needed from **requirements.txt**.
+    * Activate the environment, go to **Docker Master**, then to **convnn**.
+    * In the **application.py** file, delete `host=0.0.0.0`, save the file.
+    * When Flask "mini-server" is up and running, program is accessed via `http://127.0.0.1:5000/` (default flask).
+* If running by Docker Container:
+    * Go to **Docker Master**.
+    * No need to delete `host=0.0.0.0`.
+    * Run command `docker-compose up -d --build`.
+    * Since Docker **nginx** is configured to reroute port 80 to localhost, program can be accessed thru web browser with simple address `localhost`.
