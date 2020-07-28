@@ -83,28 +83,26 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 * **Input Image Dimensions:** If user chooses to upload a pre-made image, if the input width and height are not the same, i.e. not a square image, the model tends to make inaccurate prediction. Because the processed image for prediction is a perfect square of 28x28px, during the processing, if `width !== height`, image will be distorted, which leads to feature changes between original user upload and processed image. 
 
-* **Image vs. Canvas Ratio:** The threshold is around 25-30%, i.e. the number has to occupy about 25-30% of the canvas surface area for a good prediction. As after being resized to even smaller 28px square, the number would become so small that is challenging for the model to predict.
+* **Image vs. Canvas Ratio:** The threshold is around 25-30%, i.e. the number has to occupy about 25-30% of the canvas surface area for a good prediction. As after being resized to even smaller 28px square, the number would become so small that is challenging for the model to effectively highlight the features for prediction. 
 
-d. Model-related observation: Re-training model has potential of changing the prediction, i.e. first model predicted right, then next rerun predict number wrong.
+**Model-related limitation:** Re-training model has potential of changing the prediction, i.e. first model predicts right, then next rerun predicts number wrong.
 
- 
+## 6. Project Challenges** 
 
+* **Building CNN Model:** 
+    * Selecting optimal parameters for kernels, strides, pooling layers, batch normalization and drop-outs to mitigate over fitting, and accelerate model coverging was just mere trials and errors, and very subjective to the designer. However, after following recommendations from Dr. Jon Krohn in one of his articles, team was successfully picking parameters.
+    * Padding was added to help retain dimensions of outputs to build a deeper network.
 
+* **Hardware for Model Training:** due to multiple layers with 20 millions parameters, a Graphics Processing Unit (2560 CUDA Cores) was employed together with a Central Processing Unit (CPU Quad-core) to be able to handle the training efficiently. GPU could get the model trained (5 epochs) within 2 minutes while CPU would take 2.5 hours.
 
-**Project Challenges** 
+* **AJAX:** team encountered the challenge of how to transform pixel image data in rgb values to something more "server" friendly. Base64 encoding was chosen. Then solving the challenge of how to pack the base64, sent to server and request reponse with prediction. It was a complex process that the solutions included functional oritented programming together with object oritented programming to make the seemingly impossible at first be possible.
 
-a. Building CNN Model:
-Selecting optimal parameters for kernels, strides, pooling layers, batch normalization and drop-outs to mitigate over fitting, and accelerate model coverging.
-Add padding to help retain the input and output dimensions for ability to build a deeper network.
-Due to the sizes of the CNN (multiple layers with 20 millions parameters), we had to utilize the Graphics Processing Unit (2560 CUDA Cores) to be able to handle the training.
+* **Canvas Creation:** the first challenge of front-end was to make a canvas that is versatile enough to either allow user drawing directly on or display uploaded image. Multiple techniques were employed including mouse event listener, canvas draw function, new image upload event listener, automation programming to trigger corresponding functions for sending and receiving prediction from server.
 
-b. HTTP Request | AJAX: finding solutions on how to pack the image package from client browser in a base64 encoded string, jsonify it and send to server. Then jasonify the response from server and send it back to client computer.
+## 7. Future Developement Opportunity
+* **RGB Sliders:** For user to observe how the canvas parameters: stroke color, background color could potentially affect the prediction, a couple of RGB sliders can be created to enhance interation/ user experience. User can play with different color of background and stroke and see how that would affect the model prediction.
 
-c. Building the Drawing Canvas: to allow for user drawing input or uploadind a pre-made digit picture. Utilizing JS with Event Listening to capture user mouse position, draw on the canvas and export in a base64 format.
+* **Create new dataset:** The limitations stated above could be solved if a training dataset has larger iamge dimensions. A new dataset could be easily created from the canvas, downloaded, classified and feed into the network. Also, instead of grayscale, RGB mode could be used for training the model - which can help eliminate problem with canvas colors.
 
+* **Utilizing more advanced techniques:** Container / Isolation can be use to first identify where the digit is on the canvas, then cut that section off from canvas, eliminate all noise (white space background), center the image before feed through the model. Would help eliminate issue with canvas/ number ratio or mismatched width and height.
 
-**Future Recommendations** 
-* Training the model. 
-1. We can train more several model with different parameter and compare prediction accuracy and evaluation accuracy. Hence, we can observe in detail what are the significant parameter that contribute to the accuracy of the model. 
-
-2. For the front end side, we can build an rgb slide bar so that user can adjust the background color and see how background color would effect the prediction. 
