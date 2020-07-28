@@ -5,61 +5,67 @@ Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 <a href="http://3.20.237.129/">**Click here**</a> for our website hosted on AWS EC2 for demo.
 
-### 1. Background 
+## 1. Background 
 
 **Project Background:** Machine Learning Technologies have been rapidly developed in the last decade. This advancement allows model predictions to be exponentially more accurate.
-In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writting but also allowing human to understand how the machine learned and make the prediction thanks to the real-time interaction developed.
+
+In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writting but also allowing human to understand how the machine learned and thus can make the prediction thanks to the real-time interaction developed.
 
 
 <img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic">
 
-CNN & Dense were chosen for its proven accurate predictions up to 98% with just a few layers and epochs.
-Basically, Conv2D in this project works as a "scanner" to continously read and processed image pixels, highlight features of each digit in the 2D space intead of 1D as the Dense network, which is better and more common for analyzing visual imagery.
 
-**Why we chose image prediction:** We are interested to learn more about how image processing works. 
+## 2. The Question Why
 
-**Data Source:** MINST Dataset. Link:  http://yann.lecun.com/exdb/mnist/
-
-**Why we chose CNN:** CNN was chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense Networks.
+* **Why image prediction?** Facial Recognition and Object Detection have always been a tremendous inspiration for the team. The curiosity of how these are even possible brought the team together for making great things happened in this project.
 
 
-****
+* **Why CNN?** CNN was chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense Networks, within 5 training epochs. The power of CNN lies within its capability to "scan" the image in 2D instead of 1D space (comparing to Dense Network). Together with Dense Network, CNN creates the unmatchable model for any image prediction/ classification.
 
-### 2. Model Architecture and Process
 
-This is the flow of the project. 
+## 3. Model Architecture and Training Process
+* Dataset chosen for training: MNIST dataset, thanks to Prof. Yann LeCun. Dataset was loaded from Keras database.
+* The input consists of 60,000 28x28 pixel images of handwritten digits. Each of the image features will be learned by the deep learning model that is built based on convolutional block concepts. The output consists of 10 digit classifications, which are from 0 to 9. 
 
 <img src="./static/assets/img/readme/model_architecture.png" alt="please go to image folder for this pic">
 
-This is the sequence of layers. The input is 28x28 pixel image (both from canvas or pictures uploaded) and the output will be 10 class prediction, digit between 0 to 9. 
-
-The model summary is the following. In total, the model consists of approx. 20 million parameter.  
-
+* A closer look at the model:
+    * 4 blocks of Conv2D
+        * 2 layers per block: 8 layers total.
+        * Batch Normalization and Max Pooling per block to prevent overfitting and accelerate training speed.
+    * 2 Dense layers with Drop-out features to again prevent overfitting and speed up model training.
 
 ### 3. File Directory
 
-HTML File is located inside `templates` folder with `index.html` as the main page.
+* Main webpage written in HTML: inside **templates** folder, named **index.html**.
 
-Javascript is located insider `static/js` folder
+* Javascript (driving Canvas and AJAX): in **static/js** folder
 
-CSS and style-related files are located inside `static/css`
+* CSS and style-related: in  **static/css**
 
-Flask API located in `application.py` `predict.py` in main folder
+* Flask App and Prediction: named **application.py**,  **predict.py**
 
-CNN Model is `CNN-Blocks-Training.ipynb`in main folder
+* Jupyter Notebooks used during training/ developement in the same name folder.
 
-CNN Model is `Convolutional-NN/logs/deepCNN/20200718_HL/`
+* During training, CNN parameters were logged and saved **Convolutional-NN/logs/deepCNN/20200718_HL/**
 
-Images and thumbnail files will be under `static/img`
+* Images and thumbnail: in **static/img**
 
-Link to the website 
+* Docker Folder: consists **Dockerfiles** and **Docker Compose** to be used for Docker Image and Container Creation and hosting on AWS EC2. 
 
 
-**Technology Applied**  
+**Tools and Technologies**  
 
-Languages: Python, Javascript, HTML/ CSS, Markdown.
-Modules/ Libraries: Flask, TensorFlow 2 (GPU version), Pillow, Numpy, OS, JSON, base64. jQuery.
-
+* **Languages:**
+    *  Python | Javascript | HTML5 |  CSS3 | Markdown
+* **Modules/ Libraries:**
+    * Flask | TensorFlow 2 (GPU version) | Pillow | Numpy | JSON | base64 | jQuery | NGINX (engine-X)
+* **Operating System:**
+    * Windows 10 Pro v.2004 with WSL2 | Ubuntu 20.04 | MacOS Mojave
+* **DevOps:**
+    * Docker Containers | AWS EC2
+* **Applications/ Software**
+    * Visual Studio Code | Windows Terminal | AWS CLI | Notepad++ | Excel (image illustration) | Google Chrome | Google Drive
 
 
 ### 4. Results 
