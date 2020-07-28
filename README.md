@@ -64,11 +64,11 @@ In this project, we took Machine Learning out of its traditional way into more s
     * Visual Studio Code | Windows Terminal | AWS CLI | Notepad++ | Excel (image illustration) | Google Chrome | Google Drive
 
 ## 6. Model Strengths and Limitations
-### Strength
+### Strengths
 * **Realtime prediction:**  as soon as a stroke made on canvas, the machine will make prediction. Every new stroke added to the canvas would increases the accuracy of prediction.
-* **Stroke type:** stroke on canvas doesn't have to be continuous line. Works with dotted line, too!
+* **Stroke type:** stroke on canvas doesn't have to be a continuous line. Works with dotted line, too!
 * **Centerness:** digit drawn doesn't have to be centered; can be offset, althought in the MNIST dataset, numbers were all centered.
-* **Stroke colors:** Stroke can be in red, green, blue, dark orange - doesn't have to be black.
+* **Stroke colors:** stroke can be in red, green, blue, dark orange - doesn't have to be black.
 * **Background colors:** works with light color backgrounds such as light green, yellow, light pink, etc.
 
 ### Limitations
