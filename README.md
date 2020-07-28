@@ -21,10 +21,13 @@ In this project, Machine Learning was taken out of its traditional way into more
 * **Why CNN?** CNN was chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense Networks, within 5 training epochs. The power of CNN lies within its capability to "scan" the image in 2D instead of 1D space (comparing to Dense Network). Together with Dense Network, CNN creates the unmatchable model for any image prediction/ classification.
 
 ## 3. Training Data, Model Architecture and Training Process
-* Dataset chosen for training: MNIST dataset, thanks to Prof. Yann LeCun. Dataset was loaded from Keras database.
-    * 60,000 28x28 pixel images of handwritten digits used for training, 10,000 of same size for validation. Total 70,000 images.
-    * All digits were centered in the frame.
-    * Perfect white background (rgb(255, 255, 255)) and black stroke (small gray mixed, rgb(0, 0, 0))
+### Dataset
+* MNIST dataset, thanks to Prof. Yann LeCun. Dataset was loaded from Keras built-in database.
+* 60,000 28x28 pixel images of handwritten digits used for training, 10,000 of same size for validation. Total 70,000 images.
+* All digits were centered in the frame.
+* Perfect white background (rgb(255, 255, 255)) and black stroke (small gray mixed, rgb(0, 0, 0))
+
+### Model Training
 * Each of the image features will be processed thru the network that is built based on convolutional block concepts (2+ Conv2D, Batch Normalization, Max Pooling in each block). The output consists of 10 digit classifications, which are from 0 to 9. 
 
 <img src="./static/assets/img/readme/model_architecture.png" alt="please go to image folder for this pic">
@@ -34,6 +37,13 @@ In this project, Machine Learning was taken out of its traditional way into more
         * 2 layers per block: 8 layers total.
         * Batch Normalization and Max Pooling per block to prevent overfitting and accelerate training speed.
     * 2 Dense layers with Drop-out features to again prevent overfitting and speed up model training.
+
+### Image "Reading" by PC
+When human is reading a number, the eyes see black ink (or any color) on a black or color paper. When PC is reading an image, all it sees is a matrix of numbers, i.e. pixel values, or rgb values. As a quick illustration below, created from a simple Excel spreadsheet with conditional formating to color cells that have values of 1 and leave white (blank) wherever zero exists. Not 0 and 1 can be understood as binary or can be a nomalize rgb by deviding value to 255. Either case, same concept.
+
+<img src="./static/assets/img/porfolio/fullsize/num4-grid-demo.png" alt="please go to image folder for this pic">
+
+
 
 ## 4. File Directory
 
@@ -107,3 +117,4 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 * **Utilizing more advanced techniques:** Isolation block technique can be used to first identify where the digit is on the canvas, then cut that section off from canvas, eliminate all noises (white space background), add small padding, center the image before feed through the model. This would help eliminate issue with canvas/ digit area ratio or even mismatch between width and height.
 
+* **Small screens:** Currently, the CSS format in this project is working only on screens that are larger than 13". Future developement would needs to use `@media ` query to adjust elements to work well with smaller screens like that of tablets or cellphones.
