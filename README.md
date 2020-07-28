@@ -89,7 +89,7 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 ## 7. Project Challenges
 
 * **CNN Design:** 
-    * Selecting optimal parameters for kernels, strides, pooling layers, batch normalization and drop-outs to mitigate over fitting, and accelerate model coverging was just mere trials and errors, and very subjective to the designer. However, after following recommendations from Dr. Jon Krohn in one of his articles, team was successfully picking parameters.
+    * Selecting optimal parameters for kernels, strides, pooling layers, batch normalization and drop-outs to mitigate over fitting, and accelerate model coverging was just mere trials and errors, and very subjective to the designer. However, after following recommendations from Dr. Jon Krohn in one of his articles, team successfully selected optimal parameters afters some minor tweaks.
     * Padding was added to help retain dimensions of outputs to build a deeper network.
 
 * **Hardware for Model Training:** due to multiple layers with 20 millions parameters, a Graphics Processing Unit (2560 CUDA Cores) was employed together with a Central Processing Unit (CPU Quad-core) to be able to handle the training efficiently. GPU could get the model trained (5 epochs) within 2 minutes while CPU would take 2.5 hours.
