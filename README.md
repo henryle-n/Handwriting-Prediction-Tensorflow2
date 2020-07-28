@@ -86,9 +86,9 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 **Model-related limitation:** Re-training model has potential of changing the prediction, i.e. first model predicts right, then next rerun predicts number wrong.
 
-## 7. Project Challenges** 
+## 7. Project Challenges
 
-* **Building CNN Model:** 
+* **CNN Design:** 
     * Selecting optimal parameters for kernels, strides, pooling layers, batch normalization and drop-outs to mitigate over fitting, and accelerate model coverging was just mere trials and errors, and very subjective to the designer. However, after following recommendations from Dr. Jon Krohn in one of his articles, team was successfully picking parameters.
     * Padding was added to help retain dimensions of outputs to build a deeper network.
 
