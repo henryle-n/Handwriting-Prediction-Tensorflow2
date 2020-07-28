@@ -1,0 +1,19 @@
+#test_Canvas {
+    width: 150px;
+    height: 150px;
+    border: 1px;
+    border-color: black;
+    background-color: rgb(255,255,255);
+    border-style: double;
+}
+/* SHIFT + ALT + DOWN ARROW : QUICK COPY */
+/* ALT + UP or DOWN ARROW TO MOVE LINES */
+#test_canvasImg {
+    width: 28px;
+    height: 28px;
+    border: 1px;
+    border-color: black;
+    background-color: rgb(255,255,255);
+    border-style: dashed;
+}
+                        
