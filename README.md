@@ -103,5 +103,5 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 * **Create new dataset:** The limitations stated above could be solved if a training dataset has larger iamge dimensions. A new dataset could be easily created from the canvas, downloaded, classified and feed into the network. Also, instead of grayscale, RGB mode could be used for training the model - which can help eliminate problem with canvas colors.
 
-* **Utilizing more advanced techniques:** Container / Isolation can be use to first identify where the digit is on the canvas, then cut that section off from canvas, eliminate all noise (white space background), center the image before feed through the model. Would help eliminate issue with canvas/ number ratio or mismatched width and height.
+* **Utilizing more advanced techniques:** Isolation block technique can be used to first identify where the digit is on the canvas, then cut that section off from canvas, eliminate all noises (white space background), add small padding, center the image before feed through the model. This would help eliminate issue with canvas/ digit area ratio or even mismatch between width and height.
 
