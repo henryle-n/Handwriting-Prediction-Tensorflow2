@@ -2,7 +2,6 @@
 
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
-
 <a href="http://3.20.237.129/">**Click here**</a> for our website hosted on AWS EC2 for demo.
 
 ## 1. Background 
@@ -11,31 +10,30 @@ Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writting but also allowing human to understand how the machine learned and thus can make the prediction thanks to the real-time interaction developed.
 
-
 <img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic">
-
 
 ## 2. The Question Why
 
 * **Why image prediction?** Facial Recognition and Object Detection have always been a tremendous inspiration for the team. The curiosity of how these are even possible brought the team together for making great things happened in this project.
 
-
 * **Why CNN?** CNN was chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense Networks, within 5 training epochs. The power of CNN lies within its capability to "scan" the image in 2D instead of 1D space (comparing to Dense Network). Together with Dense Network, CNN creates the unmatchable model for any image prediction/ classification.
 
-
-## 3. Model Architecture and Training Process
+## 3. Training Data, Model Architecture and Training Process
 * Dataset chosen for training: MNIST dataset, thanks to Prof. Yann LeCun. Dataset was loaded from Keras database.
-* The input consists of 60,000 28x28 pixel images of handwritten digits. Each of the image features will be learned by the deep learning model that is built based on convolutional block concepts. The output consists of 10 digit classifications, which are from 0 to 9. 
+    * 60,000 28x28 pixel images of handwritten digits used for training, 10,000 of same size for validation. Total 70,000 images.
+    * All digits were centered in the frame
+    * Perfect white background (rgb(255,255,255)) and black stroke (small gray mixed, rgb(0, 0, 0))
+* Each of the image features will be processed through by the deep learning model that is built based on convolutional block concepts. The output consists of 10 digit classifications, which are from 0 to 9. 
 
 <img src="./static/assets/img/readme/model_architecture.png" alt="please go to image folder for this pic">
 
-* A closer look at the model:
+* A closer look at the block model concept:
     * 4 blocks of Conv2D
         * 2 layers per block: 8 layers total.
         * Batch Normalization and Max Pooling per block to prevent overfitting and accelerate training speed.
     * 2 Dense layers with Drop-out features to again prevent overfitting and speed up model training.
 
-### 3. File Directory
+## 4. File Directory
 
 * Main webpage written in HTML: inside **templates** folder, named **index.html**.
 
@@ -51,8 +49,7 @@ In this project, we took Machine Learning out of its traditional way into more s
 
 * Images and thumbnail: in **static/img**
 
-* Docker Folder: consists **Dockerfiles** and **Docker Compose** to be used for Docker Image and Container Creation and hosting on AWS EC2. 
-
+* Docker Folder: consists of **Dockerfiles** and **Docker Compose** to be used for Docker Image and Container Creation and hosting on AWS EC2.
 
 **Tools and Technologies**  
 
@@ -67,39 +64,30 @@ In this project, we took Machine Learning out of its traditional way into more s
 * **Applications/ Software**
     * Visual Studio Code | Windows Terminal | AWS CLI | Notepad++ | Excel (image illustration) | Google Chrome | Google Drive
 
+## 5. Model Strengths and Limitations
+### Strength
+* **Realtime prediction:**  as soon as a stroke made on canvas, the machine will make prediction. Every new stroke added to the canvas would increases the accuracy of prediction.
+* **Stroke type:** stroke on canvas doesn't have to be continuous line. Works with dotted line, too!
+* **Centerness:** digit drawn doesn't have to be centered; can be offset, althought in the MNIST dataset, numbers were all centered.
+* **Stroke colors:** Stroke can be in red, green, blue, dark orange - doesn't have to be black.
+* **Background colors:** works with light color backgrounds such as light green, yellow, light pink, etc.
 
-### 4. Results 
+### Limitations
+In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7x6.7cm || 2.6x2.6in) for user convenience. It's almost impossible to draw on a canvas that is 28x28px (0.8x0.8cm || 0.3x0.3in). Then this enlarged 300px canvas will then be resized to correct size of 28px. This process leads to some limitaions as below:
 
--The model can predict the number real time. As we add more strokes in the canvas, the machine will update the prediction better.  
+* **Width of stroke:** Thinner stroke tends to make wrong prediction. The threshold for stroke width is around 2-3px. The reason is that a 2px stroke on a 300px canvas after get compressed on 28px canvas would become a 0.19px stroke! At this resolution, it is quite challenging for the model to highlight the input features enough for the prediction.
 
--The model is able to predict the number with several background and stroke colors. 
+* **Background & Stroke Colors:** As mentioned above, the input dataset was built on white background and blackstroke. Thus, the more extreme deviation from the original training colors would make the prediction incorrectly. For instance, model would fail to predict on black or near black background or with white or near white (bright) stroke. Yellow backgound or blue stroke would be fine however as these are not at the extreme opposite of either.
 
--The model can predict group of dots and doesn't have to be a continuous line. 
+* **Number 9 prediction:** number 9 is the most challenging to recognize in with this particular train model, which predicts more 4 and 7 more often than the correct number 9. A closer inspection on the MNIST dataset, the team found that 4, 7, 9 shares lots of common patterns of diagonal and horizontal lines! If the "belly" or circle on 9 is not rounded, chances are it is 7 per model. Or if the leg of 9 is straight down (not slanted), again number 7 instead of 9.
 
+* **Input Image Dimensions:** If user chooses to upload a pre-made image, if the input width and height are not the same, i.e. not a square image, the model tends to make inaccurate prediction. Because the processed image for prediction is a perfect square of 28x28px, during the processing, if `width !== height`, image will be distorted, which leads to feature changes between original user upload and processed image. 
 
-
-### 5. Observation and Project Challenges
-
-
-**Model Observation** 
-
-There are several observation points we can obtain from the model. Some limitation of the models are the following: 
-
-<p align="center">
-    <img src="./static/assets/img/readme/model_observation.PNG" width="400px"/>
-</p>
-
-a. Width of stroke: Thinner stroke line tends to make the prediction wrong. Increase in the stroke line would help the model predict more accurately. The possible reason is that the thicker the stroke, the features of the image is highlighted better. During the resize to small pixel (28 px X 28 px), the stroke is still thick enough to be recognized by the model.
-
-b. Color contrast: CNN distinguish the difference based on saturation difference between background and stroke color. Stroke color doesn't have much effect on the prediction as much as the background does. Background color have significant effect on the prediction. As the background gets closer to the black, the model failed to predict accurately. In contrast, shallow neural network has limitation in recognizing stroke color and background.
-
-c. Shape of number and image:
-Number 9 is challenging to recognize in with this particular train model, which predicts more 4 and 7 more often than the correct number 9. It might be related on the pattern of diagonal and horizontal line in that number.
-The original snipped file would be predicted more accurately if the image has width == height. This is due to the fact that the MNIST dataset has width == height, thus the trained model weight matrices retain the same shape.
+* **Image vs. Canvas Ratio:** The threshold is around 25-30%, i.e. the number has to occupy about 25-30% of the canvas surface area for a good prediction. As after being resized to even smaller 28px square, the number would become so small that is challenging for the model to predict.
 
 d. Model-related observation: Re-training model has potential of changing the prediction, i.e. first model predicted right, then next rerun predict number wrong.
 
-e. Ratio between image size and canvas size: The smaller the image, the more difficult it is to predict the number. 
+ 
 
 
 
