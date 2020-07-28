@@ -21,9 +21,9 @@ In this project, we took Machine Learning out of its traditional way into more s
 ## 3. Training Data, Model Architecture and Training Process
 * Dataset chosen for training: MNIST dataset, thanks to Prof. Yann LeCun. Dataset was loaded from Keras database.
     * 60,000 28x28 pixel images of handwritten digits used for training, 10,000 of same size for validation. Total 70,000 images.
-    * All digits were centered in the frame
-    * Perfect white background (rgb(255,255,255)) and black stroke (small gray mixed, rgb(0, 0, 0))
-* Each of the image features will be processed through by the deep learning model that is built based on convolutional block concepts. The output consists of 10 digit classifications, which are from 0 to 9. 
+    * All digits were centered in the frame.
+    * Perfect white background (rgb(255, 255, 255)) and black stroke (small gray mixed, rgb(0, 0, 0))
+* Each of the image features will be processed thru the network that is built based on convolutional block concepts (2+ Conv2D, Batch Normalization, Max Pooling in each block). The output consists of 10 digit classifications, which are from 0 to 9. 
 
 <img src="./static/assets/img/readme/model_architecture.png" alt="please go to image folder for this pic">
 
@@ -51,8 +51,7 @@ In this project, we took Machine Learning out of its traditional way into more s
 
 * Docker Folder: consists of **Dockerfiles** and **Docker Compose** to be used for Docker Image and Container Creation and hosting on AWS EC2.
 
-**Tools and Technologies**  
-
+## 5. Tools/ Techniques & Technologies**  
 * **Languages:**
     *  Python | Javascript | HTML5 |  CSS3 | Markdown
 * **Modules/ Libraries:**
@@ -61,10 +60,10 @@ In this project, we took Machine Learning out of its traditional way into more s
     * Windows 10 Pro v.2004 with WSL2 | Ubuntu 20.04 | MacOS Mojave
 * **DevOps:**
     * Docker Containers | AWS EC2
-* **Applications/ Software**
+* **Applications/ Software:**
     * Visual Studio Code | Windows Terminal | AWS CLI | Notepad++ | Excel (image illustration) | Google Chrome | Google Drive
 
-## 5. Model Strengths and Limitations
+## 6. Model Strengths and Limitations
 ### Strength
 * **Realtime prediction:**  as soon as a stroke made on canvas, the machine will make prediction. Every new stroke added to the canvas would increases the accuracy of prediction.
 * **Stroke type:** stroke on canvas doesn't have to be continuous line. Works with dotted line, too!
@@ -87,7 +86,7 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 **Model-related limitation:** Re-training model has potential of changing the prediction, i.e. first model predicts right, then next rerun predicts number wrong.
 
-## 6. Project Challenges** 
+## 7. Project Challenges** 
 
 * **Building CNN Model:** 
     * Selecting optimal parameters for kernels, strides, pooling layers, batch normalization and drop-outs to mitigate over fitting, and accelerate model coverging was just mere trials and errors, and very subjective to the designer. However, after following recommendations from Dr. Jon Krohn in one of his articles, team was successfully picking parameters.
@@ -99,7 +98,7 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 * **Canvas Creation:** the first challenge of front-end was to make a canvas that is versatile enough to either allow user drawing directly on or display uploaded image. Multiple techniques were employed including mouse event listener, canvas draw function, new image upload event listener, automation programming to trigger corresponding functions for sending and receiving prediction from server.
 
-## 7. Future Developement Opportunity
+## 8. Future Developement Opportunity
 * **RGB Sliders:** For user to observe how the canvas parameters: stroke color, background color could potentially affect the prediction, a couple of RGB sliders can be created to enhance interation/ user experience. User can play with different color of background and stroke and see how that would affect the model prediction.
 
 * **Create new dataset:** The limitations stated above could be solved if a training dataset has larger iamge dimensions. A new dataset could be easily created from the canvas, downloaded, classified and feed into the network. Also, instead of grayscale, RGB mode could be used for training the model - which can help eliminate problem with canvas colors.
