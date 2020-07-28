@@ -7,7 +7,6 @@ Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 ### 1. Background 
 
-<<<<<<< HEAD
 **Project Background:** Machine Learning Technologies have been rapidly developed in the last decade. This advancement allows model predictions to be exponentially more accurate.
 In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writting but also allowing human to understand how the machine learned and make the prediction thanks to the real-time interaction developed.
 
@@ -15,10 +14,6 @@ In this project, we took Machine Learning out of its traditional way into more s
 <img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic">
 
 CNN & Dense were chosen for its proven accurate predictions up to 98% with just a few layers and epochs.
-=======
-**Project Background:** Machine Learning Technologies have been rapidly developed in the last decade. The advancement allows model predictions to be exponentially more accurate.
-In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with effective Dense Network. CNN & Dense were chosen for its proven accurate predictions up to 98% with just a few layers and epochs.
->>>>>>> cf0f60e269d6fbdd9c10b0968c1c4258c5a20d84
 Basically, Conv2D in this project works as a "scanner" to continously read and processed image pixels, highlight features of each digit in the 2D space intead of 1D as the Dense network, which is better and more common for analyzing visual imagery.
 
 **Why we chose image prediction:** We are interested to learn more about how image processing works. 
@@ -40,16 +35,6 @@ This is the sequence of layers. The input is 28x28 pixel image (both from canvas
 
 The model summary is the following. In total, the model consists of approx. 20 million parameter.  
 
-<<<<<<< HEAD
-=======
-The model summary is the following. In total, the model consists of approx. 20 million parameter.  
-
-<p align="center">
- Layer | No. of Parameters 
- --- | ----
-    Conv2D # 1 | 640 
-</p>
->>>>>>> cf0f60e269d6fbdd9c10b0968c1c4258c5a20d84
 
 ### 3. File Directory
 
