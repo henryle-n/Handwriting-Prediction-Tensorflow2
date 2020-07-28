@@ -7,8 +7,13 @@ Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 ### 1. Background 
 
-**Project Background:** Machine Learning Technology Field has been rapidly developed in the last decade. The advancement allows model predictions to be exponentially more accurate.
-In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN). CNN was chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense Networks.
+**Project Background:** Machine Learning Technologies have been rapidly developed in the last decade. This advancement allows model predictions to be exponentially more accurate.
+In this project, we took Machine Learning out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writting but also allowing human to understand how the machine learned and make the prediction thanks to the real-time interaction developed.
+
+
+<img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic">
+
+CNN & Dense were chosen for its proven accurate predictions up to 98% with just a few layers and epochs.
 Basically, Conv2D in this project works as a "scanner" to continously read and processed image pixels, highlight features of each digit in the 2D space intead of 1D as the Dense network, which is better and more common for analyzing visual imagery.
 
 **Why we chose image prediction:** We are interested to learn more about how image processing works. 
@@ -28,13 +33,8 @@ This is the flow of the project.
 
 This is the sequence of layers. The input is 28x28 pixel image (both from canvas or pictures uploaded) and the output will be 10 class prediction, digit between 0 to 9. 
 
-![](./static/assets/img/readmemodel_architecture.png)
+The model summary is the following. In total, the model consists of approx. 20 million parameter.  
 
-The model summary is the following. In total, the model consists of almost 20 million parameter.  
-
-<p align="center">
-    <img src="./static/assets/img/readme/model_summary2.PNG" alt="please go to image folder for this pic" width="600px">
-</p>
 
 ### 3. File Directory
 
@@ -58,7 +58,7 @@ Link to the website
 **Technology Applied**  
 
 Languages: Python, Javascript, HTML/ CSS, Markdown.
-Modules/ Libraries: Flask, TensorFlow (GPU version), Pillow, Numpy, OS, JSON, base64. jQuery.
+Modules/ Libraries: Flask, TensorFlow 2 (GPU version), Pillow, Numpy, OS, JSON, base64. jQuery.
 
 
 
@@ -102,7 +102,7 @@ e. Ratio between image size and canvas size: The smaller the image, the more dif
 a. Building CNN Model:
 Selecting optimal parameters for kernels, strides, pooling layers, batch normalization and drop-outs to mitigate over fitting, and accelerate model coverging.
 Add padding to help retain the input and output dimensions for ability to build a deeper network.
-Due to the sizes of the CNN (multiple layers with 20 millions parameters), we had to utilize the Graphics Procssing Unit (2560 CUDA Cores) to be able to handle the training.
+Due to the sizes of the CNN (multiple layers with 20 millions parameters), we had to utilize the Graphics Processing Unit (2560 CUDA Cores) to be able to handle the training.
 
 b. HTTP Request | AJAX: finding solutions on how to pack the image package from client browser in a base64 encoded string, jsonify it and send to server. Then jasonify the response from server and send it back to client computer.
 
