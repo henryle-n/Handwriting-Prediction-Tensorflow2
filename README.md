@@ -24,7 +24,7 @@ In this project, Machine Learning was taken out of its traditional way into more
 
 * **Why CNN?** CNN was chosen for its proven accurate predictions up to 98% with just a few layers of Conv2D and Dense Networks, within 5 training epochs. The power of CNN lies within its capability to "scan" the image in 2D instead of 1D space (comparing to Dense Network). Together with Dense Network, CNN creates the unmatchable model for any image prediction/ classification.
 
-## 3. Training Data, Model Architecture and Training Process
+## 3. Training Data, Model Architecture & Training Process, and WorkFlow
 ### Dataset
 * MNIST dataset, thanks to Prof. Yann LeCun. Dataset was loaded from Keras built-in database.
 * 60,000 28x28 pixel images of handwritten digits used for training, 10,000 of same size for validation. Total 70,000 images.
@@ -51,6 +51,11 @@ When human is reading a number, the eyes see black ink (or any color) on a black
     <img src="./static/assets/img/portfolio/fullsize/num4-grid-demo.png" alt="please go to image folder for this pic" width=350px height=350px>
 </div>
 
+### Interactions of Server and Client
+
+<div align="center">
+    <img src="./static/assets/img/readme/process.png" alt="please go to image folder for this pic">
+</div>
 
 ## 4. File Directory
 
