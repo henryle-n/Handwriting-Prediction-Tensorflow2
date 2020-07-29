@@ -106,7 +106,7 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 * **Number 9 prediction:** number 9 is the most challenging to recognize in with this particular train model, which predicts more 4 and 7 more often than the correct number 9. A closer inspection on the MNIST dataset, the team found that 4, 7, 9 shares lots of common patterns of diagonal and horizontal lines! If the "belly" or circle on 9 is not rounded, chances are it is 7 per model. Or if the leg of 9 is straight down (not slanted), again number 7 instead of 9.
 
-* **Input Image Dimensions:** If user chooses to upload a pre-made image, if the input width and height are not the same, i.e. not a square image, the model tends to make inaccurate prediction. Because the processed image for prediction is a perfect square of 28x28px, during the processing, if `width !== height`, image will be distorted, which leads to feature changes between original user upload and processed image. 
+* **Input Image Dimensions:** If user chooses to upload a pre-made image, if the input width and height are not the same, i.e. not a square image, the model tends to make inaccurate prediction. Because the processed image for prediction is a perfect square of 28x28px, during the processing, if `width !== height`, image will be distorted, which leads to feature changes between original user upload and processed images. 
 
 * **Image vs. Canvas Ratio:** The threshold is around 25-30%, i.e. the number has to occupy about 25-30% of the canvas surface area for a good prediction. As after being resized to even smaller 28px square, the number would become so small that is challenging for the model to effectively highlight the features for prediction. 
 
