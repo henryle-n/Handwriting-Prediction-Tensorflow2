@@ -54,7 +54,7 @@ When human is reading a number, the eyes see black ink (or any color) on a black
 ### Interactions of Server and Client
 
 <div align="center">
-    <img src="./static/assets/img/readme/process.png" alt="please go to image folder for this pic">
+    <img src="./static/assets/img/readme/process.png" alt="please go to image folder for this pic" width=500px>
 </div>
 
 ## 4. File Directory
@@ -69,7 +69,7 @@ When human is reading a number, the eyes see black ink (or any color) on a black
 
 * Jupyter Notebooks used during training/ developement in the same name folder.
 
-* During training, CNN parameters were logged and saved **Convolutional-NN/logs/deepCNN/20200718_HL/**
+* During training, CNN parameters were logged and saved **./logs/deepCNN/20200718_HL/**
 
 * Images and thumbnail: in **static/img**
 
