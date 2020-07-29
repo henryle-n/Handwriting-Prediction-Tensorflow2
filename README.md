@@ -2,7 +2,7 @@
 
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
-<a href="http://ec2-3-20-237-129.us-east-2.compute.amazonaws.com">**Click here**</a> for our website hosted on AWS EC2 for demo.
+<a href="http://ec2-3-20-237-129.us-east-2.compute.amazonaws.com">**Click here**</a> for final product deployed on on AWS EC2 with Docker for demo.
 
 ## 1. Background 
 
