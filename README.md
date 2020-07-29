@@ -70,6 +70,8 @@ When human is reading a number, the eyes see black ink (or any color) on a black
 
 * Docker Folder: consists of **Dockerfiles** and **Docker Compose** to be used for Docker Image and Container Creation and hosting on AWS EC2.
 
+* **Auto*** files: for convenience, these auto files were created to help quickly perform environment activation & run server, or push & pull from GitHub by double clicks, improving efficiency.
+
 ## 5. Tools/ Techniques & Technologies
 * **Languages:**
     *  Python | Javascript | HTML5 |  CSS3 | Markdown
