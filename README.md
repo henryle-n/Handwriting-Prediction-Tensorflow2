@@ -1,4 +1,4 @@
-# Convolutional Neural Network | Hand Written Digit Prediction</div>
+# Convolutional Neural Network | Hand-Written Digit Prediction
 
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
@@ -11,10 +11,14 @@ Machine Learning Technologies have been rapidly developed in the last decade. Th
 In this project, Machine Learning was taken out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with the widely-known effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writtings but also allowing human to understand how the machine learns and how predictions are made in a certain way, thanks to the real-time interaction and prediction developed in this project.
 
 <div align="center">
-    <img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic">
+    <img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic" width=500px>
 </div>
 
-## 2. The Questions... Why
+<div align="center">
+    <img src="./static/assets/img/readme/demo1.gif" alt="please go to image folder for this pic" width=500px>
+</div>
+
+## 2. The Question... Why
 
 * **Why image prediction?** Facial Recognition and Object Detection have always been a tremendous inspiration for the team. The curiosity of how these are even possible brought the team together for making great things happened in this project.
 
@@ -25,7 +29,7 @@ In this project, Machine Learning was taken out of its traditional way into more
 * MNIST dataset, thanks to Prof. Yann LeCun. Dataset was loaded from Keras built-in database.
 * 60,000 28x28 pixel images of handwritten digits used for training, 10,000 of same size for validation. Total 70,000 images.
 * All digits were centered in the frame.
-* Perfect white background (rgb(255, 255, 255)) and black stroke (small gray mixed, rgb(0, 0, 0))
+* Pure white background (rgb(255, 255, 255)) and black stroke (some gray mixed due to pixelation, rgb(0, 0, 0))
 
 ### Model Training
 * Each of the image features will be processed thru the network that is built based on convolutional block concepts (2+ Conv2D, Batch Normalization, Max Pooling in each block). The output consists of 10 digit classifications, which are from 0 to 9. 
@@ -120,17 +124,17 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 * **Utilizing more advanced techniques:** Isolation block technique can be used to first identify where the digit is on the canvas, then cut that section off from canvas, eliminate all noises (white space background), add small padding, center the image before feed through the model. This would help eliminate issue with canvas/ digit area ratio or even mismatch between width and height.
 
-* **Small screens:** Currently, the CSS format in this project is working only on screens that are larger than 13". Future developement would needs to use `@media ` query to adjust elements to work well with smaller screens like that of tablets or cellphones.
+* **Small screens:** Currently, the CSS format in this project is working only on screens that are larger than 13". Future developement would needs to use `@media ` query to adjust elements to work well with smaller screens like those of tablets or cellphones.
 
 ## 9. How to use this repository
 * Clone the repository down to local PC.
 * If running on local PC without using Docker Containers:
     * Create new environment and install modules/ packages needed from **requirements.txt**.
     * Activate the environment, go to **Docker Master**, then to **convnn**.
-    * In the **application.py** file, delete `host=0.0.0.0`, save the file.
+    * In the **application.py** file, delete `host='0.0.0.0'`, save the file.
     * When Flask "mini-server" is up and running, program is accessed via `http://127.0.0.1:5000/` (default flask).
 * If running by Docker Container:
     * Go to **Docker Master**.
-    * No need to delete `host=0.0.0.0`.
+    * No need to delete `host='0.0.0.0'`.
     * Run command `docker-compose up -d --build`.
-    * Since Docker **nginx** is configured to reroute port 80 to localhost, program can be accessed thru web browser with simple address `localhost`.
+    * Since Docker **nginx** is configured to re-route port 80 to localhost, program can be accessed thru web browser with simple address `localhost` without specified port.
