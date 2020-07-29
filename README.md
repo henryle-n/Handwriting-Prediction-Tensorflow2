@@ -54,7 +54,7 @@ When human is reading a number, the eyes see black ink (or any color) on a black
 ### Interactions of Server and Client
 
 <div align="center">
-    <img src="./static/assets/img/readme/process.png" alt="please go to image folder for this pic" width=500px>
+    <img src="./static/assets/img/readme/process.png" alt="please go to image folder for this pic" width=700px>
 </div>
 
 ## 4. File Directory
