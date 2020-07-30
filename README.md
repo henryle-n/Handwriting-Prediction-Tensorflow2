@@ -4,6 +4,8 @@ Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 <a href="http://ec2-3-20-237-129.us-east-2.compute.amazonaws.com">**Click here**</a> for final product deployed on AWS EC2 with Docker for demo.
 
+**NOTE:** At the current release, this website works only on Desktop or Laptop with screen larger than 13". Small Tablets and Phones are not supported.
+
 ## 1. Background 
 
 Machine Learning Technologies have been rapidly developed in the last decade. This advancement allows model predictions to be exponentially more accurate.
