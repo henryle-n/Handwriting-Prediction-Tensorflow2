@@ -1,6 +1,5 @@
-# Hand-Written Digit Prediction
 # Deep Learning with Convolutional Neural Network
-
+## Hand-Written Digit Prediction
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 <a href="http://ec2-3-20-237-129.us-east-2.compute.amazonaws.com">**Click here**</a> for final product deployed on AWS EC2 with Docker for demo.
