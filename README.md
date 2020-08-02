@@ -1,4 +1,5 @@
-# Convolutional Neural Network | Hand-Written Digit Prediction
+# Hand-Written Digit Prediction
+# Deep Learning with Convolutional Neural Network
 
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
@@ -126,7 +127,7 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 * **Canvas Creation:** the first challenge of front-end was to make a canvas that is versatile enough to either allow user drawing directly on or display uploaded image. Multiple techniques were employed including mouse event listener, canvas draw function, new image upload event listener, automation programming to trigger corresponding functions for sending and receiving prediction from server.
 
-## 8. Future Developement Opportunity
+## 8. Future Developement Opportunities
 * **RGB Sliders:** For user to observe how the canvas parameters: stroke color, background color could potentially affect the prediction, a couple of RGB sliders can be created to enhance interation/ user experience. User can play with different color of background and stroke and see how that would affect the model prediction.
 
 * **Create new dataset:** The limitations stated above could be solved if a training dataset has larger iamge dimensions. A new dataset could be easily created from the canvas, downloaded, classified and feed into the network. Also, instead of grayscale, RGB mode could be used for training the model - which can help eliminate problem with canvas colors.
@@ -135,7 +136,7 @@ In this project, the team purposely enlarge the drawing canvas to 300x300px (6.7
 
 * **Small screens:** Currently, the CSS format in this project is working only on screens that are larger than 13". Future developement would needs to use `@media ` query to adjust elements to work well with smaller screens like those of tablets or cellphones.
 
-## 9. How to use this repository
+## 9. How to Use
 * Clone the repository down to local PC.
 * If running on local PC without using Docker Containers:
     * Create new environment and install modules/ packages needed from **requirements.txt**.
