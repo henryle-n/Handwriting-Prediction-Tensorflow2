@@ -11,7 +11,7 @@ Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
 Machine Learning Technologies have been rapidly developed in the last decade. This advancement allows model predictions to be exponentially more accurate.
 
-In this project, Machine Learning was taken out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with the widely-known effective Dense Network. The beauty of this project is not only allowing machine to learn human hand writtings but also allowing human to understand how the machine learns and how predictions are made in a certain way, thanks to the real-time interaction and prediction developed in this project.
+In this project, Machine Learning was taken out of its traditional way into more sophisticated level which employs advanced Deep Learning model known as Convolutional Neural Network (CNN), in conjunction with the widely-known effective Dense Network. The beauty of this project is not only allowing machine to learn human handwriting but also allowing human to understand how the machine learns and how predictions are made in a certain way, thanks to the real-time interaction and prediction developed in this project.
 
 <div align="center">
     <img src="./static/assets/img/readme/demo.gif" alt="please go to image folder for this pic" width=500px>
