@@ -3,7 +3,7 @@
 
 Team Member - Henry Le, Ekin Kaplan, Gini Arimbi, Panarat Duke.
 
-<a href="http://ec2-3-20-237-129.us-east-2.compute.amazonaws.com">**Click here**</a> for final product deployed on AWS EC2 with Docker for demo.
+<a href="http://ec2-3-20-237-129.us-east-2.compute.amazonaws.com">**Click here**</a> for final product deployed on AWS EC2 with Docker.
 
 **NOTE:** At the current release, this website works only on Desktop or Laptop with screen larger than 13". Small Tablets and Phones are not supported.
 
@@ -82,12 +82,12 @@ When human is reading a number, the eyes see black ink (or any color) on a black
 
 ## 5. Tools/ Techniques & Technologies
 * **Languages:**
-    *  Python | Javascript | HTML5 |  CSS3 | Markdown
+    *  Python 3 | Javascript ES-6 | HTML 5 |  CSS 3 | Markdown
 * **Modules/ Libraries:**
-    * Flask | TensorFlow 2 (GPU version) | Pillow | Numpy | JSON | base64 | jQuery | NGINX (engine-X)
+    * Flask v1.1.2 | TensorFlow 2 (GPU version) | Pillow | Numpy | JSON | base64 | jQuery | NGINX (engine-X)
 * **Operating System:**
-    * Windows 10 Pro v.2004 with WSL2 | Ubuntu 20.04 | MacOS Mojave
-* **DevOps:**
+    * Windows 10 Pro v2004 with WSL2 | Ubuntu v20.04 | MacOS Mojave v10.14.6
+* **Clouds/ DevOps:**
     * Docker Containers | AWS EC2
 * **Applications/ Software:**
     * Visual Studio Code | Windows Terminal | AWS CLI | Notepad++ | Excel (image illustration) | Google Chrome | Google Drive
